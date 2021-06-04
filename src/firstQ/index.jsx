@@ -9,6 +9,10 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { storeClassify, timeArr, timeClassifyData } from './data'
 import './index.scss'
 
+
+function add(a, b) {
+    return parseFloat((Number(a) + Number(b)).toFixed(10))
+}
 export default function FirstQ() {
     const [height, width] = [800, 800]
 
@@ -87,6 +91,13 @@ export default function FirstQ() {
     }, [activeStore, originCCdata, activeCustom])
     const [ccNumData, setccNumData] = useState([])
 
+    const exitCCArr = useMemo(() => {
+        return chain(consumeData)
+            .map('last4ccnum')
+            .uniq()
+            .value()
+    }, [consumeData])
+
     const priceOpacity = useMemo(() => {
         const extents = extent(consumeData, d => Number(d.price))
         return scaleLinear()
@@ -102,12 +113,14 @@ export default function FirstQ() {
                     const [dayStrs, hourStr] = d.timestamp.split(' ')
                     const day = moment(dayStrs).unix()
                     const time = moment(`${dayStr} ${hourStr}:00`).unix()
+                    const locationType = storeClassify.find(d1 => d1.data.includes(d.location)).type
                     // 时间有点不准确
                     return {
                         ...d,
                         day,
                         dayStr: dayStrs,
                         time,
+                        locationType,
                         hour: hourStr.split(':')[0],
                     }
                 })
@@ -482,11 +495,53 @@ export default function FirstQ() {
                                     const r = Math.sqrt(i) / Math.sqrt(ccNumData.length)
                                     const cx = (radiusArr[1][0] - 10) * (r * Math.cos(theta))
                                     const cy = (radiusArr[1][0] - 10) * (r * Math.sin(theta))
-                                    const opacity = consumeData.map(d1 => d1.last4ccnum).includes(d) ? 1 : 0.1
+                                    const opacity = exitCCArr.includes(d) ? 1 : 0.1
                                     let className = activeCustom.includes(d) ? 'active' : ''
                                     if (activeCustom.length > 0 && !activeCustom.includes(d)) {
                                         className = 'disabled'
                                     }
+                                    const thisConsumeData = consumeData.filter(d1 => d1.last4ccnum === d)
+                                    const arcData = chain(thisConsumeData)
+                                        .reduce((obj, d1) => {
+                                            obj[d1.locationType] = {
+                                                value: obj[d1.locationType]
+                                                ? add(obj[d1.locationType].value, d1.price)
+                                                : Number(d1.price),
+                                                type: d1.locationType,
+                                            }
+                                            return obj
+                                        }, {})
+                                        .values()
+                                        // .flatten()
+                                        .value()
+                                    // console.log(arcData)
+                                    const total = thisConsumeData.reduce((t, d1) => add(t, d1.price), 0)
+                                    // console.log(total)
+                                    const thisAngleScale = scaleLinear()
+                                        .domain([0, total])
+                                        .range([0, 2 * Math.PI])
+                                    const thisArcFun = arc()
+                                        .innerRadius(0)
+                                        .outerRadius(5)
+                                        .startAngle(d1 => {
+                                            const index = arcData.findIndex(d2 => d2.type === d1.type)
+                                            const startValue = chain(arcData)
+                                                .slice(0, index)
+                                                .map('value')
+                                                .reduce((t, d2) => add(t, d2), 0)
+                                                .value()
+                                            return thisAngleScale(startValue)
+                                        })
+                                        .endAngle(d1 => {
+                                            const index = arcData.findIndex(d2 => d2.type === d1.type)
+                                            const endValue = chain(arcData)
+                                                .slice(0, index)
+                                                .map('value')
+                                                .reduce((t, d2) => add(t, d2), 0)
+                                                .value() + d1.value
+                                            return thisAngleScale(endValue)
+                                        })
+                                    // console.log(thisArcFun(arcData[0]))
                                     return (
                                         <g
                                             transform={`translate(${cx}, ${cy})`}
@@ -496,7 +551,19 @@ export default function FirstQ() {
                                                 setActiveCustom(newActiveScatter)
                                             }}
                                         >
-                                            <circle key={d} r={5} className={`card ${className}`} />
+                                            {
+                                                arcData.map(d1 => {
+                                                    const attr = {
+                                                        d: thisArcFun(d1),
+                                                        key: `small-${d1.type}`,
+                                                        fill: colorScale(d1.type),
+                                                        stroke: colorScale(d1.type),
+                                                        fillOpacity: .3,
+                                                    }
+                                                    return <path {...attr}/>
+                                                })
+                                            }
+                                            {/* <circle key={d} r={5} className={`card ${className}`} /> */}
                                             <text
                                                 dy={-8}
                                                 // opacity={activeCustom.includes(d) ? 1: 0}
