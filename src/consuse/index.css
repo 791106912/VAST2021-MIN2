@@ -1,0 +1,41 @@
+.locationItem  text{
+    stroke: #000;
+    stroke-width: .1px;
+    font-size: 10px;
+    text-anchor: end;
+    dominant-baseline:hanging;
+}
+.locationLine {
+  stroke: gray;
+  shape-rendering:crispEdges;
+  stroke-width: .3px;
+}
+.daySplit {
+  stroke: gray;
+  shape-rendering:crispEdges;
+  stroke-width: .3px;
+}
+.daySplit text {
+    text-anchor: middle;
+    stroke-width: .1px;
+  font-size: 12px;
+}
+.hourSplit {
+  stroke: gray;
+  shape-rendering:crispEdges;
+  stroke-width: .3px;
+  stroke-dasharray: 5,5;
+}
+
+.hourSplit text {
+    text-anchor: middle;
+    stroke-width: .1px;
+  font-size: 9px;
+}
+.selected {
+  stroke: #000;
+  stroke-width: 1px;
+}
+.mw8 {
+  max-width: 100000px !important;
+}
