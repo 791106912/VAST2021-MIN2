@@ -96,7 +96,7 @@ export default function FirstQ() {
 
     useEffect(() => {
         const cc  = new Promise(resolve => {
-            csv('/data/cc_data.csv').then(res => {
+            csv('./data/cc_data.csv').then(res => {
                 console.log(res)
                 const newConsumeData = res.map(d => {
                     const [dayStrs, hourStr] = d.timestamp.split(' ')
@@ -118,7 +118,7 @@ export default function FirstQ() {
             })
         })
         const loy = new Promise(resolve => {
-            csv('/data/loyalty_data.csv').then(res => {
+            csv('./data/loyalty_data.csv').then(res => {
                 resolve(res)
             })
         })
