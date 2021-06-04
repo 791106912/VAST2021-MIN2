@@ -1,9 +1,9 @@
 import { ascending, extent } from 'd3-array'
 import { csv } from 'd3-fetch'
 import { path } from 'd3-path'
-import { axisLeft, drag, scaleBand, scaleLinear, scaleOrdinal, scalePoint, schemeCategory10, select } from 'd3'
+import { axisLeft, scaleLinear, scaleOrdinal, scalePoint, schemeCategory10, select } from 'd3'
 import { arc, curveCatmullRom, line } from 'd3-shape'
-import { chain, intersection, set } from 'lodash'
+import { chain, intersection } from 'lodash'
 import moment from 'moment'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { storeClassify, timeArr, timeClassifyData } from './data'
@@ -22,8 +22,8 @@ export default function FirstQ() {
     const realWidth = width - left - right
 
     const radiusArr = [
-        [0, 100], // card
-        [100, 240], // timeCircle
+        [0, 120], // card
+        [120, 240], // timeCircle
         [370, 371], // timeLabel
         [270, 300], // store
         [320, 350], // classify
@@ -437,26 +437,33 @@ export default function FirstQ() {
                                                 stroke: colorScale(type),
                                                 fillOpacity: locationOpacity(locationPriceObj[d]),
                                             }
+                                            const startAngle = storeClassifyScale(count + i)
+                                            const endAngle = storeClassifyScale(count + i + 1)
                                             const textPathHrefProps = {
                                                 fill: 'none',
                                                 id: `text-${d}`,
                                                 d: middleArcLine({
-                                                    innerRadius: radiusArr[3][0],
+                                                    innerRadius: radiusArr[3][1],
                                                     outerRadius: radiusArr[3][1],
-                                                    startAngle: storeClassifyScale(count + i),
-                                                    endAngle: storeClassifyScale(count + i + 1),
+                                                    startAngle,
+                                                    endAngle,
                                                 }),
                                             }
                                             const textPathProps = {
                                                 href: `#text-${d}`,
                                                 startOffset: '50%',
                                                 dominantBaseline: 'middle',
+                                                textAnchor: 'middle',
                                             }
                                             let className = activeStore.includes(d) ? 'active' : ''
                                             if (activeStore.length > 0 && !activeStore.includes(d)) {
                                                 className = 'disabled'
                                             }
                                             const opacity = consumeData.map(d => d.location).includes(d) ? 1 : 0.1
+                                            const middle = (startAngle + endAngle) / 2
+                                            const isBottom = middle > Math.PI / 2 && middle < Math.PI / 2 * 3
+                                            const textData = isBottom ? d.split(' ').reverse() : d.split(' ')
+                                            const dy = isBottom ? -10 : 10
                                             return (
                                                 <g key={d} opacity={opacity} className={className} onClick={() => {
                                                     const newActiveStore = pushOrPop(activeStore, d)
@@ -470,11 +477,13 @@ export default function FirstQ() {
                                                     <g className='store-label'>
                                                         <path {...textPathHrefProps} />
                                                         <text>
-                                                            <textPath {...textPathProps}>
-                                                                {d.split(' ').map((d1, j) => (
-                                                                    <tspan y={j * 10} key={d1}>{d1}</tspan>
-                                                                ))}
-                                                            </textPath>
+                                                            {
+                                                                textData.map((d1, j) => (
+                                                                    <textPath {...textPathProps} key={d1}>
+                                                                        <tspan dy={dy}>{d1}</tspan>
+                                                                    </textPath>
+                                                                ))
+                                                            }
                                                         </text>
                                                     </g>
                                                 </g>
@@ -500,7 +509,7 @@ export default function FirstQ() {
                                     if (activeCustom.length > 0 && !activeCustom.includes(d)) {
                                         className = 'disabled'
                                     }
-                                    const thisConsumeData = consumeData.filter(d1 => d1.last4ccnum === d)
+                                    const thisConsumeData = originCCdata.filter(d1 => d1.last4ccnum === d)
                                     const arcData = chain(thisConsumeData)
                                         .reduce((obj, d1) => {
                                             obj[d1.locationType] = {
