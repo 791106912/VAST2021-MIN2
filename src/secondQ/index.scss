@@ -1,0 +1,29 @@
+.second-graph {
+    .realMap{
+        position: absolute;
+        width: 874px;
+        z-index: 1;
+        opacity: .6;
+        top: 292px;
+        left: 104px;
+    }
+    svg{
+        position: absolute;
+        z-index: 2;
+        border: solid 1px red;
+        // background: url('./bg.jpeg') no-repeat 200px;
+        .bg {
+            transform: rotate(73deg);
+            transform-origin: center center;
+        }
+        .map {
+            fill: none;
+            stroke: #bbb;
+        }
+        .track {
+            .trackItem {
+                fill: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.nav {
+    background: #000;
+    color: #fff;
+    display: flex;
+    line-height: 50px;
+    justify-content: space-around;
+}
