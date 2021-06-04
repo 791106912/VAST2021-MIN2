@@ -497,7 +497,12 @@ export default function FirstQ() {
                                             }}
                                         >
                                             <circle key={d} r={5} className={`card ${className}`} />
-                                            <text>{d}</text>
+                                            <text
+                                                dy={-8}
+                                                // opacity={activeCustom.includes(d) ? 1: 0}
+                                            >
+                                                {d}
+                                            </text>
                                         </g>
                                     )
                                 })
@@ -570,14 +575,14 @@ export default function FirstQ() {
                         }}>Refresh</button>
                     </div>
                 </div>
-                <Parallel data={consumeData} />
+                <Parallel data={consumeData} colorScale={colorScale} />
             </div>
         </div>
     )
 }
 
 
-function Parallel({ data = []}) {
+function Parallel({ data = [], colorScale}) {
     const [top, right, bottom, left] = [20, 20, 20, 80]
     const [width, height] = [600, 500] 
 
@@ -652,6 +657,11 @@ function Parallel({ data = []}) {
             .enter()
             .append('path')
             .attr('d', path)
+            .attr('stroke', d => {
+                const { location } = d
+                const type = storeClassify.find(d1 => d1.data.includes(location)).type
+                return colorScale(type)
+            })
     }, [data])
 
     return (
