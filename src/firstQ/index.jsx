@@ -1,5 +1,5 @@
 import { ascending, extent } from 'd3-array'
-import { csv } from 'd3-fetch'
+import { json } from 'd3-fetch'
 import { path } from 'd3-path'
 import { axisLeft, scaleLinear, scaleOrdinal, scalePoint, schemeCategory10, select } from 'd3'
 import { arc, curveCatmullRom, line } from 'd3-shape'
@@ -8,11 +8,8 @@ import moment from 'moment'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { storeClassify, timeArr, timeClassifyData } from './data'
 import './index.scss'
+import { add, calHourTime, pushOrPop } from '../utils'
 
-
-function add(a, b) {
-    return parseFloat((Number(a) + Number(b)).toFixed(10))
-}
 export default function FirstQ() {
     const [height, width] = [800, 800]
 
@@ -28,7 +25,12 @@ export default function FirstQ() {
         [270, 300], // store
         [320, 350], // classify
     ]
-
+    // 是否展示track 
+    const [showTrack, setshowTrack] = useState(true)
+    // 选中模式
+    const [selectMode, setselectMode] = useState('mulitiple')
+    // MergeMethod
+    const [mergefun, setMergeFun] = useState('intersection')
 
     const anagleScale = scaleLinear()
         .domain([0, 24])
@@ -38,42 +40,14 @@ export default function FirstQ() {
         .domain(extent(timeArr))
         .range([radiusArr[1][0], radiusArr[1][1]])
 
-    const dayStr = '2020-01-01'
-
-    // 是否展示track 
-    const [showTrack, setshowTrack] = useState(true)
-
-    // 选中模式
-    const [selectMode, setselectMode] = useState('mulitiple')
-
-    function pushOrPop(arr, d) {
-        const newArr = [...arr]
-        if (selectMode !== 'single') {
-            if (newArr.includes(d)) {
-                return newArr.filter(d1 => d1 !== d)
-            }
-            newArr.push(d)
-            return newArr
-        } else {
-            if (newArr.includes(d)) {
-                return []
-            } else {
-                return [d]
-            }
-        }
-    }
-
     const timeScale = scaleLinear()
-        .domain([`${dayStr} 00:00:00`, `${dayStr} 23:59:59`].map(d => moment(d).unix()))
+        .domain([calHourTime('00:00:00'), calHourTime('23:59:59')])
         .range([0, Math.PI * 2])
 
     const consumePath = arc()
         .innerRadius(d => dayScale(d.day))
         .outerRadius(d => dayScale(d.day) + (radiusArr[1][1] - radiusArr[1][0]) / timeArr.length )
-        .startAngle(d => {
-            // console.log(d.ti)
-            return timeScale(d.time)
-        })
+        .startAngle(d => timeScale(d.time))
         .endAngle(d => timeScale(d.time + 500))
 
     // getData
@@ -84,20 +58,50 @@ export default function FirstQ() {
     const [activeClassify, setActiveClassify] = useState([])
     const [activeCustom, setActiveCustom] = useState([])
 
+    // 展示的数据
     const consumeData = useMemo(() => {
         return originCCdata
         .filter(d => activeStore.length ? activeStore.includes(d.location) : true)
-        .filter(d => activeCustom.length ? activeCustom.includes(d.last4ccnum) : true)
+        .filter(d => activeCustom.length ? activeCustom.includes(d.id) : true)
     }, [activeStore, originCCdata, activeCustom])
+
+    // 所有的会员卡的ID
     const [ccNumData, setccNumData] = useState([])
 
+    // 请求数据
+    useEffect(() => {
+        json('./data/merge_cc_and_loy.json').then(res => {
+            const newConsumeData = res.map(d => {
+                const [dayStr, hourStr] = d.timestamp.split(' ')
+                const day = moment(dayStr).unix()
+                const time = calHourTime(hourStr)
+                const locationType = storeClassify.find(d1 => d1.data.includes(d.location)).type
+                // 时间有点不准确
+                return {
+                    ...d,
+                    day,
+                    dayStr,
+                    id: d.loyaltynum,
+                    time,
+                    locationType,
+                    hour: hourStr.split(':')[0],
+                }
+            })
+            const newLoy = chain(newConsumeData).map('id').uniq().value()
+            setccNumData(newLoy)
+            setOriginCCdata(newConsumeData)
+        })
+    }, [])
+
+    // 数据的信用卡
     const exitCCArr = useMemo(() => {
         return chain(consumeData)
-            .map('last4ccnum')
+            .map('id')
             .uniq()
             .value()
     }, [consumeData])
 
+    // 剩余的价格比例尺
     const priceOpacity = useMemo(() => {
         const extents = extent(consumeData, d => Number(d.price))
         return scaleLinear()
@@ -105,52 +109,15 @@ export default function FirstQ() {
         .range([0.2, 1])
     }, [consumeData])
 
-    useEffect(() => {
-        const cc  = new Promise(resolve => {
-            csv('./data/cc_data.csv').then(res => {
-                console.log(res)
-                const newConsumeData = res.map(d => {
-                    const [dayStrs, hourStr] = d.timestamp.split(' ')
-                    const day = moment(dayStrs).unix()
-                    const time = moment(`${dayStr} ${hourStr}:00`).unix()
-                    const locationType = storeClassify.find(d1 => d1.data.includes(d.location)).type
-                    // 时间有点不准确
-                    return {
-                        ...d,
-                        day,
-                        dayStr: dayStrs,
-                        time,
-                        locationType,
-                        hour: hourStr.split(':')[0],
-                    }
-                })
-                const newLoy = chain(res).map('last4ccnum').uniq().value()
-                setccNumData(newLoy)
-                setOriginCCdata(newConsumeData)
-                resolve(res)
-            })
-        })
-        const loy = new Promise(resolve => {
-            csv('./data/loyalty_data.csv').then(res => {
-                resolve(res)
-            })
-        })
-        Promise.all([cc, loy]).then(res => {
-            // draw(res)
-            // calcualteTimeData(res[0])
-            // calculateLocationData(res[0], res[1])
-        })
-    }, [])
-
     const locationPriceObj = useMemo(() => {
         return consumeData.reduce((obj, d) => {
             const num = obj[d.location] || 0
-            const newNum = parseFloat((num + Number(d.price)).toFixed(10))
-            obj[d.location] = newNum
+            obj[d.location] = add(num, d.price)
             return obj
         }, {})
     }, [consumeData])
 
+    // 地点消费比例尺
     const locationOpacity = useMemo(() => {
         const extents = extent(Object.values(locationPriceObj))
         return scaleLinear()
@@ -158,11 +125,12 @@ export default function FirstQ() {
         .range([0.2, 1])
     }, [locationPriceObj])
     
-    // store
+    // 商店列表
     const storeArr = chain(storeClassify)
         .map('data')
         .flatten()
         .value()
+
     const storeClassifyScale = scaleLinear()
         .domain([0, storeArr.length])
         .range([0, Math.PI * 2])
@@ -179,7 +147,6 @@ export default function FirstQ() {
                 .flatten()
                 .value()
                 .length
-
             return storeClassifyScale(count)
         })
         .endAngle(d => {
@@ -217,9 +184,9 @@ export default function FirstQ() {
             if(d[0]<0) {
                 return timeScale(moment(`2019-12-31 ${22}:00:00`).unix())
             }
-            return timeScale(moment(`${dayStr} ${d[0]}:00:00`).unix())
+            return timeScale(calHourTime(d[0]))
         })
-        .endAngle(d => timeScale(moment(`${dayStr} ${d[1]}:00:00`).unix()))
+        .endAngle(d => timeScale(calHourTime(d[1])))
         .padAngle(.1)
         .cornerRadius(4)
 
@@ -243,7 +210,7 @@ export default function FirstQ() {
     const pointObj = useMemo(() => {
         return ccNumData.reduce((obj, d) => {
             const thisData = chain(consumeData)
-                .filter(d1 => d1.last4ccnum === d)
+                .filter(d1 => d1.id === d)
                 .reduce((obj, d1) => {
                     const key = d1.dayStr
                     if (!obj[key]) obj[key] = []
@@ -298,7 +265,6 @@ export default function FirstQ() {
                                 <g key={d} className='timeSplit' transform={`rotate(${anagleScale(d)})`}>
                                     <line {...attr} />
                                     <text x={attr.x1} y={attr.y1} dy={0}>{`${d}:00`}</text>
-                                    {/* <circle cx={attr.x1} cy={attr.y1} r={4} /> */}
                                 </g>
                             )
                         })}
@@ -316,8 +282,8 @@ export default function FirstQ() {
                                     outerRadius: radiusArr[2][1]+10,
                                     startAngle: d.data[0] < 0 ? 
                                         timeScale(moment(`2019-12-31 ${22}:00:00`).unix())
-                                        : timeScale(moment(`${dayStr} ${d.data[0]}:00:00`).unix()),
-                                    endAngle: timeScale(moment(`${dayStr} ${d.data[1]}:00:00`).unix()),
+                                        : timeScale(calHourTime(d.data[0])),
+                                    endAngle: timeScale(calHourTime(d.data[1])),
                                 }),
                             }
                             const textPathProps = {
@@ -509,7 +475,7 @@ export default function FirstQ() {
                                     if (activeCustom.length > 0 && !activeCustom.includes(d)) {
                                         className = 'disabled'
                                     }
-                                    const thisConsumeData = originCCdata.filter(d1 => d1.last4ccnum === d)
+                                    const thisConsumeData = originCCdata.filter(d1 => d1.id === d)
                                     const arcData = chain(thisConsumeData)
                                         .reduce((obj, d1) => {
                                             obj[d1.locationType] = {
@@ -591,7 +557,7 @@ export default function FirstQ() {
                                 .map(d => {
                                     const [name, data] = d
                                     let opacity = activeCustom.includes(name) ? 1 : 0
-                                    // let opacity = consumeData.map(d1 => d1.last4ccnum).includes(name) ? 1 : 0
+                                    // let opacity = consumeData.map(d1 => d1.id).includes(name) ? 1 : 0
                                     if (opacity) {
                                         opacity = showTrack ? 1 : 0
                                     }
@@ -644,6 +610,28 @@ export default function FirstQ() {
                         />
                     </div>
                     <div className='item'>
+                        merge method：
+                        {['union', 'intersection'].map(d => {
+                            return (
+                                <>
+                                    <label htmlFor={d}>{d}</label>
+                                    <input
+                                        type='radio'
+                                        name='merge-mode'
+                                        checked={mergefun === d}
+                                        onChange={() => {
+                                            if (mergefun !== d) {
+                                                setMergeFun(d)
+                                            }
+                                        }}
+                                        value={d}
+                                        id={d}
+                                    />
+                                </>
+                            )
+                        })}
+                    </div>
+                    <div className='item'>
                         <button onClick={() => {
                             setActiveStore([])
                             setActiveClassify([])
@@ -670,11 +658,11 @@ function Parallel({ data = [], colorScale}) {
 
     useEffect(() => {
         const location = chain(data).map('location').uniq().value()
-        const name = chain(data).map('last4ccnum').uniq().value()
+        const name = chain(data).map('id').uniq().value()
         const time = chain(data).map('hour').uniq().value()
 
         const scaleObj = {
-            last4ccnum: scalePoint()
+            id: scalePoint()
                 .domain(name)
                 .range([0, realHeight]),
             dayStr: scalePoint()
