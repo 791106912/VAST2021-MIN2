@@ -1,28 +1,129 @@
 .second-graph {
     .realMap{
         position: absolute;
-        width: 874px;
+        width: 1004px;
         z-index: 1;
-        opacity: .6;
-        top: 292px;
-        left: 104px;
+        opacity: .3;
+        top: 76px;
+        left: 0px;
     }
-    svg{
+    .tooltip {
         position: absolute;
+        background: #fff;
+        z-index: 10;
+        padding: 10px;
+        .tooltip-item {
+            line-height: 30px;
+            display: flex;
+            justify-content: space-between;
+            .tooltips-label {
+                font-weight: bold;
+                margin-right: 10px;
+                width: 80px;
+            }
+            .tooltips-value {
+                flex: 1;
+                text-align: left;
+            }
+        }
+    }
+    .mapcontainer {
+        display: flex;
+        height: 600px;
+        position: relative;
         z-index: 2;
-        border: solid 1px red;
-        // background: url('./bg.jpeg') no-repeat 200px;
+        .carlist {
+            overflow-y: scroll;
+            height: 100%;
+            tr{
+                cursor: pointer;
+            }
+            .active {
+                background: red;                
+            }
+            .color-legend {
+                height: 20px;
+            }
+        }
+        .daylist {
+            tr{
+                cursor: pointer;
+            }
+            .active {
+                background: red;                
+            }
+        }
+        .info {
+            // display: none;
+            min-width: 400px;
+            line-height: 30px;
+            overflow-y: scroll;
+            height: 100%;
+        }
+    }
+    .mapSvg{
+        // border: solid 1px red;
         .bg {
-            transform: rotate(73deg);
+            // transform: rotate(73deg);
             transform-origin: center center;
         }
         .map {
             fill: none;
-            stroke: #bbb;
+            // stroke: #bbb;
+            stroke: #000;
+            stroke-opacity: .4;
         }
         .track {
             .trackItem {
+                .path {
+                    fill: none;
+                    stroke-width: 3px;
+                    stroke-opacity: .8;
+                }
+                .arrow{
+                    fill: none;
+                    stroke: red;
+                }
+            }
+        }
+        .stopDot {
+            fill-opacity: .2;
+        }
+    }
+    .second {
+        display: flex;
+    }
+    // 轨迹解释图
+    .explain {
+        width: 1000px;
+        .toolbox {
+            text-align: right;
+        }
+        .timeScale {
+            .scaleplate {
+                stroke-width: 1px;
+                stroke: gray;
+                stroke-dasharray: 10;
+            }
+            .dayItem {
+                line {
+                    stroke: rgba(0,0,0, .2);
+                }
+                text {
+                    cursor: pointer;
+                    text-anchor: start;
+                    dominant-baseline: middle;
+                }
+                &.disabled {
+                    opacity: .1;
+                }
+            }
+            .trackLine {
                 fill: none;
+                stroke-width: 1;
+            }
+            .stopItemLabel {
+                dominant-baseline: hanging;
             }
         }
     }
