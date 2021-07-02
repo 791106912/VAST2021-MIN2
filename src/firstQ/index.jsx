@@ -1,14 +1,69 @@
 import { ascending, extent } from 'd3-array'
 import { json } from 'd3-fetch'
 import { path } from 'd3-path'
-import { axisLeft, scaleLinear, scaleOrdinal, scalePoint, schemeCategory10, select } from 'd3'
+import { event, axisLeft, drag, forceCenter, forceCollide, forceLink, forceManyBody, forceSimulation, scaleLinear, scaleOrdinal, scalePoint, schemeCategory10, select, selectAll } from 'd3'
 import { arc, curveCatmullRom, line } from 'd3-shape'
-import { chain, intersection } from 'lodash'
+import { chain, intersection, max } from 'lodash'
 import moment from 'moment'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { storeClassify, timeArr, timeClassifyData } from './data'
+import { ccLoyMap, storeClassify, storeMapType, timeArr, timeClassifyData } from '../data/consumer_data'
 import './index.scss'
 import { add, calHourTime, pushOrPop } from '../utils'
+
+
+function calData(res) {
+    const nodeData = Object.keys(ccLoyMap).map(d => {
+        // const data = res.filter(d1 => d1.loyaltynum === d && d1.type === 'justCC')
+        const data = res.filter(d1 => d1.loyaltynum === d)
+        const location = chain(data).map('location').uniq().value()
+        const type = chain(location).map(d => storeMapType[d]).sortBy().uniq().value()
+        return {
+            id: d,
+            data,
+            location,
+            type,
+            arcData: chain(data)
+                .reduce((obj, d1) => {
+                    obj[d1.locationType] = {
+                        value: obj[d1.locationType]
+                        ? add(obj[d1.locationType].value, d1.price)
+                        : Number(d1.price),
+                        type: d1.locationType,
+                    }
+                    return obj
+                }, {})
+                .values()
+                .value()
+        }
+    })
+    const linksObj = {}
+    nodeData.forEach((d1) => {
+        const key1 = d1.type.toString()
+        nodeData.forEach(d2 => {
+            if (d1.id === d2.id) return
+            if (linksObj[`${d1.id}-${d2.id}`] || linksObj[`${d2.id}-${d1.id}`]) return
+            const key2 = d2.type.toString()
+            if(key1 !== key2) return
+            // const sameLoaction = intersection(d1.location, d2.location)
+            // const sameLoaction = d1.data
+            //     .filter(d3 => {
+            //         const a = d2.data.filter(d4 => 
+            //             d4.location === d3.location
+            //             && Math.abs(moment(d4.timestamp).diff(moment(d3.timestamp))) < 5 * 60 * 1000)
+            //         return a.length
+            //     })
+            // const sameLoaction = []
+            linksObj[`${d1.id}-${d2.id}`] = {
+                source: d1.id,
+                target: d2.id,
+                value: 1
+            }
+        })
+    })
+    const nodes = nodeData
+    const links = chain(linksObj).values().filter(d => d.value > 0).value()
+    return [nodes, links]
+}
 
 export default function FirstQ() {
     const [height, width] = [800, 800]
@@ -19,8 +74,8 @@ export default function FirstQ() {
     const realWidth = width - left - right
 
     const radiusArr = [
-        [0, 120], // card
-        [120, 240], // timeCircle
+        [0, 140], // card
+        [140, 240], // timeCircle
         [370, 371], // timeLabel
         [270, 300], // store
         [320, 350], // classify
@@ -90,7 +145,83 @@ export default function FirstQ() {
             const newLoy = chain(newConsumeData).map('id').uniq().value()
             setccNumData(newLoy)
             setOriginCCdata(newConsumeData)
+            const [nodes, links] = calData(res)
+            drawForce(nodes, links)
         })
+    }, [])
+
+    const drawForce = useMemo(() => {
+        window.arr = []
+        return (nodes, links) => {
+            const distance = ([x1, y1], [x2, y2]) => Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+            const radius = radiusArr[0][1] - 30
+            const force = forceSimulation(nodes)
+                .force('links', forceLink(links)
+                    .id(d => d.id)
+                    .strength(d => 2)
+                    // .distance(0)
+                )
+                .force('charge', forceManyBody()
+                    .strength(-4)
+                )
+                .force('collide', forceCollide()
+                    .radius(10)
+                    // .iterations(20)
+                )
+                .force('circle', () => {
+                    nodes.forEach((node, i) => {
+                        if (distance([node.x, node.y], [0, 0]) > radius) {
+                            const theta = Math.atan((node.y) / (node.x));
+                            node.x = radius * Math.cos(theta) * (node.x < 0 ? -1 : 1);
+                            node.y = radius * Math.sin(theta) * (node.x < 0 ? -1 : 1);
+                          }
+                    })
+                })
+            
+            selectAll('.custom-item').each(function() {
+                const id = select(this).attr('id')
+                const thisData = nodes.filter(d => d.id === id)
+                select(this).data(thisData)
+            })
+            .call(
+                drag()
+                    .on('start', (d) => {
+                        const alpha = Math.max(force.alpha(), 0.1)
+                        force.alpha(alpha).restart()
+                        d.fx = null
+                        d.fy = null
+                    })
+                    .on('drag', d=> {
+                        d.x = event.x
+                        d.y = event.y
+                    })
+                    .on('end', d=>{
+                        d.fx = event.x
+                        d.fy = event.y
+                    })
+            )
+
+            select('.links')
+                .selectAll('line').remove()
+            const link = select('.links')
+                .selectAll('line')
+                .data(links)
+                .enter()
+                .append('line')
+                .attr("stroke-width", d => 1)
+                .attr("stroke", '#e9e9e9');
+
+            force.on('tick', () => {
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+
+                selectAll('.custom-item')
+                    .attr('transform', d =>`translate(${d.x}, ${d.y})`)
+            })
+    }
     }, [])
 
     // 数据的信用卡
@@ -307,7 +438,7 @@ export default function FirstQ() {
                         })}
                     </g>
                     <g className='consume-g' transform={`translate(${width/2}, ${height / 2})`}>
-                        {consumeData.map((d, i) => {
+                        {consumeData.filter(d => d.type !== 'cash').map((d, i) => {
                             const storeType = storeClassify.find(d1 => d1.data.includes(d.location)).type
                             const attr = {
                                 className: 'consume-item',
@@ -359,7 +490,7 @@ export default function FirstQ() {
                                 <g key={d.type} className={className}
                                     opacity={opacity}
                                     onClick={() => {
-                                        const newActiveClassisy = pushOrPop(activeClassify, type)
+                                        const newActiveClassisy = pushOrPop(activeClassify, type, selectMode)
                                         setActiveClassify(newActiveClassisy)
                                         const newActiveStore = chain(storeClassify)
                                             .filter(d1 => newActiveClassisy.includes(d1.type))
@@ -432,7 +563,7 @@ export default function FirstQ() {
                                             const dy = isBottom ? -10 : 10
                                             return (
                                                 <g key={d} opacity={opacity} className={className} onClick={() => {
-                                                    const newActiveStore = pushOrPop(activeStore, d)
+                                                    const newActiveStore = pushOrPop(activeStore, d, selectMode)
                                                     const newType = storeClassify
                                                         .filter(d1 => d1.data.filter(d2 => newActiveStore.includes(d2)).length)
                                                         .map(d1 => d1.type)
@@ -462,19 +593,11 @@ export default function FirstQ() {
                     </g>
                     <g className='customer' transform={`translate(${width/2}, ${height / 2})`}>
                         <circle className='bg' cx={0} cy={0} r={radiusArr[1][0]}/>
+                        <g className='links' />
                         <g>
                             {
                                 ccNumData.map((d, i) => {
-                                    const golden_angle = Math.PI * (3 - Math.sqrt(5))
-                                    const theta = i * golden_angle
-                                    const r = Math.sqrt(i) / Math.sqrt(ccNumData.length)
-                                    const cx = (radiusArr[1][0] - 10) * (r * Math.cos(theta))
-                                    const cy = (radiusArr[1][0] - 10) * (r * Math.sin(theta))
                                     const opacity = exitCCArr.includes(d) ? 1 : 0.1
-                                    let className = activeCustom.includes(d) ? 'active' : ''
-                                    if (activeCustom.length > 0 && !activeCustom.includes(d)) {
-                                        className = 'disabled'
-                                    }
                                     const thisConsumeData = originCCdata.filter(d1 => d1.id === d)
                                     const arcData = chain(thisConsumeData)
                                         .reduce((obj, d1) => {
@@ -489,9 +612,7 @@ export default function FirstQ() {
                                         .values()
                                         // .flatten()
                                         .value()
-                                    // console.log(arcData)
                                     const total = thisConsumeData.reduce((t, d1) => add(t, d1.price), 0)
-                                    // console.log(total)
                                     const thisAngleScale = scaleLinear()
                                         .domain([0, total])
                                         .range([0, 2 * Math.PI])
@@ -516,14 +637,15 @@ export default function FirstQ() {
                                                 .value() + d1.value
                                             return thisAngleScale(endValue)
                                         })
-                                    // console.log(thisArcFun(arcData[0]))
                                     return (
                                         <g
-                                            transform={`translate(${cx}, ${cy})`}
                                             opacity={opacity}
+                                            id={d}
+                                            className='custom-item'
+                                            transform={`translate(${i * 10}, ${0})`}
                                             onClick={() => {
-                                                const newActiveScatter = pushOrPop(activeCustom, d)
-                                                setActiveCustom(newActiveScatter)
+                                                const newActiveClassisy = pushOrPop(activeCustom, d, selectMode)
+                                                setActiveCustom(newActiveClassisy)
                                             }}
                                         >
                                             {
@@ -538,10 +660,8 @@ export default function FirstQ() {
                                                     return <path {...attr}/>
                                                 })
                                             }
-                                            {/* <circle key={d} r={5} className={`card ${className}`} /> */}
                                             <text
                                                 dy={-8}
-                                                // opacity={activeCustom.includes(d) ? 1: 0}
                                             >
                                                 {d}
                                             </text>
@@ -639,7 +759,7 @@ export default function FirstQ() {
                         }}>Refresh</button>
                     </div>
                 </div>
-                <Parallel data={consumeData} colorScale={colorScale} />
+                {/* <Parallel data={consumeData} colorScale={colorScale} /> */}
             </div>
         </div>
     )
