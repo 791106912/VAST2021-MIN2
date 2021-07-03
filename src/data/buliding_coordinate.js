@@ -212,27 +212,27 @@ export const building_coordinate = [
     {
         name: "carly's coffee",
         range: [[24.85754465000002,36.058709015],[24.861153920000017,36.055271614999995]],
-        type: 'Other Building',
+        type: 'location',
     },
     {
         name: "Cup o'Joe",
         range: [[24.877825310000016,36.053552915],[24.880833035000016,36.050717060000004]],
-        type: 'Other Building',
+        type: 'location',
     },
     {
         name: "Abila Hospital",
         range: [[24.876708155000017,36.057677795000004],[24.883840760000016,36.053209175]],
-        type: 'Other Building',
+        type: 'location',
     },
     {
         name: 'GAStect',
         range: [[24.877309700000016,36.050974865],[24.881950190000016,36.046162505]],
-        type: 'Other Building',
+        type: 'location',
     },
     {
         name: "kronos capitol",
         range: [[24.84456846500002,36.058537145],[24.850841720000016,36.05209202]],
-        type: 'Other Building',
+        type: 'location',
     },
 
     // ================= 员工的家 =============
@@ -382,5 +382,5 @@ export const building_coordinate = [
     },
     ].map(d => ({
         ...d,
-        classify: storeMapType[d.name] || 'location',
+        classify: storeMapType[d.name] || d.type,
     }))
