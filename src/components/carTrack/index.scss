@@ -1,5 +1,44 @@
 .carTrackGraph {
     background: #e9e9e9;
+    position: relative;
+    display: flex;
+    .location {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-size: 12px;
+        .location-classify {
+            margin: 0 10px;
+            .classify-item {
+                cursor: pointer;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                .classify-item-label {
+                    height: 10px;
+                    width: 20px;
+                    border-radius: 2px;
+                    margin-right: 10px;
+                }
+                .classify-item-value {
+                    font-weight: 600;
+                }
+            }
+            .location-classify-cotent {
+                white-space: nowrap;
+                display: flex;
+                flex-wrap: wrap;
+                .loaction-item {
+                    cursor: pointer;
+                    margin-right: 10px;
+                    &.disabled {
+                        opacity: .1;
+                    }
+                }
+            }
+        }
+    }
     svg {
         .bg-left {
             .car {
@@ -50,6 +89,53 @@
                             font-size: 12px;
                         }
                     }
+                }
+            }
+        }
+        .bg-right {
+            .stopLocation {
+                .stopLocationItem {
+                    .stopBg {
+                        rect {
+                            fill-opacity: .2;
+                        }
+                        text {
+                            text-anchor: middle;
+                            font-size: 6px;
+                        }
+                    }
+                    circle {
+                        r: 0;
+                    }
+                    &.active {
+                        rect {
+                            stroke: #000;
+                            fill-opacity: .5;
+                        }
+                        circle {
+                            r: 2;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+    .tooltips {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        min-width: 140px;
+        border: solid 1px #000;
+        background: #fff;
+        padding: 5px;
+        line-height: 20px;
+        .tooltip-line {
+            display: flex;
+            justify-content: space-between;
+            .tooltip-value {
+                span {
+                    display: block;
                 }
             }
         }

@@ -2,7 +2,7 @@ import { json } from 'd3-fetch'
 import { chain, countBy, forIn, sumBy, } from 'lodash'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import moment from 'moment'
-import { axisBottom, axisTop, curveStep, extent, line, schemeCategory10, scaleLinear, scaleOrdinal, scaleTime, scaleBand, select, schemePaired } from 'd3'
+import { axisBottom, axisTop, curveStep, extent, line, schemeCategory10, scaleLinear, scaleOrdinal, scaleTime, scaleBand, select, schemePaired, easeLinear } from 'd3'
 import { building_coordinate } from '../../data/buliding_coordinate'
 import { calcualteStoreColor, findLocaiton, pushOrPop } from '../../utils'
 import { dayStr } from '../../data/consumer_data'
@@ -91,6 +91,31 @@ export default function CarTrack() {
 
     useEffect(() => {
         json('./data/gpswithstop.json').then(gps => {
+            let unknowCount = 0
+            gps.forEach(d => {
+                const newStopArr = d.stopArr.map(d1 => {
+                    const { long, lat } = d1
+                    let location = findLocaiton([long, lat])
+                    if (!location) {
+                        const item = {
+                            name: `unknow_${unknowCount}`,
+                            desc: '',
+                            range: [[Number(long) - 0.001, Number(lat) + 0.001], [Number(long) + 0.001, Number(lat) - 0.001]],
+                            type: 'unknow',
+                        }
+                        building_coordinate.push(item)
+                        location = findLocaiton([long, lat])
+                        unknowCount += 1
+                    }
+                    const locationInfo = building_coordinate.find(d2 => d2.name === location)
+                    return {
+                        ...d1,
+                        location,
+                        locationInfo,
+                    }
+                })
+                d.stopArr = newStopArr
+            })
             console.log(gps)
             setoriginData(gps)
         })
@@ -121,6 +146,9 @@ export default function CarTrack() {
     // ============== 日期的选中 ==============
     const [activetime, setactivetime] = useState(dayStr)
 
+    // ============== 地点的选中 ==============
+    const [disabledLocation, setDisabledLocation] = useState([])
+
     // ============== 右侧图所用的展示数据 ==============
     const [useData, setuseData] = useState([])
 
@@ -142,38 +170,49 @@ export default function CarTrack() {
     // ============== 计算每个停留点高度的scale ==============
     const heightScale = useMemo(() => scaleLinear(), [])
 
+    // ============== 商店legend的数据 ==============
+    const [stopLegend, setstopLegend] = useState([])
+
+    // ============== 查看商店细节的 ==============
+    const [detailLocation, setdetailLocation] = useState([])
+
     // ============== 计算每个车每天的在不同的停留点 ==============
     const carStopArr = useMemo(() => {
-        let unknowCount = 0
-        const useStopArr = chain(useData)
+        let useStopArr = chain(useData)
             .map('stopArr')
             .flatten()
             .map(d => {
-                const {st, long, lat} = d
+                const {st} = d
                 const [time] = st.split(' ')
                 const hour = findHour(st)
-                let location = findLocaiton([long, lat])
-                if (!location) {
-                    const item = {
-                        name: `unknow_${unknowCount}`,
-                        desc: '',
-                        range: [[Number(long) - 0.001, Number(lat) + 0.001], [Number(long) + 0.001, Number(lat) - 0.001]],
-                        type: 'unknow',
-                    }
-                    building_coordinate.push(item)
-                    location = findLocaiton([long, lat])
-                    unknowCount += 1
-                }
                 const timeRange = calcualteTimeRange(hour)
                 return {
                     ...d,
-                    location,
                     hour,
                     time,
                     range: timeRange,
                 }
             })
             .value()
+
+        const newStopLegend = chain(useStopArr)
+            .map(d => d.locationInfo.classify)
+            .uniq()
+            .map(d => {
+                const data = chain(useStopArr)
+                    .filter(d1 => d1.locationInfo.classify === d)
+                    .map('location')
+                    .uniq()
+                    .value()
+                return {
+                    classify: d,
+                    data,
+                }
+            })
+            .value()
+        setstopLegend(newStopLegend)
+
+        // useStopArr = useStopArr.filter(d => !disabledLocation.includes(d.location))
 
         const maxValue = chain(useStopArr)
             .map('data')
@@ -254,7 +293,7 @@ export default function CarTrack() {
                 st,
                 et,
                 location: d.location,
-                gpsRange: building_coordinate.find(d1 => d1.name === d.location).range,
+                locationInfo: d.locationInfo,
                 count: dataArr.length,
             }
             return obj
@@ -323,6 +362,26 @@ export default function CarTrack() {
         return scaleLinear(domain, [1,5])
     }, [carTrack])
 
+    //! =============================== tooltip相关 ===============================
+    const [tooltips, settooltips] = useState({
+        style: {
+            display: 'none',
+        },
+        content: {
+            name: '',
+        },
+    })
+
+    const closeTips = () => settooltips({
+        style: {
+            display: 'none',
+        },
+        content: {
+            name: '',
+        },
+    })
+
+    //! =============================== 其他 ===============================
     const obj = {}
 
     return (
@@ -391,6 +450,7 @@ export default function CarTrack() {
                     </g>
                 </g>
                 <g className="bg-right" transform={`translate(${left}, ${top})`}>
+                <g className='transform-g'>
                     {/* 选择图 */}
                     {/* 主图 */}
                     <g className='timeAxisTop' transform={`translate(${0}, ${0})`}/>
@@ -427,43 +487,6 @@ export default function CarTrack() {
                             )
                         })}
                     </g>
-                    {/* 详细的停留点 圆圈表示*/}
-                    <g className='stop'>
-                        {
-                            carStopArr.map(d => {
-                                const {st, et, location, range, id } = d
-                                const carColor = calCarColor(id)
-                                const x1 = timeScale(new Date(`2020-01-01 ${st.split(' ')[1]}`))
-                                // const x1 = timeScale(new Date(`2020-01-01 ${hour}:00:00`))
-                                let x2 = timeScale(new Date(`2020-01-01 ${et.split(' ')[1]}`))
-                                if(x2 < x1) x2 = timeScale(new Date(`2020-01-01 23:59:59`))
-                                const { scale } = timeScaleObj[range]
-                                let y = scale(location)
-                                const storeKey = `${range}-${location}`
-                                if(!obj[storeKey]) {
-                                    obj[storeKey] = 1
-                                } else {
-                                    obj[storeKey] = obj[storeKey] + 1
-                                }
-                                y += timeScaleObj[range][`${location}Scale`](obj[storeKey])
-                                const circleAttr = {
-                                    key: `${location}-${et}-${st}`,
-                                    cx: x1,
-                                    cy: y,
-                                    stroke: carColor,
-                                    fill: carColor,
-                                    fillOpacity: .4,
-                                    r: 0,
-                                    onMouseEnter: () => {
-                                        console.log(d)
-                                    }
-                                }
-                                return (
-                                    <circle {...circleAttr} />
-                                )
-                            })
-                        }
-                    </g>
                     {/* 车的连线图 连线和箭头 */}
                     <g className="car">
                         {carTrack.map((d, i) => {
@@ -490,10 +513,12 @@ export default function CarTrack() {
                                                 let sourceX = timeScale(
                                                     new Date(`2020-01-01 ${sourStop.et.split(' ')[1]}`)
                                                 )
+
+                                                const targetStop = stopLocation.find(
+                                                    d2=> d2.location === target && d2.range === targetRange
+                                                )
                                                 let targetX = timeScale(
-                                                    new Date(`2020-01-01 ${stopLocation.find(
-                                                        d2=> d2.location === target && d2.range === targetRange
-                                                    ).st.split(' ')[1]}`)
+                                                    new Date(`2020-01-01 ${targetStop.st.split(' ')[1]}`)
                                                 )
 
                                                 if(sourStop.st === sourStop.et) {
@@ -511,8 +536,16 @@ export default function CarTrack() {
                                                     strokeWidth: pathWidthScale(d1.count),
                                                     strokeOpacity: pathWidthScale(d1.count) / 5,
                                                 }
+                                                const opacity = disabledLocation.includes(targetStop.location)
+                                                || disabledLocation.includes(sourStop.location)
+                                                ? 0.1 : 1
+                                                const gAttr = {
+                                                    opacity,
+                                                    key: d1.key,
+                                                    stroke: carColor,
+                                                }
                                                 return (
-                                                    <g key={d1.key} stroke={carColor}>
+                                                    <g {...gAttr}>
                                                         <path d={createLine(pathArr)} {...pathAttr} />
                                                         <line {...{
                                                             x1: pathArr[0][0],
@@ -554,7 +587,7 @@ export default function CarTrack() {
                     {/* 商店图 矩形表示 */}
                     <g className="stopLocation">
                         {stopLocation.map(d => {
-                            const { st,et, range, location, key, count } = d
+                            const { st,et, range, location, key, count, data } = d
                             const { scale } = timeScaleObj[range]
                             const sx = timeScale(new Date(`2020-01-01 ${st.split(' ')[1]}`))
                             let ex = timeScale(new Date(`2020-01-01 ${et.split(' ')[1]}`))
@@ -562,43 +595,168 @@ export default function CarTrack() {
                             const y = scale(location)
                             const rectheight = heightScale(count)
                             const color = calcualteStoreColor(location)
+                            const rectWidth = ex - sx || 10
                             const rectAttr = {
                                 x: 0,
                                 y: 0,
-                                width: ex - sx || 10,
+                                width: rectWidth,
                                 height: rectheight,
                                 fill: color,
-                                // stroke: color,
-                                fillOpacity: .2,
                             }
+                            const opacity = disabledLocation.includes(location) ? 0.01 : 1
+                            const className= `stopLocationItem-${range}-${location.replace(/['\s]/g, '')}`
                             const gAttr = {
                                 key,
-                                transform: `translate(${sx}, ${y})`,
                                 fontSize: 9,
+                                opacity,
+                                className: `stopLocationItem ${className} ${detailLocation.includes(key) ? 'active' : '' }`,
+                                'transform-origin': `${sx} ${y}`,
                                 onMouseEnter: () => {
+                                    const relateCar = chain(data).map('id').countBy().entries().map(d1 => d1.join(':')).join('/n').value()
                                     const obj = {
-                                        name: d.location,
-                                        desc: '',
-                                        range: d.gpsRange,
-                                        type: '',
+                                        name: location,
+                                        'vis count': count,
+                                        'relate car': relateCar,
                                     }
-                                    console.log(JSON.stringify(obj))
-                                }
+                                    settooltips({
+                                        style: {
+                                            display: 'flex',
+                                            left: ex + left,
+                                            top: y + top,
+                                        },
+                                        content: obj,
+                                    })
+                                },
+                                onMouseOut: closeTips,
+                                onClick: () => {
+                                    closeTips()
+                                    setdetailLocation(pushOrPop(detailLocation, key))
+                                    const scalePower = Math.min(graphHeight / rectheight, graphWidth / rectWidth) / 2
+                                    const transformX = ((graphWidth - rectWidth * scalePower) / 2 - sx) 
+                                    const transformY = ((graphHeight - rectheight * scalePower) / 2 - y)
+                                    if (detailLocation.includes(key)) {
+                                        select(`.${className}`)
+                                            .transition()
+                                            .ease(easeLinear)
+                                            .duration(100)
+                                            .attr('transform', 'translate(0, 0)')
+                                    } else {
+                                        select('.stopLocationItem.active')
+                                            .transition()
+                                            .ease(easeLinear)
+                                            .duration(100)
+                                            .attr('transform', 'translate(0, 0)')
+                                        select(`.${className}`)
+                                            .transition()
+                                            .ease(easeLinear)
+                                            .duration(100)
+                                            .attr('transform', `translate(${transformX} ${transformY}) scale(${scalePower})`)
+                                    }
+                                    
+                                },
                             }
                             return (
                                 <g {...gAttr}>
-                                    <rect {...rectAttr} />
-                                    <text dx={rectAttr.width / 2}
-                                    style={{
-                                        textAnchor: 'middle',
-                                        fontSize: 6,
-                                    }}>{d.location}</text>
+                                    <g className='stopBg' transform={`translate(${sx}, ${y})`}>
+                                        <rect {...rectAttr} />
+                                        <text dx={rectAttr.width / 2}>{d.location}</text>
+                                    </g>
+                                    <g className="stopDetail">
+                                        {
+                                            data.map(d1 => {
+                                                const {st, et, location, range, id } = d1
+                                                const carColor = calCarColor(id)
+                                                const cx = timeScale(new Date(`2020-01-01 ${st.split(' ')[1]}`))
+                                                const storeKey = `${range}-${location}`
+                                                if(!obj[storeKey]) {
+                                                    obj[storeKey] = 1
+                                                } else {
+                                                    obj[storeKey] = obj[storeKey] + 1
+                                                }
+                                                const cy = y + timeScaleObj[range][`${location}Scale`](obj[storeKey])
+                                                const circleAttr = {
+                                                    key: `${location}-${et}-${st}`,
+                                                    transform: `translate(${cx}, ${cy})`,
+                                                    stroke: carColor,
+                                                    fill: carColor,
+                                                    fillOpacity: .4,
+                                                    r: 2,
+                                                    onMouseEnter: () => {
+                                                        console.log(d1)
+                                                        const obj = {
+                                                            car: id,
+                                                            starttime: st,
+                                                            endtime: et,
+                                                            duration: `${d1.hour} hour`
+                                                        }
+                                                        settooltips({
+                                                            style: {
+                                                                display: 'flex',
+                                                                left: cx + left,
+                                                                top: cy + top,
+                                                            },
+                                                            content: obj,
+                                                        })
+                                                    }
+                                                }
+                                                return (
+                                                    <circle {...circleAttr} />
+                                                )
+                                            })
+                                        }
+                                    </g>
                                 </g>
                             )
                         })}
                     </g>
                 </g>
+                </g>
             </svg>
+            <div className='location'>
+                {stopLegend
+                    .map(d => {
+                        return (
+                            <div className='location-classify' key={d.classify}>
+                                <div className="classify-item">
+                                    <div className="classify-item-label" style={{
+                                        background: calcualteStoreColor(d.data[0])
+                                    }} />
+                                    <div className="classify-item-value">{d.classify}</div>
+                                </div>
+                                <div className="location-classify-cotent">
+                                    {
+                                        d.data.map(d1 => {
+                                            const itemAttr = {
+                                                className: `loaction-item ${disabledLocation.includes(d1) ? 'disabled' : ''}`,
+                                                key: d1,
+                                                onClick: () => {
+                                                    setDisabledLocation(pushOrPop(disabledLocation, d1, 'mul'))
+                                                }
+                                            }
+                                            return (
+                                                <div {...itemAttr}>{d1}</div>
+                                            )
+                                        })
+                                    } 
+                                </div>
+                            </div>
+                        )
+                    })}
+            </div>
+            {/* tooltips */}
+            <div className="tooltips tooltips-location" style={tooltips.style}>
+                    {Object.entries(tooltips.content).map(d => {
+                        const [name, value] = d
+                        return (
+                            <div className="tooltip-line" key={name}>
+                                <div className="tooltip-label">{name}:</div>
+                                <div className="tooltip-value">{
+                                    value.toString().split('/n').map(d1 => <span key={d1}>{d1}</span>)
+                                }</div>
+                            </div>
+                        )
+                    })}                        
+            </div>
         </div>
     )
 }
