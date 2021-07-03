@@ -1,0 +1,57 @@
+.carTrackGraph {
+    background: #e9e9e9;
+    svg {
+        .bg-left {
+            .car {
+                cursor: pointer;
+                .carItem {
+                    circle {
+                        r: 3;
+                        fill-opacity: .3;
+                    }
+                    text {
+                        font-size: 9px;
+                    }
+                    &.disabled {
+                        opacity: .2;
+                    }
+                    &.active {
+                        circle {
+                            r: 4;
+                            stroke: #000;
+                        }
+                        text {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+            .day {
+                .dayItem {
+                    cursor: pointer;
+                    rect {
+                        width: 10px;
+                        stroke: gray;
+                        fill: gray;
+                        fill-opacity: .2;
+                    }
+                    text {
+                        font-size: 9px;
+                    }
+                    &.disabled {
+                        opacity: .2;
+                    }
+                    &.active {
+                        rect {
+                            stroke: #000;
+                            stroke-width: 2px;
+                        }
+                        text {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
