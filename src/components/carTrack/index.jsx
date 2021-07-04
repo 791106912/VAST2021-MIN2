@@ -5,7 +5,7 @@ import moment from 'moment'
 import { axisBottom, axisTop, curveStep, extent, line, schemeCategory10, scaleLinear, scaleOrdinal, scaleTime, scaleBand, select, schemePaired, easeLinear } from 'd3'
 import { building_coordinate } from '../../data/buliding_coordinate'
 import { calcualteStoreColor, findLocaiton, pushOrPop } from '../../utils'
-import { dayStr } from '../../data/consumer_data'
+import { carAssign, dayStr } from '../../data/consumer_data'
 import './index.scss'
 
 
@@ -223,7 +223,7 @@ export default function CarTrack() {
             .value()
             
         heightScale.domain([0, maxValue])
-            .range([4, graphHeight/ 2])
+            .range([4, 1000])
         return useStopArr
     }, [heightScale, useData])
 
@@ -682,9 +682,16 @@ export default function CarTrack() {
                                                     fillOpacity: .4,
                                                     r: 2,
                                                     onMouseEnter: () => {
-                                                        console.log(d1)
+                                                        const info = carAssign.find(d2 => d2.CarID === id)
+                                                        const infoObj = info ? {
+                                                                user: `${info.FirstName} ${info.LastName}`,
+                                                                type: info.CurrentEmploymentType,
+                                                                title: info.CurrentEmploymentTitle,
+                                                            } : {}
+                                                        console.log(infoObj)
                                                         const obj = {
                                                             car: id,
+                                                            ...infoObj,
                                                             starttime: st,
                                                             endtime: et,
                                                             duration: `${d1.hour} hour`

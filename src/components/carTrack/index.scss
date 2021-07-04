@@ -129,10 +129,14 @@
         border: solid 1px #000;
         background: #fff;
         padding: 5px;
-        line-height: 20px;
+        line-height: 24px;
+        font-size: 12px;
         .tooltip-line {
             display: flex;
-            justify-content: space-between;
+            // justify-content: space-between;
+            .tooltip-label {
+                min-width: 90px;
+            }
             .tooltip-value {
                 span {
                     display: block;
