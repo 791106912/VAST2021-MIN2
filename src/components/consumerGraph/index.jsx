@@ -76,7 +76,7 @@ export default function ConsumerGraph() {
     const height = useMemo(() => size.height, [size])
 
     const radiusArr = useMemo(() => {
-        const maxSize = Math.min(width / 2, height / 2)
+        const maxSize = Math.min((width - left - right) / 2, (height - top - bottom) / 2)
         const minR = Math.max(maxSize / 4, 120)
         const item =  (maxSize - minR) / 3
         return [
@@ -477,7 +477,7 @@ export default function ConsumerGraph() {
                                                     const dy = isBottom ? -10 : 10
                                                     return (
                                                         <g key={key} opacity={opacity} className={className} onClick={() => {
-                                                            const newActiveStore = pushOrPop(activeStore, storeName)
+                                                            const newActiveStore = pushOrPop(activeStore, storeName, selectMode)
                                                             const newType = chain(newActiveStore)
                                                                 .map(d2 => storeMapType[d2])
                                                                 .uniq()
@@ -695,7 +695,7 @@ export default function ConsumerGraph() {
                         }
                         return (
                             <div className={`legend-item ${className}`} onClick={() => {
-                                const newActiveClassisy = pushOrPop(activeClassify, type)
+                                const newActiveClassisy = pushOrPop(activeClassify, type, selectMode)
                                 setActiveClassify(newActiveClassisy)
                                 const newActiveStore = chain(storeClassify)
                                     .filter(d1 => newActiveClassisy.includes(d1.type))

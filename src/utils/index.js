@@ -58,6 +58,7 @@ export const calcualteTypeColor = id => {
 
 export const calcualteStoreColor = store => {
     if(store.includes('unknow')) return 'red';
+    if(store.includes('home')) return 'green';
     const type = storeMapType[store] || 'location'
     return calcualteTypeColor(type)
 }
