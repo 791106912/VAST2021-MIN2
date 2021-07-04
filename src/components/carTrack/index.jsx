@@ -615,6 +615,7 @@ export default function CarTrack() {
                                     const relateCar = chain(data).map('id').countBy().entries().map(d1 => d1.join(':')).join('/n').value()
                                     const obj = {
                                         name: location,
+                                        type: d.locationInfo.classify,
                                         'vis count': count,
                                         'relate car': relateCar,
                                     }
@@ -688,7 +689,6 @@ export default function CarTrack() {
                                                                 type: info.CurrentEmploymentType,
                                                                 title: info.CurrentEmploymentTitle,
                                                             } : {}
-                                                        console.log(infoObj)
                                                         const obj = {
                                                             car: id,
                                                             ...infoObj,
