@@ -7,7 +7,7 @@ import { chain } from 'lodash'
 import moment from 'moment'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { ccLoyMap, storeButtonArr, storeClassify, storeMapType, timeArr, timeClassifyData } from '../../data/consumer_data'
-import { add, calHourTime, pushOrPop } from '../../utils'
+import { add, calcualteStoreColor, calHourTime, pushOrPop } from '../../utils'
 import './index.scss'
 
 function calData(res) {
@@ -340,6 +340,23 @@ export default function ConsumerGraph() {
         .curve(curveCatmullRom.alpha(0.5));
 
     const weekDay = ['01/11', '01/12', '01/18', '01/19']
+
+    const [tooltips, settooltips] = useState({
+        style: {
+            display: 'none',
+        },
+        content: {}
+    })
+
+    function closeTooltips() {
+        settooltips({
+            style: {
+                display: 'none',
+            },
+            content: {},
+        })
+    }
+
     return (
         <div className='consumerGraph'>
             <div className="left" ref={containerRef}>
@@ -412,15 +429,32 @@ export default function ConsumerGraph() {
                         </g>
                         <g className='consume-g' transform={`translate(${width/2}, ${height / 2})`}>
                             {consumeData.filter(d => d.type !== 'cash').map((d, i) => {
-                                const storeType = storeClassify.find(d1 => d1.data.includes(d.location)).type
                                 const attr = {
+                                    key: JSON.stringify(d),
                                     className: 'consume-item',
                                     d: consumePath(d),
-                                    fill: colorScale(storeType),
+                                    fill: calcualteStoreColor(d.location),
                                     fillOpacity: priceOpacity(d.price),
+                                    onMouseEnter: e => {
+                                        settooltips({
+                                            style: {
+                                                display: 'block',
+                                                left: e.clientX + 10,
+                                                top: e.clientY,
+                                            },
+                                            content: {
+                                                loyaltynum: d.loyaltynum,
+                                                location: d.location,
+                                                time: d.timestamp,
+                                                price: d.price,
+                                                type: d.type,
+                                            },
+                                        })
+                                    },
+                                    onMouseOut: closeTooltips
                                 }
                                 return (
-                                    <path key={JSON.stringify(d)} {...attr} />
+                                    <path {...attr} />
                                 )
                             })}
                         </g>
@@ -475,8 +509,11 @@ export default function ConsumerGraph() {
                                                     const isBottom = middle > Math.PI / 2 && middle < Math.PI / 2 * 3
                                                     const textData = isBottom ? storeName.split(' ').reverse() : storeName.split(' ')
                                                     const dy = isBottom ? -10 : 10
-                                                    return (
-                                                        <g key={key} opacity={opacity} className={className} onClick={() => {
+                                                    const gAttr = {
+                                                        key,
+                                                        opacity,
+                                                        className,
+                                                        onClick: () => {
                                                             const newActiveStore = pushOrPop(activeStore, storeName, selectMode)
                                                             const newType = chain(newActiveStore)
                                                                 .map(d2 => storeMapType[d2])
@@ -484,7 +521,26 @@ export default function ConsumerGraph() {
                                                                 .value()
                                                             setActiveStore(newActiveStore)
                                                             setActiveClassify(newType)
-                                                        }}>
+                                                        },
+                                                        onMouseEnter: e => {
+                                                            settooltips({
+                                                                style: {
+                                                                    display: 'block',
+                                                                    left: e.clientX + 10,
+                                                                    top: e.clientY,
+                                                                },
+                                                                content: {
+                                                                    name: storeName,
+                                                                    'consume st': `${d1.s}`,
+                                                                    'consume et': `${d1.e}`,
+                                                                    'consume price': locationPriceObj[storeName],
+                                                                }
+                                                            })
+                                                        },
+                                                        onMouseOut: closeTooltips
+                                                    }
+                                                    return (
+                                                        <g {...gAttr}>
                                                             <path {...attr} className='store-button' />
                                                             <g className='store-label'>
                                                                 <path {...textPathHrefProps} />
@@ -511,14 +567,22 @@ export default function ConsumerGraph() {
                                     ccNumData.map((d, i) => {
                                         const opacity = exitCCArr.includes(d) ? 1 : 0.1
                                         const thisConsumeData = originCCdata.filter(d1 => d1.id === d)
-                                        // const priceA = thisConsumeData.filter(d1 => d1.type === 'cash')
-                                        //     .reduce((num, d1) => {
-                                        //         return add(num, d1.price)
-                                        //     }, 0)
-                                        // const priceB = thisConsumeData.filter(d1 => d1.type === 'justCC')
-                                        //     .reduce((num, d1) => {
-                                        //         return add(num, d1.price)
-                                        //     }, 0)
+                                        const priceTotal = thisConsumeData
+                                            .reduce((num, d1) => {
+                                                return add(num, d1.price)
+                                            }, 0)
+                                        const priceCash = thisConsumeData.filter(d1 => d1.type === 'cash')
+                                            .reduce((num, d1) => {
+                                                return add(num, d1.price)
+                                            }, 0)
+                                        const priceJustCC = thisConsumeData.filter(d1 => d1.type === 'justCC')
+                                            .reduce((num, d1) => {
+                                                return add(num, d1.price)
+                                            }, 0)
+                                        const priceRight = thisConsumeData.filter(d1 => d1.type === 'right')
+                                        .reduce((num, d1) => {
+                                            return add(num, d1.price)
+                                        }, 0)
                                         // console.log(priceA === priceB)
                                         // console.log(thisConsumeData.filter(d1 => d1.type === 'justCC'))
                                         const arcData = chain(thisConsumeData)
@@ -559,17 +623,35 @@ export default function ConsumerGraph() {
                                                     .value() + d1.value
                                                 return thisAngleScale(endValue)
                                             })
-                                        return (
-                                            <g
-                                                opacity={opacity}
-                                                id={d}
-                                                className='custom-item'
-                                                transform={`translate(${i * 10}, ${0})`}
-                                                onClick={() => {
+                                        const gAttr = {
+                                            opacity,
+                                            id: d,
+                                            className: 'custom-item',
+                                            transform: `translate(${i * 10}, ${0})`,
+                                            onClick: () => {
                                                     const newActiveClassisy = pushOrPop(activeCustom, d, selectMode)
                                                     setActiveCustom(newActiveClassisy)
-                                                }}
-                                            >
+                                            },
+                                            onMouseEnter: e => {
+                                                settooltips({
+                                                    style: {
+                                                        display: 'block',
+                                                        left: e.clientX + 10,
+                                                        top: e.clientY,
+                                                    },
+                                                    content: {
+                                                        number: d,
+                                                        total: priceTotal,
+                                                        'justcc price': priceJustCC,
+                                                        'cash price': priceCash,
+                                                        'right price': priceRight,
+                                                    }
+                                                })
+                                            },
+                                            onMouseOut: closeTooltips
+                                        }
+                                        return (
+                                            <g {...gAttr}>
                                                 {
                                                     arcData.map(d1 => {
                                                         const attr = {
@@ -616,6 +698,16 @@ export default function ConsumerGraph() {
                         </g>
                     </g>
                 </svg>
+                <div className="tooltips" style={tooltips.style}>
+                    {Object.entries(tooltips.content).map(d => {
+                        return (
+                            <div className="tooltip-line" key={d[0]}>
+                                <div className="tooltip-label">{d[0]}: </div>
+                                <div className="tooltip-value">{d[1]}</div>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
             <div className='right'>
                 <div className='condition'>
