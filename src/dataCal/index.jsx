@@ -6,7 +6,8 @@ import moment from 'moment'
 import { forceCenter, forceLink, forceManyBody, forceSimulation } from 'd3-force'
 import { select } from 'd3-selection'
 import CarTrack from '../components/carTrack'
-import { findLocaiton } from '../utils'
+import { findLocaiton, findLocationCoord } from '../utils'
+import { card_car_dict, car_card_dict } from '../data/card_car_map'
 
 
 export default function Cal() {
@@ -75,6 +76,28 @@ export default function Cal() {
 
     const [width, height] = [1000,600]
     const [top, right, bottom, left] = [40, 20, 20, 60]
+
+    // useEffect(() => {
+    //     json('./data/merge_cc_and_loy.json').then(res => {
+    //         console.log(res)
+    //         // 
+    //         // {消费时间
+    //             // 消费id
+    //             // （消费信用卡号）
+    //             // 消费金额
+    //             // 消费商店
+    //             // 消费对应车辆停留位置
+    //             // }
+    //         const cusom = res.map(d => {
+    //             return {
+    //                 ...d,
+    //                 id: card_car_dict[d.loyaltynum] || false,
+    //                 coor: findLocationCoord(d.location),
+    //             }
+    //         })
+    //         console.log(JSON.stringify(cusom))
+    //     })
+    // }, [])
  
     useEffect(() => {
         // calNode()

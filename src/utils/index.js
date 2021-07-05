@@ -74,3 +74,13 @@ export const findLocaiton = (coor) => {
     })
     return a ? a.name : false
 } 
+
+export const findLocationCoord = name => {
+    const a = building_coordinate.find(d => {
+       return d.name === name
+    })
+    if(!a) return false
+    const long = (a.range[0][0] + a.range[1][0]) / 2
+    const lat = (a.range[1][0] + a.range[1][1]) / 2
+    return [long, lat]
+} 
