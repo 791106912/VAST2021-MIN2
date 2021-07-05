@@ -1396,6 +1396,16 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@maptalks/feature-filter@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@maptalks/feature-filter/-/feature-filter-1.0.0.tgz#bfcc7f705e6de5c6c3d3802a3b5081272c877fc8"
+  integrity sha512-JbEOtPGRrT6R8K4zFPEBUtcXNIzdVliK/X9OTmFt4GhEZU79TgnwElCb68GAcC+5c0TAHgY73KBdZPb6M9yaTg==
+
+"@maptalks/function-type@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@maptalks/function-type/-/function-type-1.2.3.tgz#2f5c33b095af452c727026801bf1496ff78fe777"
+  integrity sha512-q6i14qss+Y1bv5VzIvDFrsOGvWCih2p6LS2NcfgU7VrnjAlCRW1D6iVGDW2N9XCuJsXwg/9QJsTrqEIz6T7eUg==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -4186,6 +4196,11 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+dat.gui@^0.7.7:
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/dat.gui/-/dat.gui-0.7.7.tgz#7f96dbd21621a76385203659aebfa264ee6ae89b"
+  integrity sha512-sRl/28gF/XRC5ywC9I4zriATTsQcpSsRG7seXCPnTkK8/EQMIbCu5NPMpICLGxX9ZEUvcXR3ArLYCtgreFoMDw==
+
 data-urls@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/data-urls/-/data-urls-2.0.0.tgz#156485a72963a970f5d5821aaf642bef2bf2db9b"
@@ -4354,6 +4369,13 @@ detect-port-alt@1.1.6:
     address "^1.0.1"
     debug "^2.6.0"
 
+deyihu-geometry-extrude@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/deyihu-geometry-extrude/-/deyihu-geometry-extrude-0.1.3.tgz#88c68767c11f4f1f36346158b5b64a99d82964d4"
+  integrity sha512-cEJPrD2mPqIOp2F0ce81NeGkbodgqzWopPGg40oHX2efP1rxuQ21Q9eKtyLhgTXr+0VEmUaAJQ2RcHMJJ5MndA==
+  dependencies:
+    earcut "^2.1.3"
+
 diff-sequences@^26.6.2:
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-26.6.2.tgz#48ba99157de1923412eed41db6b6d4aa9ca7c0b1"
@@ -4513,6 +4535,11 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
+
+earcut@^2.1.3:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.2.2.tgz#41b0bc35f63e0fe80da7cddff28511e7e2e80d11"
+  integrity sha512-eZoZPPJcUHnfRZ0PjLvx2qBordSiO8ofC3vt+qACLM95u+4DovnbYNpQtJh0DNsWj8RnxrQytD4WA8gj5cRIaQ==
 
 ecc-jsbn@~0.1.1:
   version "0.1.2"
@@ -5409,6 +5436,11 @@ from2@^2.1.0:
   dependencies:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
+
+frustum-intersects@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/frustum-intersects/-/frustum-intersects-0.1.0.tgz#d1d144099a40d8c5168b62acc83731434f5fa709"
+  integrity sha512-W0S6dmX5LJLtamimyuKhvbkpDTm5eVfMgk4X9yXNyWQ1zZ/cMm0PZoeX9Pm0tL302l+erQVrdfRGhV3ILfeTeQ==
 
 fs-extra@^7.0.0:
   version "7.0.1"
@@ -7506,6 +7538,24 @@ map-visit@^1.0.0:
   integrity sha1-7Nyo8TFE5mDxtb1B8S80edmN+48=
   dependencies:
     object-visit "^1.0.0"
+
+maptalks.three@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/maptalks.three/-/maptalks.three-0.16.0.tgz#5ed761ec43b1ee3b8db59c85e0be8c4dab49e373"
+  integrity sha512-hOqU2Q8ss0oMmPZ3rAp2jH5dLX4cjR6wMV1JLsYvLpLdD6aumD+g0Wz2AHp0bTBGnsczv/BzRL99cKWHtWqVJw==
+  dependencies:
+    deyihu-geometry-extrude "^0.1.3"
+
+maptalks@^0.49.4:
+  version "0.49.4"
+  resolved "https://registry.yarnpkg.com/maptalks/-/maptalks-0.49.4.tgz#124d41745a543267c01e99f4f5246421b52992e4"
+  integrity sha512-Hbsw5P4p2iEKDDnORkKrY2tzbVtIwNJpGk6WEZPi20KAbqWhrh6h8vnosq4nQDblBizR8+cffFXr4UZ+Y2lC3w==
+  dependencies:
+    "@maptalks/feature-filter" "^1.0.0"
+    "@maptalks/function-type" "^1.2.3"
+    frustum-intersects "^0.1.0"
+    simplify-js "^1.2.1"
+    zousan "^2.3.3"
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -10531,6 +10581,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+simplify-js@^1.2.1:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/simplify-js/-/simplify-js-1.2.4.tgz#7aab22d6df547ffd40ef0761ccd82b75287d45c7"
+  integrity sha512-vITfSlwt7h/oyrU42R83mtzFpwYk3+mkH9bOHqq/Qw6n8rtR7aE3NZQ5fbcyCUVVmuMJR6ynsAhOfK2qoah8Jg==
+
 sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
@@ -11222,6 +11277,11 @@ text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+
+three@^0.130.0:
+  version "0.130.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.130.0.tgz#43778a96366fa5e3d1da28c688e8a2bfd8b42aab"
+  integrity sha512-4jqvbJyvgrjTsBgqE7TrdkZral78l8CXpFCdGzqQoiJHsRhGHxe5tvwqZQVaS6eodPav7jdYO5sp1c5RmMB3ng==
 
 throat@^5.0.0:
   version "5.0.0"
@@ -12263,3 +12323,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zousan@^2.3.3:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/zousan/-/zousan-2.5.1.tgz#514a8aad3cbba412fb59a4e0ebaffdd72e2dd4c6"
+  integrity sha512-ZER+1EJNPHs9G3I6kTqhTmeqPjdU8XoaSIFzaUcSWmxcZBeXMuf5LM6Ih8LLNlQ46wg2Au+3ayn7KgjklVnOfA==

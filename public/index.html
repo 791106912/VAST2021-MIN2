@@ -10,6 +10,28 @@
       content="Web site created using create-react-app"
     />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.6/build/dat.gui.min.js"></script>
+    <script type="text/javascript" src="./lib/maptalks/maptalks.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/three@0.104.0/build/three.min.js"></script>
+    <script type="text/javascript" src="./lib/maptalks.three/maptalks.three.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maptalks/dist/maptalks.css" />
+    <script type="text/javascript"  src="https://cdn.jsdelivr.net/npm/three@0.104.0/examples/js/lines/LineMaterial.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
+    <script type="text/javascript" src="./lib/maptalks.three/demo/js/geoutil.js"></script>
+    <script type="text/javascript" src="./lib/maptalks.three/demo/js/THREE.MeshLine.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/three@0.104.0/examples/js/libs/stats.min.js"></script>
+    <script>
+      window.maptalks = maptalks
+      window.Stats = Stats
+      window.Three = Three
+      window.getLinePosition = getLinePosition
+      window._getLinePosition = _getLinePosition
+      window.MeshLine = MeshLine
+      window.MeshLineMaterial = MeshLineMaterial
+      window.dat = dat
+      console.log(maptalks.ThreeLayer)
+    </script>
     <title>VAST2021</title>
   </head>
   <body>
