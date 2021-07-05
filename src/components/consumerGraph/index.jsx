@@ -755,7 +755,7 @@ export default function ConsumerGraph() {
                             }}
                         />
                     </div>
-                    <div className='item'>
+                    {/* <div className='item'>
                         merge method：
                         {['union', 'intersection'].map(d => {
                             return (
@@ -776,7 +776,7 @@ export default function ConsumerGraph() {
                                 </>
                             )
                         })}
-                    </div>
+                    </div> */}
                     <div className='item'>
                         <button onClick={() => {
                             setActiveStore([])
