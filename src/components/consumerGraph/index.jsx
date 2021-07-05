@@ -127,13 +127,15 @@ export default function ConsumerGraph() {
     const [activeStore, setActiveStore] = useState([])
     const [activeClassify, setActiveClassify] = useState([])
     const [activeCustom, setActiveCustom] = useState([])
+    const [activeTime, setActiveTime] = useState([])
 
     // 展示的数据
     const consumeData = useMemo(() => {
         return originCCdata
         .filter(d => activeStore.length ? activeStore.includes(d.location) : true)
         .filter(d => activeCustom.length ? activeCustom.includes(d.id) : true)
-    }, [activeStore, originCCdata, activeCustom])
+        .filter(d => activeTime.length ? activeTime.includes(d.dayStr.replace('/2014', '')) : true)
+    }, [activeStore, originCCdata, activeCustom, activeTime])
 
     // 所有的会员卡的ID
     const [ccNumData, setccNumData] = useState([])
@@ -365,9 +367,18 @@ export default function ConsumerGraph() {
                         <g className="timebg">
                             {timeArr.map((d, i) => {
                                 const text = moment(d * 1000).format('MM/DD')
-                                const textOpactiy = activeTimeData.includes(text) ? 1 : 0
+                                const textOpactiy = activeTimeData.includes(text) ? 1 : .1
+                                const textAttr = {
+                                    opacity: textOpactiy,
+                                    transform: `translate(${width / 2}, ${height /2 - dayScale(d)})`,
+                                    cursor: 'pointer',
+                                    className: `timeText ${activeTime.includes(text) ? 'active' : ''}`,
+                                    onClick: () => {
+                                        setActiveTime(pushOrPop(activeTime, text, selectMode))
+                                    }
+                                }
                                 return <g key={d}>
-                                    <text opacity={textOpactiy} transform={`translate(${width / 2}, ${height /2 - dayScale(d)})`}>
+                                    <text {...textAttr}>
                                         {text} {weekDay.includes(text) ? 'weekend' : ''}
                                     </text>
                                     <circle cx={width / 2} cy={height / 2} r={dayScale(d)} /> 

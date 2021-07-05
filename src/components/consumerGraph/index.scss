@@ -20,6 +20,10 @@
           font-size: 8px;
           text-anchor: middle;
           fill: gray;
+          &.active {
+            stroke: #000;
+            // font-size: 10px !important;
+          }
         }
       }
       .timeSplit {
