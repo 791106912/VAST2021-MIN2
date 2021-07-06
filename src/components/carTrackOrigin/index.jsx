@@ -606,7 +606,13 @@ export default function CarTrack() {
                                 opacity,
                                 className: `stopLocationItem ${className} ${detailLocation.includes(key) ? 'active' : '' }`,
                                 'transform-origin': `${sx} ${y}`,
-                                onMouseEnter: () => {
+                                onMouseMove: e => {
+                                    e.stopPropagation()
+                                    if (detailLocation.length && !detailLocation.includes(key)) return
+                                    const { clientX, clientY } = e
+                                    const {x, y} = document.querySelector('.carTrackGraph').getBoundingClientRect()
+                                    const tx = clientX - x + 10
+                                    const ty = clientY - y + 10
                                     const relateCar = chain(data).map('id').countBy().entries().map(d1 => d1.join(':')).join('/n').value()
                                     const obj = {
                                         name: location,
@@ -617,8 +623,8 @@ export default function CarTrack() {
                                     settooltips({
                                         style: {
                                             display: 'flex',
-                                            left: ex + left,
-                                            top: y + top,
+                                            left: tx,
+                                            top: ty,
                                         },
                                         content: obj,
                                     })
@@ -677,25 +683,31 @@ export default function CarTrack() {
                                                     fill: carColor,
                                                     fillOpacity: .4,
                                                     r: 2,
-                                                    onMouseEnter: () => {
+                                                    onMouseMove: e => {
+                                                        e.stopPropagation()
+                                                        const { clientX, clientY } = e
+                                                        const {x, y} = document.querySelector('.carTrackGraph').getBoundingClientRect()
+                                                        const tx = clientX - x + 10
+                                                        const ty = clientY - y + 10
                                                         const info = carAssign.find(d2 => d2.CarID === id)
                                                         const infoObj = info ? {
                                                                 user: `${info.FirstName} ${info.LastName}`,
                                                                 type: info.CurrentEmploymentType,
                                                                 title: info.CurrentEmploymentTitle,
                                                             } : {}
+                                                        const duration = (d1.gap / 3600).toFixed(2)
                                                         const obj = {
                                                             car: id,
                                                             ...infoObj,
                                                             starttime: st,
                                                             endtime: et,
-                                                            duration: `${d1.hour} hour`
+                                                            duration: `${duration} hour`
                                                         }
                                                         settooltips({
                                                             style: {
                                                                 display: 'flex',
-                                                                left: cx + left,
-                                                                top: cy + top,
+                                                                left: tx,
+                                                                top: ty,
                                                             },
                                                             content: obj,
                                                         })

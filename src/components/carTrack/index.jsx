@@ -62,7 +62,7 @@ function calcualteTimeRange(hour) {
     return timeRange.find(d => d.range[0] <= hour && d.range[1] > hour).key
 }
 
-const [top, right, bottom, left] = [20, 20, 20, 20]
+const [top, right, bottom, left] = [20, 20, 20, 100]
 
 const createLine = line()
     // .curve(curveBasis)
@@ -416,6 +416,38 @@ function CarTrack() {
     return (
         <div className='carTrackGraph' ref={containerRef}>
             <svg height={height} width={width}>
+                <g className="bg-left" transform={`translate(${0}, ${top})`}>
+                    <g className='day' transform={`translate(10, 0)`}>
+                        {dayStr.map(d => {
+                            const y = dayStrScale(d)
+                            const spaceItem = dayStrScale.bandwidth()
+                            const gAttr = {
+                                key: d,
+                                transform: `translate(${0}, ${y + spaceItem / 2})`,
+                                className: `dayItem ${activetime.includes(d) ? 'active' : 'disabled'}`,
+                                onClick: () => {
+                                    const newActiveTime = pushOrPop(activetime, d, 'mulity')
+                                    setactivetime(newActiveTime)
+                                }
+                            }
+                            const rectAttr = {
+                                x: 0,
+                                y: -spaceItem / 2,
+                                height: spaceItem,
+                            }
+                            const textAttr = {
+                                dx: 14,
+                            }
+                            const day = d.split('/')[1]
+                            return (
+                                <g {...gAttr}>
+                                    <rect {...rectAttr}/>
+                                    <text {...textAttr}>{`${day} ${['11', '12', '17', '18'].includes(day) ? 'weekend' : ''}`}</text>
+                                </g>
+                            )
+                        })}
+                    </g>
+                </g>
                 <g className="bg-right" transform={`translate(${left}, ${top})`}>
                 <g className='transform-g'>
                     {/* 选择图 */}
@@ -578,7 +610,13 @@ function CarTrack() {
                                 opacity,
                                 className: `stopLocationItem ${className} ${detailLocation.includes(key) ? 'active' : '' }`,
                                 'transform-origin': `${sx} ${y}`,
-                                onMouseEnter: () => {
+                                onMouseMove: e => {
+                                    e.stopPropagation()
+                                    if (detailLocation.length && !detailLocation.includes(key)) return
+                                    const { clientX, clientY } = e
+                                    const {x, y} = document.querySelector('.carTrackGraph').getBoundingClientRect()
+                                    const tx = clientX - x + 10
+                                    const ty = clientY - y + 10
                                     const relateCar = chain(data).map('id').countBy().entries().map(d1 => d1.join(':')).join('/n').value()
                                     const obj = {
                                         name: location,
@@ -589,8 +627,8 @@ function CarTrack() {
                                     settooltips({
                                         style: {
                                             display: 'flex',
-                                            left: ex + left,
-                                            top: y + top,
+                                            left: tx,
+                                            top: ty,
                                         },
                                         content: obj,
                                     })
@@ -649,25 +687,31 @@ function CarTrack() {
                                                     fill: carColor,
                                                     fillOpacity: .4,
                                                     r: 2,
-                                                    onMouseEnter: () => {
+                                                    onMouseMove: e => {
+                                                        e.stopPropagation()
+                                                        const { clientX, clientY } = e
+                                                        const {x, y} = document.querySelector('.carTrackGraph').getBoundingClientRect()
+                                                        const tx = clientX - x + 10
+                                                        const ty = clientY - y + 10
                                                         const info = carAssign.find(d2 => d2.CarID === id)
                                                         const infoObj = info ? {
                                                                 user: `${info.FirstName} ${info.LastName}`,
                                                                 type: info.CurrentEmploymentType,
                                                                 title: info.CurrentEmploymentTitle,
                                                             } : {}
+                                                        const duration = (d1.gap / 3600).toFixed(2)
                                                         const obj = {
                                                             car: id,
                                                             ...infoObj,
                                                             starttime: st,
                                                             endtime: et,
-                                                            duration: `${d1.hour} hour`
+                                                            duration: `${duration} hour`
                                                         }
                                                         settooltips({
                                                             style: {
                                                                 display: 'flex',
-                                                                left: cx + left,
-                                                                top: cy + top,
+                                                                left: tx,
+                                                                top: ty,
                                                             },
                                                             content: obj,
                                                         })
