@@ -77,11 +77,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 13:28",
         "location": "Katerinas Caf",
         "price": "33.54",
         "loyaltynum": "L6110",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 13:35",
@@ -133,11 +133,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 19:08",
         "location": "Katerinas Caf",
         "price": "26.46",
         "loyaltynum": "L8328",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 20:12",
@@ -154,11 +154,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 20:30",
         "location": "Katerinas Caf",
         "price": "28",
         "loyaltynum": "L6267",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 20:46",
@@ -175,11 +175,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 21:12",
         "location": "Katerinas Caf",
         "price": "26.51",
         "loyaltynum": "L9406",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 07:31",
@@ -294,11 +294,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 13:57",
         "location": "Katerinas Caf",
         "price": "37.44",
         "loyaltynum": "L2343",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 13:57",
@@ -322,11 +322,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 20:18",
         "location": "Katerinas Caf",
         "price": "31.6",
         "loyaltynum": "L6110",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 00:00",
@@ -343,11 +343,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 20:33",
         "location": "Katerinas Caf",
         "price": "25.54",
         "loyaltynum": "L6267",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 20:49",
@@ -497,18 +497,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 19:32",
         "location": "Katerinas Caf",
         "price": "34.25",
         "loyaltynum": "L4034",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 20:00",
         "location": "Katerinas Caf",
         "price": "13.83",
         "loyaltynum": "L6110",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/08/2014 20:07",
@@ -532,11 +532,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 20:35",
         "location": "Katerinas Caf",
         "price": "16.93",
         "loyaltynum": "L2343",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 00:00",
@@ -651,18 +651,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 19:25",
         "location": "Katerinas Caf",
         "price": "35.92",
         "loyaltynum": "L8328",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 20:06",
         "location": "Katerinas Caf",
         "price": "26.6",
         "loyaltynum": "L9406",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 00:00",
@@ -672,11 +672,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 20:22",
         "location": "Katerinas Caf",
         "price": "29.82",
         "loyaltynum": "L2343",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 20:21",
@@ -756,11 +756,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/10/2014 00:00",
+        "timestamp": "01/10/2014 13:38",
         "location": "Katerinas Caf",
         "price": "21.22",
         "loyaltynum": "L9018",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/10/2014 13:46",
@@ -826,18 +826,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/10/2014 00:00",
+        "timestamp": "01/10/2014 20:09",
         "location": "Katerinas Caf",
         "price": "8.14",
         "loyaltynum": "L6110",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/10/2014 00:00",
+        "timestamp": "01/10/2014 20:42",
         "location": "Katerinas Caf",
         "price": "21.28",
         "loyaltynum": "L4034",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/10/2014 21:13",
@@ -847,11 +847,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 13:23",
         "location": "Katerinas Caf",
         "price": "45.21",
         "loyaltynum": "L9018",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 00:00",
@@ -882,11 +882,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 19:32",
         "location": "Katerinas Caf",
         "price": "20.71",
         "loyaltynum": "L6267",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 19:57",
@@ -896,18 +896,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 20:00",
         "location": "Katerinas Caf",
         "price": "25.76",
         "loyaltynum": "L9406",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 20:06",
         "location": "Katerinas Caf",
         "price": "52.45",
         "loyaltynum": "L2343",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 20:22",
@@ -924,11 +924,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 20:24",
         "location": "Katerinas Caf",
         "price": "94.68",
         "loyaltynum": "L9018",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/12/2014 13:17",
@@ -966,11 +966,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/12/2014 00:00",
+        "timestamp": "01/12/2014 19:43",
         "location": "Katerinas Caf",
         "price": "40.94",
         "loyaltynum": "L4034",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/12/2014 19:52",
@@ -980,25 +980,25 @@
         "type": "right"
     },
     {
-        "timestamp": "01/12/2014 00:00",
+        "timestamp": "01/12/2014 20:04",
         "location": "Katerinas Caf",
         "price": "39.3",
         "loyaltynum": "L8328",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/12/2014 00:00",
+        "timestamp": "01/12/2014 20:17",
         "location": "Katerinas Caf",
         "price": "16.34",
         "loyaltynum": "L6110",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/12/2014 00:00",
+        "timestamp": "01/12/2014 20:35",
         "location": "Katerinas Caf",
         "price": "40.25",
         "loyaltynum": "L9406",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/12/2014 20:43",
@@ -1057,11 +1057,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/13/2014 00:00",
+        "timestamp": "01/13/2014 13:23",
         "location": "Katerinas Caf",
         "price": "38.98",
         "loyaltynum": "L9018",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/13/2014 00:00",
@@ -1260,11 +1260,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 13:43",
         "location": "Katerinas Caf",
         "price": "31.69",
         "loyaltynum": "L6267",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 13:53",
@@ -1316,11 +1316,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 20:19",
         "location": "Katerinas Caf",
         "price": "31.94",
         "loyaltynum": "L4034",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 00:00",
@@ -1337,11 +1337,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 20:50",
         "location": "Katerinas Caf",
         "price": "25.4",
         "loyaltynum": "L6110",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 00:00",
@@ -1505,18 +1505,18 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/15/2014 00:00",
+        "timestamp": "01/15/2014 20:17",
         "location": "Katerinas Caf",
         "price": "29.33",
         "loyaltynum": "L6110",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/15/2014 00:00",
+        "timestamp": "01/15/2014 20:29",
         "location": "Katerinas Caf",
         "price": "29.66",
         "loyaltynum": "L9018",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/15/2014 00:00",
@@ -1603,11 +1603,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 13:27",
         "location": "Katerinas Caf",
         "price": "39.74",
         "loyaltynum": "L4034",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 13:35",
@@ -1624,11 +1624,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 13:43",
         "location": "Katerinas Caf",
         "price": "38.32",
         "loyaltynum": "L2247",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 13:45",
@@ -1694,11 +1694,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 20:09",
         "location": "Katerinas Caf",
         "price": "18.79",
         "loyaltynum": "L8328",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 20:25",
@@ -1708,18 +1708,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 20:25",
         "location": "Katerinas Caf",
         "price": "35.43",
         "loyaltynum": "L9018",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 20:39",
         "location": "Katerinas Caf",
         "price": "30.56",
         "loyaltynum": "L2343",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 20:54",
@@ -1869,11 +1869,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 20:19",
         "location": "Katerinas Caf",
         "price": "36.12",
         "loyaltynum": "L2343",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 20:35",
@@ -1883,11 +1883,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 21:05",
         "location": "Katerinas Caf",
         "price": "33.73",
         "loyaltynum": "L4034",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 21:15",
@@ -1897,11 +1897,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 13:15",
         "location": "Katerinas Caf",
         "price": "34.54",
         "loyaltynum": "L6267",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 13:19",
@@ -1925,11 +1925,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 14:00",
         "location": "Katerinas Caf",
         "price": "37.26",
         "loyaltynum": "L6110",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 15:31",
@@ -1967,18 +1967,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 19:56",
         "location": "Katerinas Caf",
         "price": "32.68",
         "loyaltynum": "L9018",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 20:04",
         "location": "Katerinas Caf",
         "price": "45.88",
         "loyaltynum": "L6110",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 20:26",
@@ -2065,11 +2065,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 13:46",
         "location": "Katerinas Caf",
         "price": "18.56",
         "loyaltynum": "L6267",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 00:00",
@@ -2086,11 +2086,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 20:07",
         "location": "Katerinas Caf",
         "price": "23.63",
         "loyaltynum": "L1682",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 08:06",
@@ -2100,11 +2100,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 13:59",
         "location": "Katerinas Caf",
         "price": "39.41",
         "loyaltynum": "L1485",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 12:00",
@@ -2205,18 +2205,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 13:50",
         "location": "Katerinas Caf",
         "price": "13.59",
         "loyaltynum": "L4424",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 20:08",
         "location": "Katerinas Caf",
         "price": "12.32",
         "loyaltynum": "L4424",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 07:59",
@@ -2268,11 +2268,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 13:50",
         "location": "Katerinas Caf",
         "price": "32.64",
         "loyaltynum": "L5553",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 12:00",
@@ -2499,11 +2499,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 20:59",
         "location": "Katerinas Caf",
         "price": "26.1",
         "loyaltynum": "L7814",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 13:54",
@@ -2520,11 +2520,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 20:29",
         "location": "Katerinas Caf",
         "price": "17.92",
         "loyaltynum": "L3259",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 07:49",
@@ -2534,11 +2534,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 20:33",
         "location": "Katerinas Caf",
         "price": "15.52",
         "loyaltynum": "L3295",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 13:48",
@@ -2562,11 +2562,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/06/2014 00:00",
+        "timestamp": "01/06/2014 14:17",
         "location": "Katerinas Caf",
         "price": "19.65",
         "loyaltynum": "L9363",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/06/2014 00:00",
@@ -2730,11 +2730,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 20:09",
         "location": "Katerinas Caf",
         "price": "19.49",
         "loyaltynum": "L1682",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 00:00",
@@ -2786,11 +2786,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 13:33",
         "location": "Katerinas Caf",
         "price": "22.27",
         "loyaltynum": "L6119",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 00:00",
@@ -2926,11 +2926,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 20:33",
         "location": "Katerinas Caf",
         "price": "17.26",
         "loyaltynum": "L5553",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 00:00",
@@ -3024,11 +3024,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 14:07",
         "location": "Katerinas Caf",
         "price": "10.9",
         "loyaltynum": "L2169",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 00:00",
@@ -3087,11 +3087,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 20:11",
         "location": "Katerinas Caf",
         "price": "10.07",
         "loyaltynum": "L9637",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 13:29",
@@ -3108,11 +3108,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 21:19",
         "location": "Katerinas Caf",
         "price": "18.35",
         "loyaltynum": "L8012",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 12:00",
@@ -3150,11 +3150,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 20:47",
         "location": "Katerinas Caf",
         "price": "32.83",
         "loyaltynum": "L7814",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 08:02",
@@ -3171,11 +3171,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 21:01",
         "location": "Katerinas Caf",
         "price": "33.29",
         "loyaltynum": "L3259",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 07:46",
@@ -3192,11 +3192,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/07/2014 00:00",
+        "timestamp": "01/07/2014 20:32",
         "location": "Katerinas Caf",
         "price": "19.53",
         "loyaltynum": "L3295",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/07/2014 00:00",
@@ -3402,11 +3402,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 13:28",
         "location": "Katerinas Caf",
         "price": "8.53",
         "loyaltynum": "L6267",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/08/2014 21:17",
@@ -3500,11 +3500,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 20:31",
         "location": "Katerinas Caf",
         "price": "36.6",
         "loyaltynum": "L6119",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/08/2014 00:00",
@@ -3563,11 +3563,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 21:09",
         "location": "Katerinas Caf",
         "price": "27.87",
         "loyaltynum": "L4424",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/08/2014 08:01",
@@ -3738,11 +3738,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 13:19",
         "location": "Katerinas Caf",
         "price": "29.26",
         "loyaltynum": "L5756",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/08/2014 00:00",
@@ -3794,25 +3794,25 @@
         "type": "right"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 13:41",
         "location": "Katerinas Caf",
         "price": "26.45",
         "loyaltynum": "L9637",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 20:27",
         "location": "Katerinas Caf",
         "price": "33.31",
         "loyaltynum": "L9637",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/08/2014 00:00",
+        "timestamp": "01/08/2014 20:08",
         "location": "Katerinas Caf",
         "price": "31.59",
         "loyaltynum": "L8012",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/08/2014 00:00",
@@ -4060,11 +4060,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 13:03",
         "location": "Katerinas Caf",
         "price": "17.02",
         "loyaltynum": "L1682",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 20:45",
@@ -4081,11 +4081,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 13:35",
         "location": "Katerinas Caf",
         "price": "10.42",
         "loyaltynum": "L1485",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 12:00",
@@ -4130,11 +4130,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 14:06",
         "location": "Katerinas Caf",
         "price": "8.01",
         "loyaltynum": "L3014",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 21:27",
@@ -4396,11 +4396,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 13:23",
         "location": "Katerinas Caf",
         "price": "16.98",
         "loyaltynum": "L5756",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 11:34",
@@ -4466,11 +4466,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 21:18",
         "location": "Katerinas Caf",
         "price": "8.57",
         "loyaltynum": "L8012",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 00:00",
@@ -4480,11 +4480,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 20:08",
         "location": "Katerinas Caf",
         "price": "19.02",
         "loyaltynum": "L7814",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 13:40",
@@ -4515,11 +4515,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 19:30",
         "location": "Katerinas Caf",
         "price": "26.6",
         "loyaltynum": "L3295",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 07:58",
@@ -4564,11 +4564,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/09/2014 00:00",
+        "timestamp": "01/09/2014 13:27",
         "location": "Katerinas Caf",
         "price": "25.85",
         "loyaltynum": "L5224",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/09/2014 00:00",
@@ -4704,11 +4704,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/10/2014 00:00",
+        "timestamp": "01/10/2014 13:30",
         "location": "Katerinas Caf",
         "price": "34.76",
         "loyaltynum": "L4164",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/10/2014 00:00",
@@ -4935,11 +4935,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/10/2014 00:00",
+        "timestamp": "01/10/2014 13:47",
         "location": "Katerinas Caf",
         "price": "25.62",
         "loyaltynum": "L3366",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/10/2014 07:35",
@@ -5047,11 +5047,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/10/2014 00:00",
+        "timestamp": "01/10/2014 13:47",
         "location": "Katerinas Caf",
         "price": "24.33",
         "loyaltynum": "L9637",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/10/2014 13:36",
@@ -5096,11 +5096,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/10/2014 00:00",
+        "timestamp": "01/10/2014 20:08",
         "location": "Katerinas Caf",
         "price": "15.76",
         "loyaltynum": "L3259",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/10/2014 13:44",
@@ -5124,11 +5124,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/10/2014 00:00",
+        "timestamp": "01/10/2014 19:56",
         "location": "Katerinas Caf",
         "price": "21.89",
         "loyaltynum": "L3295",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/10/2014 08:01",
@@ -5208,11 +5208,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/10/2014 00:00",
+        "timestamp": "01/10/2014 13:36",
         "location": "Katerinas Caf",
         "price": "25.36",
         "loyaltynum": "L9254",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/10/2014 13:40",
@@ -5285,18 +5285,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 19:40",
         "location": "Katerinas Caf",
         "price": "57.36",
         "loyaltynum": "L5947",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 19:50",
         "location": "Katerinas Caf",
         "price": "12.55",
         "loyaltynum": "L6119",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 19:45",
@@ -5306,11 +5306,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 13:50",
         "location": "Katerinas Caf",
         "price": "23.45",
         "loyaltynum": "L4149",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 14:16",
@@ -5348,18 +5348,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 19:08",
         "location": "Katerinas Caf",
         "price": "55.67",
         "loyaltynum": "L5553",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 13:32",
         "location": "Katerinas Caf",
         "price": "29.1",
         "loyaltynum": "L3366",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 00:00",
@@ -5369,11 +5369,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 13:43",
         "location": "Katerinas Caf",
         "price": "71.65",
         "loyaltynum": "L2490",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 16:01",
@@ -5390,18 +5390,18 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 14:17",
         "location": "Katerinas Caf",
         "price": "26.02",
         "loyaltynum": "L9637",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 19:31",
         "location": "Katerinas Caf",
         "price": "33.18",
         "loyaltynum": "L9637",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 13:32",
@@ -5411,11 +5411,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 19:51",
         "location": "Katerinas Caf",
         "price": "45.68",
         "loyaltynum": "L8012",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 00:00",
@@ -5432,11 +5432,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 20:13",
         "location": "Katerinas Caf",
         "price": "9.78",
         "loyaltynum": "L3259",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 14:19",
@@ -5460,11 +5460,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/11/2014 00:00",
+        "timestamp": "01/11/2014 13:19",
         "location": "Katerinas Caf",
         "price": "45.22",
         "loyaltynum": "L5224",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/11/2014 00:00",
@@ -5544,11 +5544,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/12/2014 00:00",
+        "timestamp": "01/12/2014 19:21",
         "location": "Katerinas Caf",
         "price": "11.81",
         "loyaltynum": "L1682",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/12/2014 19:32",
@@ -5579,11 +5579,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/12/2014 00:00",
+        "timestamp": "01/12/2014 19:18",
         "location": "Katerinas Caf",
         "price": "12.64",
         "loyaltynum": "L6119",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/12/2014 19:58",
@@ -5733,11 +5733,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/12/2014 00:00",
+        "timestamp": "01/12/2014 20:12",
         "location": "Katerinas Caf",
         "price": "15.37",
         "loyaltynum": "L3259",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/12/2014 00:00",
@@ -5747,11 +5747,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/12/2014 00:00",
+        "timestamp": "01/12/2014 20:11",
         "location": "Katerinas Caf",
         "price": "67.14",
         "loyaltynum": "L9362",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/12/2014 16:08",
@@ -5887,11 +5887,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/13/2014 00:00",
+        "timestamp": "01/13/2014 13:34",
         "location": "Katerinas Caf",
         "price": "26.15",
         "loyaltynum": "L6267",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/13/2014 08:02",
@@ -6048,18 +6048,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/13/2014 00:00",
+        "timestamp": "01/13/2014 13:40",
         "location": "Katerinas Caf",
         "price": "8.29",
         "loyaltynum": "L4424",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/13/2014 00:00",
+        "timestamp": "01/13/2014 21:00",
         "location": "Katerinas Caf",
         "price": "27.59",
         "loyaltynum": "L4424",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/13/2014 13:51",
@@ -6265,11 +6265,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/13/2014 00:00",
+        "timestamp": "01/13/2014 20:24",
         "location": "Katerinas Caf",
         "price": "35.7",
         "loyaltynum": "L9637",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/13/2014 00:00",
@@ -6307,11 +6307,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/13/2014 00:00",
+        "timestamp": "01/13/2014 13:48",
         "location": "Katerinas Caf",
         "price": "24.26",
         "loyaltynum": "L7814",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/13/2014 07:44",
@@ -6321,11 +6321,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/13/2014 00:00",
+        "timestamp": "01/13/2014 21:16",
         "location": "Katerinas Caf",
         "price": "33.11",
         "loyaltynum": "L3259",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/13/2014 07:40",
@@ -6335,11 +6335,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/13/2014 00:00",
+        "timestamp": "01/13/2014 13:52",
         "location": "Katerinas Caf",
         "price": "29.55",
         "loyaltynum": "L9362",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/13/2014 00:00",
@@ -6685,11 +6685,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 20:26",
         "location": "Katerinas Caf",
         "price": "12.65",
         "loyaltynum": "L4424",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 07:58",
@@ -6706,11 +6706,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 13:58",
         "location": "Katerinas Caf",
         "price": "33.54",
         "loyaltynum": "L5259",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 07:53",
@@ -6748,11 +6748,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 21:10",
         "location": "Katerinas Caf",
         "price": "18.35",
         "loyaltynum": "L5553",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 12:00",
@@ -6762,11 +6762,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 13:22",
         "location": "Katerinas Caf",
         "price": "10.03",
         "loyaltynum": "L3366",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 13:38",
@@ -6951,11 +6951,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 20:34",
         "location": "Katerinas Caf",
         "price": "11.89",
         "loyaltynum": "L7814",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 13:35",
@@ -6993,11 +6993,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 20:17",
         "location": "Katerinas Caf",
         "price": "36.95",
         "loyaltynum": "L9362",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 08:13",
@@ -7049,11 +7049,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 13:14",
         "location": "Katerinas Caf",
         "price": "29.12",
         "loyaltynum": "L5224",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 07:40",
@@ -7084,11 +7084,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 13:34",
         "location": "Katerinas Caf",
         "price": "29.1",
         "loyaltynum": "L8566",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 07:35",
@@ -7105,11 +7105,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/14/2014 00:00",
+        "timestamp": "01/14/2014 13:32",
         "location": "Katerinas Caf",
         "price": "20.95",
         "loyaltynum": "L9254",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/14/2014 13:33",
@@ -7217,11 +7217,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/15/2014 00:00",
+        "timestamp": "01/15/2014 21:05",
         "location": "Katerinas Caf",
         "price": "13.77",
         "loyaltynum": "L1682",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/15/2014 13:10",
@@ -7413,11 +7413,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/15/2014 00:00",
+        "timestamp": "01/15/2014 20:05",
         "location": "Katerinas Caf",
         "price": "11.45",
         "loyaltynum": "L5553",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/15/2014 12:00",
@@ -7553,11 +7553,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/15/2014 00:00",
+        "timestamp": "01/15/2014 13:13",
         "location": "Katerinas Caf",
         "price": "24.15",
         "loyaltynum": "L5756",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/15/2014 11:55",
@@ -7602,18 +7602,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/15/2014 00:00",
+        "timestamp": "01/15/2014 14:00",
         "location": "Katerinas Caf",
         "price": "12.12",
         "loyaltynum": "L8012",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/15/2014 00:00",
+        "timestamp": "01/15/2014 20:23",
         "location": "Katerinas Caf",
         "price": "39.63",
         "loyaltynum": "L8012",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/15/2014 12:00",
@@ -7651,11 +7651,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/15/2014 00:00",
+        "timestamp": "01/15/2014 19:50",
         "location": "Katerinas Caf",
         "price": "39.23",
         "loyaltynum": "L7814",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/15/2014 07:45",
@@ -7679,11 +7679,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/15/2014 00:00",
+        "timestamp": "01/15/2014 21:21",
         "location": "Katerinas Caf",
         "price": "27.48",
         "loyaltynum": "L9362",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/15/2014 08:14",
@@ -7868,11 +7868,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 13:19",
         "location": "Katerinas Caf",
         "price": "27.82",
         "loyaltynum": "L4164",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 13:26",
@@ -7959,11 +7959,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 19:39",
         "location": "Katerinas Caf",
         "price": "10.93",
         "loyaltynum": "L6119",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 12:00",
@@ -8106,11 +8106,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 20:23",
         "location": "Katerinas Caf",
         "price": "13.91",
         "loyaltynum": "L5553",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 12:00",
@@ -8204,11 +8204,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 13:27",
         "location": "Katerinas Caf",
         "price": "34.02",
         "loyaltynum": "L2490",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 12:40",
@@ -8260,11 +8260,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 13:23",
         "location": "Katerinas Caf",
         "price": "34.9",
         "loyaltynum": "L5756",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 11:25",
@@ -8288,11 +8288,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 20:36",
         "location": "Katerinas Caf",
         "price": "19.44",
         "loyaltynum": "L9637",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 00:00",
@@ -8330,11 +8330,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 20:51",
         "location": "Katerinas Caf",
         "price": "34.58",
         "loyaltynum": "L7814",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 13:37",
@@ -8421,11 +8421,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/16/2014 00:00",
+        "timestamp": "01/16/2014 13:17",
         "location": "Katerinas Caf",
         "price": "11.08",
         "loyaltynum": "L7291",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/16/2014 07:53",
@@ -8568,11 +8568,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 20:20",
         "location": "Katerinas Caf",
         "price": "19.09",
         "loyaltynum": "L1682",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 08:15",
@@ -8680,11 +8680,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 13:48",
         "location": "Katerinas Caf",
         "price": "13.11",
         "loyaltynum": "L4149",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 00:00",
@@ -8841,11 +8841,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 13:53",
         "location": "Katerinas Caf",
         "price": "35.52",
         "loyaltynum": "L2169",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 11:32",
@@ -8869,11 +8869,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 20:58",
         "location": "Katerinas Caf",
         "price": "38.21",
         "loyaltynum": "L9637",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 07:31",
@@ -8883,11 +8883,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 20:07",
         "location": "Katerinas Caf",
         "price": "21.22",
         "loyaltynum": "L8012",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 00:00",
@@ -8925,11 +8925,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 19:24",
         "location": "Katerinas Caf",
         "price": "22.18",
         "loyaltynum": "L7814",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 08:04",
@@ -8939,11 +8939,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 21:06",
         "location": "Katerinas Caf",
         "price": "27.49",
         "loyaltynum": "L3259",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 07:38",
@@ -8953,11 +8953,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/17/2014 00:00",
+        "timestamp": "01/17/2014 13:42",
         "location": "Katerinas Caf",
         "price": "21.01",
         "loyaltynum": "L9362",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/17/2014 08:17",
@@ -9107,11 +9107,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 14:03",
         "location": "Katerinas Caf",
         "price": "96.36",
         "loyaltynum": "L4164",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 19:21",
@@ -9142,11 +9142,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 20:13",
         "location": "Katerinas Caf",
         "price": "9.72",
         "loyaltynum": "L1485",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 00:00",
@@ -9163,11 +9163,11 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 19:30",
         "location": "Katerinas Caf",
         "price": "8.14",
         "loyaltynum": "L6119",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 15:51",
@@ -9226,18 +9226,18 @@
         "type": "right"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 19:31",
         "location": "Katerinas Caf",
         "price": "22.74",
         "loyaltynum": "L4424",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 20:15",
         "location": "Katerinas Caf",
         "price": "37.21",
         "loyaltynum": "L5259",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 14:55",
@@ -9296,11 +9296,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 13:34",
         "location": "Katerinas Caf",
         "price": "19.3",
         "loyaltynum": "L2490",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 00:00",
@@ -9310,18 +9310,18 @@
         "type": "cash"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 19:32",
         "location": "Katerinas Caf",
         "price": "33.41",
         "loyaltynum": "L2169",
-        "type": "cash"
+        "type": "right"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 19:54",
         "location": "Katerinas Caf",
         "price": "33.63",
         "loyaltynum": "L8012",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 00:00",
@@ -9345,11 +9345,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 19:53",
         "location": "Katerinas Caf",
         "price": "76.1",
         "loyaltynum": "L9362",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 00:00",
@@ -9415,11 +9415,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/18/2014 00:00",
+        "timestamp": "01/18/2014 20:09",
         "location": "Katerinas Caf",
         "price": "19.31",
         "loyaltynum": "L9254",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/18/2014 15:53",
@@ -9485,11 +9485,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/19/2014 00:00",
+        "timestamp": "01/19/2014 19:53",
         "location": "Katerinas Caf",
         "price": "34.03",
         "loyaltynum": "L6119",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/19/2014 00:00",
@@ -9520,11 +9520,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/19/2014 00:00",
+        "timestamp": "01/19/2014 20:05",
         "location": "Katerinas Caf",
         "price": "33.79",
         "loyaltynum": "L4424",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/19/2014 19:45",
@@ -9541,11 +9541,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/19/2014 00:00",
+        "timestamp": "01/19/2014 20:22",
         "location": "Katerinas Caf",
         "price": "38.9",
         "loyaltynum": "L5553",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/19/2014 13:09",
@@ -9604,11 +9604,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/19/2014 00:00",
+        "timestamp": "01/19/2014 13:53",
         "location": "Katerinas Caf",
         "price": "26.76",
         "loyaltynum": "L2169",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/19/2014 15:39",
@@ -9709,11 +9709,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/19/2014 00:00",
+        "timestamp": "01/19/2014 13:23",
         "location": "Katerinas Caf",
         "price": "70.22",
         "loyaltynum": "L8566",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/19/2014 20:00",
@@ -9723,11 +9723,11 @@
         "type": "right"
     },
     {
-        "timestamp": "01/19/2014 00:00",
+        "timestamp": "01/19/2014 13:00",
         "location": "Katerinas Caf",
         "price": "35.01",
         "loyaltynum": "L9254",
-        "type": "cash"
+        "type": "right"
     },
     {
         "timestamp": "01/19/2014 15:15",
@@ -9815,23 +9815,9 @@
     },
     {
         "loyaltynum": "L2247",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 13:43",
-        "price": "38.32",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2247",
         "location": "Abila Zacharo",
         "timestamp": "01/17/2014 14:06",
         "price": "51.95",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9406",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 21:12",
-        "price": "26.51",
         "type": "justCC"
     },
     {
@@ -9850,13 +9836,6 @@
     },
     {
         "loyaltynum": "L9406",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 20:06",
-        "price": "26.6",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9406",
         "location": "Brew've Been Served",
         "timestamp": "01/10/2014 07:47",
         "price": "44.88",
@@ -9867,20 +9846,6 @@
         "location": "Hippokampos",
         "timestamp": "01/10/2014 14:20",
         "price": "10.16",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9406",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 20:00",
-        "price": "25.76",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9406",
-        "location": "Katerinas Caf",
-        "timestamp": "01/12/2014 20:35",
-        "price": "40.25",
         "type": "justCC"
     },
     {
@@ -9913,23 +9878,9 @@
     },
     {
         "loyaltynum": "L8328",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 19:08",
-        "price": "26.46",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8328",
         "location": "Hallowed Grounds",
         "timestamp": "01/09/2014 07:46",
         "price": "75.24",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8328",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 19:25",
-        "price": "35.92",
         "type": "justCC"
     },
     {
@@ -9944,13 +9895,6 @@
         "location": "Ouzeri Elian",
         "timestamp": "01/11/2014 13:40",
         "price": "19.11",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8328",
-        "location": "Katerinas Caf",
-        "timestamp": "01/12/2014 20:04",
-        "price": "39.3",
         "type": "justCC"
     },
     {
@@ -9986,13 +9930,6 @@
         "location": "Katerinas Caf",
         "timestamp": "01/15/2014 19:59",
         "price": "25.08",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8328",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 20:09",
-        "price": "18.79",
         "type": "justCC"
     },
     {
@@ -10109,13 +10046,6 @@
     },
     {
         "loyaltynum": "L4034",
-        "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 19:32",
-        "price": "34.25",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4034",
         "location": "Brew've Been Served",
         "timestamp": "01/09/2014 08:15",
         "price": "5.57",
@@ -10137,23 +10067,9 @@
     },
     {
         "loyaltynum": "L4034",
-        "location": "Katerinas Caf",
-        "timestamp": "01/10/2014 20:42",
-        "price": "21.28",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4034",
         "location": "Frydos Autosupply n' More",
         "timestamp": "01/11/2014 20:13",
         "price": "211.15",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4034",
-        "location": "Katerinas Caf",
-        "timestamp": "01/12/2014 19:43",
-        "price": "40.94",
         "type": "justCC"
     },
     {
@@ -10179,23 +10095,9 @@
     },
     {
         "loyaltynum": "L4034",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 20:19",
-        "price": "31.94",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4034",
         "location": "Brew've Been Served",
         "timestamp": "01/15/2014 08:05",
         "price": "12.39",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4034",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 13:27",
-        "price": "39.74",
         "type": "justCC"
     },
     {
@@ -10213,38 +10115,10 @@
         "type": "justCC"
     },
     {
-        "loyaltynum": "L4034",
-        "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 21:05",
-        "price": "33.73",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6110",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 13:28",
-        "price": "33.54",
-        "type": "justCC"
-    },
-    {
         "loyaltynum": "L6110",
         "location": "Katerinas Caf",
         "timestamp": "01/06/2014 18:56",
         "price": "78.65",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6110",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 20:18",
-        "price": "31.6",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6110",
-        "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 20:00",
-        "price": "13.83",
         "type": "justCC"
     },
     {
@@ -10257,36 +10131,8 @@
     {
         "loyaltynum": "L6110",
         "location": "Katerinas Caf",
-        "timestamp": "01/10/2014 20:09",
-        "price": "8.14",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6110",
-        "location": "Katerinas Caf",
         "timestamp": "01/11/2014 19:52",
         "price": "15.72",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6110",
-        "location": "Katerinas Caf",
-        "timestamp": "01/12/2014 20:17",
-        "price": "16.34",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6110",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 20:50",
-        "price": "25.4",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6110",
-        "location": "Katerinas Caf",
-        "timestamp": "01/15/2014 20:17",
-        "price": "29.33",
         "type": "justCC"
     },
     {
@@ -10304,38 +10150,10 @@
         "type": "justCC"
     },
     {
-        "loyaltynum": "L6110",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 14:00",
-        "price": "37.26",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6110",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 20:04",
-        "price": "45.88",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2343",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 13:57",
-        "price": "37.44",
-        "type": "justCC"
-    },
-    {
         "loyaltynum": "L2343",
         "location": "Katerinas Caf",
         "timestamp": "01/07/2014 20:13",
         "price": "65.02",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2343",
-        "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 20:35",
-        "price": "16.93",
         "type": "justCC"
     },
     {
@@ -10347,23 +10165,9 @@
     },
     {
         "loyaltynum": "L2343",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 20:22",
-        "price": "29.82",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2343",
         "location": "Brew've Been Served",
         "timestamp": "01/10/2014 08:17",
         "price": "8.47",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2343",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 20:06",
-        "price": "52.45",
         "type": "justCC"
     },
     {
@@ -10389,23 +10193,9 @@
     },
     {
         "loyaltynum": "L2343",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 20:39",
-        "price": "30.56",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2343",
         "location": "Brew've Been Served",
         "timestamp": "01/17/2014 08:09",
         "price": "9.3",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2343",
-        "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 20:19",
-        "price": "36.12",
         "type": "justCC"
     },
     {
@@ -10452,34 +10242,6 @@
     },
     {
         "loyaltynum": "L9018",
-        "location": "Katerinas Caf",
-        "timestamp": "01/10/2014 13:38",
-        "price": "21.22",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9018",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 13:23",
-        "price": "45.21",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9018",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 20:24",
-        "price": "94.68",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9018",
-        "location": "Katerinas Caf",
-        "timestamp": "01/13/2014 13:23",
-        "price": "38.98",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9018",
         "location": "Coffee Cameleon",
         "timestamp": "01/15/2014 08:05",
         "price": "56.31",
@@ -10494,30 +10256,9 @@
     },
     {
         "loyaltynum": "L9018",
-        "location": "Katerinas Caf",
-        "timestamp": "01/15/2014 20:29",
-        "price": "29.66",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9018",
         "location": "Coffee Cameleon",
         "timestamp": "01/16/2014 08:03",
         "price": "63.14",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9018",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 20:25",
-        "price": "35.43",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9018",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 19:56",
-        "price": "32.68",
         "type": "justCC"
     },
     {
@@ -10525,20 +10266,6 @@
         "location": "Hallowed Grounds",
         "timestamp": "01/06/2014 08:00",
         "price": "9.69",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6267",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 13:46",
-        "price": "18.56",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6267",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 20:30",
-        "price": "28",
         "type": "justCC"
     },
     {
@@ -10553,20 +10280,6 @@
         "location": "Abila Zacharo",
         "timestamp": "01/07/2014 13:25",
         "price": "82.25",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6267",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 20:33",
-        "price": "25.54",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6267",
-        "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 13:28",
-        "price": "8.53",
         "type": "justCC"
     },
     {
@@ -10600,20 +10313,6 @@
     {
         "loyaltynum": "L6267",
         "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 19:32",
-        "price": "20.71",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6267",
-        "location": "Katerinas Caf",
-        "timestamp": "01/13/2014 13:34",
-        "price": "26.15",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6267",
-        "location": "Katerinas Caf",
         "timestamp": "01/13/2014 19:59",
         "price": "30.84",
         "type": "justCC"
@@ -10634,13 +10333,6 @@
     },
     {
         "loyaltynum": "L6267",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 13:43",
-        "price": "31.69",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6267",
         "location": "Hallowed Grounds",
         "timestamp": "01/15/2014 07:51",
         "price": "78.69",
@@ -10651,13 +10343,6 @@
         "location": "Jack's Magical Beans",
         "timestamp": "01/15/2014 12:00",
         "price": "11.15",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6267",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 13:15",
-        "price": "34.54",
         "type": "justCC"
     },
     {
@@ -10893,13 +10578,6 @@
     },
     {
         "loyaltynum": "L4164",
-        "location": "Katerinas Caf",
-        "timestamp": "01/10/2014 13:30",
-        "price": "34.76",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4164",
         "location": "Hippokampos",
         "timestamp": "01/10/2014 20:09",
         "price": "70.48",
@@ -10942,20 +10620,6 @@
     },
     {
         "loyaltynum": "L4164",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 13:19",
-        "price": "27.82",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4164",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 14:03",
-        "price": "96.36",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4164",
         "location": "Roberts and Sons",
         "timestamp": "01/18/2014 19:46",
         "price": "125.35",
@@ -10970,13 +10634,6 @@
     },
     {
         "loyaltynum": "L1682",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 20:07",
-        "price": "23.63",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L1682",
         "location": "Coffee Cameleon",
         "timestamp": "01/07/2014 07:49",
         "price": "27.66",
@@ -10984,23 +10641,9 @@
     },
     {
         "loyaltynum": "L1682",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 20:09",
-        "price": "19.49",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L1682",
         "location": "Coffee Cameleon",
         "timestamp": "01/09/2014 07:35",
         "price": "12.47",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L1682",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 13:03",
-        "price": "17.02",
         "type": "justCC"
     },
     {
@@ -11020,36 +10663,8 @@
     {
         "loyaltynum": "L1682",
         "location": "Katerinas Caf",
-        "timestamp": "01/12/2014 19:21",
-        "price": "11.81",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L1682",
-        "location": "Katerinas Caf",
         "timestamp": "01/13/2014 20:47",
         "price": "22.24",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L1682",
-        "location": "Katerinas Caf",
-        "timestamp": "01/15/2014 21:05",
-        "price": "13.77",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L1682",
-        "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 20:20",
-        "price": "19.09",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L1485",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 13:59",
-        "price": "39.41",
         "type": "justCC"
     },
     {
@@ -11085,13 +10700,6 @@
         "location": "Guy's Gyros",
         "timestamp": "01/08/2014 13:40",
         "price": "77.9",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L1485",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 13:35",
-        "price": "10.42",
         "type": "justCC"
     },
     {
@@ -11137,13 +10745,6 @@
         "type": "justCC"
     },
     {
-        "loyaltynum": "L1485",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 20:13",
-        "price": "9.72",
-        "type": "justCC"
-    },
-    {
         "loyaltynum": "L5947",
         "location": "Brewed Awakenings",
         "timestamp": "01/07/2014 12:00",
@@ -11162,13 +10763,6 @@
         "location": "Chostus Hotel",
         "timestamp": "01/10/2014 13:11",
         "price": "197.41",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5947",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 19:40",
-        "price": "57.36",
         "type": "justCC"
     },
     {
@@ -11237,13 +10831,6 @@
     {
         "loyaltynum": "L6119",
         "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 13:33",
-        "price": "22.27",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6119",
-        "location": "Katerinas Caf",
         "timestamp": "01/07/2014 20:13",
         "price": "94.75",
         "type": "justCC"
@@ -11253,13 +10840,6 @@
         "location": "Hallowed Grounds",
         "timestamp": "01/08/2014 07:55",
         "price": "79.92",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6119",
-        "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 20:31",
-        "price": "36.6",
         "type": "justCC"
     },
     {
@@ -11274,20 +10854,6 @@
         "location": "Frydos Autosupply n' More",
         "timestamp": "01/10/2014 18:57",
         "price": "98.39",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6119",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 19:50",
-        "price": "12.55",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6119",
-        "location": "Katerinas Caf",
-        "timestamp": "01/12/2014 19:18",
-        "price": "12.64",
         "type": "justCC"
     },
     {
@@ -11321,29 +10887,8 @@
     {
         "loyaltynum": "L6119",
         "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 19:39",
-        "price": "10.93",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6119",
-        "location": "Katerinas Caf",
         "timestamp": "01/17/2014 20:24",
         "price": "72.13",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6119",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 19:30",
-        "price": "8.14",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L6119",
-        "location": "Katerinas Caf",
-        "timestamp": "01/19/2014 19:53",
-        "price": "34.03",
         "type": "justCC"
     },
     {
@@ -11365,13 +10910,6 @@
         "location": "Katerinas Caf",
         "timestamp": "01/08/2014 13:47",
         "price": "27.05",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3014",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 14:06",
-        "price": "8.01",
         "type": "justCC"
     },
     {
@@ -11544,13 +11082,6 @@
     },
     {
         "loyaltynum": "L4149",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 13:50",
-        "price": "23.45",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4149",
         "location": "Bean There Done That",
         "timestamp": "01/14/2014 12:00",
         "price": "67.82",
@@ -11561,13 +11092,6 @@
         "location": "Bean There Done That",
         "timestamp": "01/16/2014 12:00",
         "price": "98.34",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4149",
-        "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 13:48",
-        "price": "13.11",
         "type": "justCC"
     },
     {
@@ -11684,20 +11208,6 @@
     },
     {
         "loyaltynum": "L4424",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 13:50",
-        "price": "13.59",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4424",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 20:08",
-        "price": "12.32",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4424",
         "location": "Hallowed Grounds",
         "timestamp": "01/07/2014 07:41",
         "price": "19.59",
@@ -11720,13 +11230,6 @@
     {
         "loyaltynum": "L4424",
         "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 21:09",
-        "price": "27.87",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4424",
-        "location": "Katerinas Caf",
         "timestamp": "01/11/2014 20:46",
         "price": "57.6",
         "type": "justCC"
@@ -11736,27 +11239,6 @@
         "location": "Katerinas Caf",
         "timestamp": "01/12/2014 20:48",
         "price": "87.09",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4424",
-        "location": "Katerinas Caf",
-        "timestamp": "01/13/2014 13:40",
-        "price": "8.29",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4424",
-        "location": "Katerinas Caf",
-        "timestamp": "01/13/2014 21:00",
-        "price": "27.59",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4424",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 20:26",
-        "price": "12.65",
         "type": "justCC"
     },
     {
@@ -11771,20 +11253,6 @@
         "location": "Frydos Autosupply n' More",
         "timestamp": "01/18/2014 15:32",
         "price": "361.54",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4424",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 19:31",
-        "price": "22.74",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L4424",
-        "location": "Katerinas Caf",
-        "timestamp": "01/19/2014 20:05",
-        "price": "33.79",
         "type": "justCC"
     },
     {
@@ -11824,13 +11292,6 @@
     },
     {
         "loyaltynum": "L5259",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 13:58",
-        "price": "33.54",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5259",
         "location": "General Grocer",
         "timestamp": "01/15/2014 19:56",
         "price": "126.2",
@@ -11841,13 +11302,6 @@
         "location": "Katerinas Caf",
         "timestamp": "01/18/2014 14:06",
         "price": "24.14",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5259",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 20:15",
-        "price": "37.21",
         "type": "justCC"
     },
     {
@@ -11902,22 +11356,8 @@
     {
         "loyaltynum": "L5553",
         "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 13:50",
-        "price": "32.64",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5553",
-        "location": "Katerinas Caf",
         "timestamp": "01/06/2014 21:03",
         "price": "10.72",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5553",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 20:33",
-        "price": "17.26",
         "type": "justCC"
     },
     {
@@ -11929,30 +11369,9 @@
     },
     {
         "loyaltynum": "L5553",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 19:08",
-        "price": "55.67",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5553",
         "location": "Hallowed Grounds",
         "timestamp": "01/14/2014 07:54",
         "price": "50.21",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5553",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 21:10",
-        "price": "18.35",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5553",
-        "location": "Katerinas Caf",
-        "timestamp": "01/15/2014 20:05",
-        "price": "11.45",
         "type": "justCC"
     },
     {
@@ -11964,23 +11383,9 @@
     },
     {
         "loyaltynum": "L5553",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 20:23",
-        "price": "13.91",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5553",
         "location": "Hippokampos",
         "timestamp": "01/17/2014 13:52",
         "price": "108.35",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5553",
-        "location": "Katerinas Caf",
-        "timestamp": "01/19/2014 20:22",
-        "price": "38.9",
         "type": "justCC"
     },
     {
@@ -12023,27 +11428,6 @@
         "location": "Kalami Kafenion",
         "timestamp": "01/09/2014 13:27",
         "price": "110.76",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3366",
-        "location": "Katerinas Caf",
-        "timestamp": "01/10/2014 13:47",
-        "price": "25.62",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3366",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 13:32",
-        "price": "29.1",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3366",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 13:22",
-        "price": "10.03",
         "type": "justCC"
     },
     {
@@ -12335,13 +11719,6 @@
     },
     {
         "loyaltynum": "L2490",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 13:43",
-        "price": "71.65",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2490",
         "location": "Brew've Been Served",
         "timestamp": "01/13/2014 07:57",
         "price": "78.23",
@@ -12359,20 +11736,6 @@
         "location": "Guy's Gyros",
         "timestamp": "01/15/2014 19:53",
         "price": "98.04",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2490",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 13:27",
-        "price": "34.02",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2490",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 13:34",
-        "price": "19.3",
         "type": "justCC"
     },
     {
@@ -12401,13 +11764,6 @@
         "location": "Abila Airport",
         "timestamp": "01/14/2014 15:32",
         "price": "4918.39",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2169",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 14:07",
-        "price": "10.9",
         "type": "justCC"
     },
     {
@@ -12447,30 +11803,9 @@
     },
     {
         "loyaltynum": "L2169",
-        "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 13:53",
-        "price": "35.52",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2169",
         "location": "Guy's Gyros",
         "timestamp": "01/17/2014 21:07",
         "price": "55.4",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2169",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 19:32",
-        "price": "33.41",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L2169",
-        "location": "Katerinas Caf",
-        "timestamp": "01/19/2014 13:53",
-        "price": "26.76",
         "type": "justCC"
     },
     {
@@ -12496,27 +11831,6 @@
     },
     {
         "loyaltynum": "L9637",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 20:11",
-        "price": "10.07",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9637",
-        "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 13:41",
-        "price": "26.45",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9637",
-        "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 20:27",
-        "price": "33.31",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9637",
         "location": "Hippokampos",
         "timestamp": "01/09/2014 13:53",
         "price": "16.65",
@@ -12532,36 +11846,8 @@
     {
         "loyaltynum": "L9637",
         "location": "Katerinas Caf",
-        "timestamp": "01/10/2014 13:47",
-        "price": "24.33",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9637",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 14:17",
-        "price": "26.02",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9637",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 19:31",
-        "price": "33.18",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9637",
-        "location": "Katerinas Caf",
         "timestamp": "01/12/2014 20:13",
         "price": "39.55",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9637",
-        "location": "Katerinas Caf",
-        "timestamp": "01/13/2014 20:24",
-        "price": "35.7",
         "type": "justCC"
     },
     {
@@ -12587,20 +11873,6 @@
     },
     {
         "loyaltynum": "L9637",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 20:36",
-        "price": "19.44",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9637",
-        "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 20:58",
-        "price": "38.21",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9637",
         "location": "Hippokampos",
         "timestamp": "01/19/2014 13:33",
         "price": "64.37",
@@ -12622,13 +11894,6 @@
     },
     {
         "loyaltynum": "L8012",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 21:19",
-        "price": "18.35",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8012",
         "location": "Hallowed Grounds",
         "timestamp": "01/08/2014 07:39",
         "price": "8.28",
@@ -12643,30 +11908,9 @@
     },
     {
         "loyaltynum": "L8012",
-        "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 20:08",
-        "price": "31.59",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8012",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 21:18",
-        "price": "8.57",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8012",
         "location": "Roberts and Sons",
         "timestamp": "01/11/2014 16:00",
         "price": "256.24",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8012",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 19:51",
-        "price": "45.68",
         "type": "justCC"
     },
     {
@@ -12692,20 +11936,6 @@
     },
     {
         "loyaltynum": "L8012",
-        "location": "Katerinas Caf",
-        "timestamp": "01/15/2014 14:00",
-        "price": "12.12",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8012",
-        "location": "Katerinas Caf",
-        "timestamp": "01/15/2014 20:23",
-        "price": "39.63",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8012",
         "location": "Hallowed Grounds",
         "timestamp": "01/16/2014 07:51",
         "price": "9.6",
@@ -12723,20 +11953,6 @@
         "location": "Gelatogalore",
         "timestamp": "01/17/2014 13:40",
         "price": "37.3",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8012",
-        "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 20:07",
-        "price": "21.22",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8012",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 19:54",
-        "price": "33.63",
         "type": "justCC"
     },
     {
@@ -12790,13 +12006,6 @@
     },
     {
         "loyaltynum": "L7814",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 20:59",
-        "price": "26.1",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L7814",
         "location": "Hippokampos",
         "timestamp": "01/07/2014 14:00",
         "price": "76.11",
@@ -12804,23 +12013,9 @@
     },
     {
         "loyaltynum": "L7814",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 20:47",
-        "price": "32.83",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L7814",
         "location": "Hallowed Grounds",
         "timestamp": "01/09/2014 08:07",
         "price": "65.68",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L7814",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 20:08",
-        "price": "19.02",
         "type": "justCC"
     },
     {
@@ -12839,13 +12034,6 @@
     },
     {
         "loyaltynum": "L7814",
-        "location": "Katerinas Caf",
-        "timestamp": "01/13/2014 13:48",
-        "price": "24.26",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L7814",
         "location": "Hallowed Grounds",
         "timestamp": "01/14/2014 08:12",
         "price": "39.52",
@@ -12853,37 +12041,9 @@
     },
     {
         "loyaltynum": "L7814",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 20:34",
-        "price": "11.89",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L7814",
-        "location": "Katerinas Caf",
-        "timestamp": "01/15/2014 19:50",
-        "price": "39.23",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L7814",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 20:51",
-        "price": "34.58",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L7814",
         "location": "Hallowed Grounds",
         "timestamp": "01/17/2014 08:03",
         "price": "38.22",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L7814",
-        "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 19:24",
-        "price": "22.18",
         "type": "justCC"
     },
     {
@@ -12898,20 +12058,6 @@
         "location": "Brew've Been Served",
         "timestamp": "01/06/2014 07:52",
         "price": "32.83",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3259",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 20:29",
-        "price": "17.92",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3259",
-        "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 21:01",
-        "price": "33.29",
         "type": "justCC"
     },
     {
@@ -12938,36 +12084,8 @@
     {
         "loyaltynum": "L3259",
         "location": "Katerinas Caf",
-        "timestamp": "01/10/2014 20:08",
-        "price": "15.76",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3259",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 20:13",
-        "price": "9.78",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3259",
-        "location": "Katerinas Caf",
-        "timestamp": "01/12/2014 20:12",
-        "price": "15.37",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3259",
-        "location": "Katerinas Caf",
         "timestamp": "01/13/2014 13:36",
         "price": "17.21",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3259",
-        "location": "Katerinas Caf",
-        "timestamp": "01/13/2014 21:16",
-        "price": "33.11",
         "type": "justCC"
     },
     {
@@ -13008,22 +12126,8 @@
     {
         "loyaltynum": "L3259",
         "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 21:06",
-        "price": "27.49",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3259",
-        "location": "Katerinas Caf",
         "timestamp": "01/18/2014 20:01",
         "price": "17.37",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3295",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 20:33",
-        "price": "15.52",
         "type": "justCC"
     },
     {
@@ -13036,36 +12140,8 @@
     {
         "loyaltynum": "L3295",
         "location": "Katerinas Caf",
-        "timestamp": "01/07/2014 20:32",
-        "price": "19.53",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3295",
-        "location": "Katerinas Caf",
         "timestamp": "01/08/2014 20:42",
         "price": "92.83",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3295",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 19:30",
-        "price": "26.6",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L3295",
-        "location": "Katerinas Caf",
-        "timestamp": "01/10/2014 19:56",
-        "price": "21.89",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9363",
-        "location": "Katerinas Caf",
-        "timestamp": "01/06/2014 14:17",
-        "price": "19.65",
         "type": "justCC"
     },
     {
@@ -13175,23 +12251,9 @@
     },
     {
         "loyaltynum": "L5224",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 13:27",
-        "price": "25.85",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5224",
         "location": "Hippokampos",
         "timestamp": "01/10/2014 21:17",
         "price": "27",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5224",
-        "location": "Katerinas Caf",
-        "timestamp": "01/11/2014 13:19",
-        "price": "45.22",
         "type": "justCC"
     },
     {
@@ -13213,13 +12275,6 @@
         "location": "Jack's Magical Beans",
         "timestamp": "01/14/2014 12:00",
         "price": "95.7",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5224",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 13:14",
-        "price": "29.12",
         "type": "justCC"
     },
     {
@@ -13301,13 +12356,6 @@
     },
     {
         "loyaltynum": "L7291",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 13:17",
-        "price": "11.08",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L7291",
         "location": "Guy's Gyros",
         "timestamp": "01/16/2014 20:14",
         "price": "111.31",
@@ -13357,23 +12405,9 @@
     },
     {
         "loyaltynum": "L8566",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 13:34",
-        "price": "29.1",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8566",
         "location": "Abila Zacharo",
         "timestamp": "01/16/2014 13:39",
         "price": "69.27",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L8566",
-        "location": "Katerinas Caf",
-        "timestamp": "01/19/2014 13:23",
-        "price": "70.22",
         "type": "justCC"
     },
     {
@@ -13413,13 +12447,6 @@
     },
     {
         "loyaltynum": "L9254",
-        "location": "Katerinas Caf",
-        "timestamp": "01/10/2014 13:36",
-        "price": "25.36",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9254",
         "location": "Roberts and Sons",
         "timestamp": "01/10/2014 21:11",
         "price": "241.2",
@@ -13437,13 +12464,6 @@
         "location": "Hippokampos",
         "timestamp": "01/13/2014 13:34",
         "price": "59.9",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9254",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 13:32",
-        "price": "20.95",
         "type": "justCC"
     },
     {
@@ -13472,20 +12492,6 @@
         "location": "Frydos Autosupply n' More",
         "timestamp": "01/17/2014 20:41",
         "price": "260.08",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9254",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 20:09",
-        "price": "19.31",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9254",
-        "location": "Katerinas Caf",
-        "timestamp": "01/19/2014 13:00",
-        "price": "35.01",
         "type": "justCC"
     },
     {
@@ -13610,20 +12616,6 @@
     {
         "loyaltynum": "L5756",
         "location": "Katerinas Caf",
-        "timestamp": "01/08/2014 13:19",
-        "price": "29.26",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5756",
-        "location": "Katerinas Caf",
-        "timestamp": "01/09/2014 13:23",
-        "price": "16.98",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5756",
-        "location": "Katerinas Caf",
         "timestamp": "01/14/2014 13:21",
         "price": "34.45",
         "type": "justCC"
@@ -13633,20 +12625,6 @@
         "location": "Carlyle Chemical Inc.",
         "timestamp": "01/14/2014 14:21",
         "price": "854.88",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5756",
-        "location": "Katerinas Caf",
-        "timestamp": "01/15/2014 13:13",
-        "price": "24.15",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L5756",
-        "location": "Katerinas Caf",
-        "timestamp": "01/16/2014 13:23",
-        "price": "34.9",
         "type": "justCC"
     },
     {
@@ -13694,20 +12672,6 @@
     {
         "loyaltynum": "L9362",
         "location": "Katerinas Caf",
-        "timestamp": "01/12/2014 20:11",
-        "price": "67.14",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9362",
-        "location": "Katerinas Caf",
-        "timestamp": "01/13/2014 13:52",
-        "price": "29.55",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9362",
-        "location": "Katerinas Caf",
         "timestamp": "01/13/2014 19:50",
         "price": "89.83",
         "type": "justCC"
@@ -13717,20 +12681,6 @@
         "location": "Katerinas Caf",
         "timestamp": "01/14/2014 13:41",
         "price": "75.46",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9362",
-        "location": "Katerinas Caf",
-        "timestamp": "01/14/2014 20:17",
-        "price": "36.95",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9362",
-        "location": "Katerinas Caf",
-        "timestamp": "01/15/2014 21:21",
-        "price": "27.48",
         "type": "justCC"
     },
     {
@@ -13749,23 +12699,9 @@
     },
     {
         "loyaltynum": "L9362",
-        "location": "Katerinas Caf",
-        "timestamp": "01/17/2014 13:42",
-        "price": "21.01",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9362",
         "location": "Ouzeri Elian",
         "timestamp": "01/18/2014 13:34",
         "price": "25.75",
-        "type": "justCC"
-    },
-    {
-        "loyaltynum": "L9362",
-        "location": "Katerinas Caf",
-        "timestamp": "01/18/2014 19:53",
-        "price": "76.1",
         "type": "justCC"
     },
     {
