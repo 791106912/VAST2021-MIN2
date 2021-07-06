@@ -1,0 +1,12 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "expect" : true,
+    "sinon": true,
+    "happen": true,
+    "maptalks" : true
+  },
+  "plugins": ["mocha"]
+}
