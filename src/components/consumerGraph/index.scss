@@ -1,7 +1,8 @@
 .consumerGraph {
   display: flex;
   align-items: center;
-  height:  100vh;
+  height: 100%;
+  width: 100%;
   .left {
     height: 100%;
     min-width: 800px;
@@ -132,7 +133,7 @@
 
       .consume-item {
         stroke-width: 1px;
-        stroke: #fff;
+        // stroke: #fff;
         // opacity: .1;
       }
       .customerTrack {

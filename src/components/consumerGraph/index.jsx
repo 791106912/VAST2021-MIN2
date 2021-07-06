@@ -2,7 +2,7 @@ import { ascending, extent } from 'd3-array'
 import { json } from 'd3-fetch'
 import { path } from 'd3-path'
 import { event, drag, forceCollide, forceLink, forceManyBody, forceSimulation, scaleLinear, scaleOrdinal, schemeCategory10, select, selectAll, color, csv } from 'd3'
-import { arc, curveCatmullRom, line } from 'd3-shape'
+import { arc, curveCatmullRom, line, symbol, symbolSquare, symbolStar } from 'd3-shape'
 import { chain } from 'lodash'
 import moment from 'moment'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
@@ -316,6 +316,7 @@ export default function ConsumerGraph() {
             const thisData = chain(consumeData)
                 .filter(d1 => d1.id === d)
                 .filter(d1 => d1.type !== 'cash')
+                .sortBy('time')
                 .reduce((obj, d1) => {
                     const key = d1.dayStr
                     if (!obj[key]) obj[key] = []
@@ -440,12 +441,21 @@ export default function ConsumerGraph() {
                         </g>
                         <g className='consume-g' transform={`translate(${width/2}, ${height / 2})`}>
                             {consumeData.filter(d => d.type !== 'cash').map((d, i) => {
+                                const [x, y] = consumePath.centroid(d)
+                                const color = calcualteStoreColor(d.location)
+                                const opactiy = priceOpacity(d.price)
+                                const size = 15
                                 const attr = {
                                     key: JSON.stringify(d),
                                     className: 'consume-item',
-                                    d: consumePath(d),
-                                    fill: calcualteStoreColor(d.location),
-                                    fillOpacity: priceOpacity(d.price),
+                                    d: d.type === 'right' ?
+                                        symbol().type(symbolSquare).size(size)()
+                                        : symbol().type(symbolStar).size(size)(),
+                                    fill: color,
+                                    stroke: color,
+                                    strokeOpacity: opactiy,
+                                    fillOpacity: opactiy,
+                                    transform: `translate(${x}, ${y})`,
                                     onMouseEnter: e => {
                                         settooltips({
                                             style: {
