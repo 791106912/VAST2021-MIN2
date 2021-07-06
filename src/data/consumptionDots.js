@@ -23617,7 +23617,6 @@ const consumptionDots = [
     }
 ].map(d => ({
     ...d,
-    timestamp: new Date(d.timestamp),
     price: parseFloat(d.price),
 }))
 

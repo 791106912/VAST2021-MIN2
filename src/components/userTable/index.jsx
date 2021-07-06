@@ -11,9 +11,7 @@ function UserTable() {
     const carData = useMemo(() => {
         return Object.keys(car_card_dict)
                 .map(d => {
-                    console.log(d)
                     const info = carAssign.find(d1 => d1.CarID === d)
-                    console.log(info)
                     if (info) {
                         return {
                             id: d,

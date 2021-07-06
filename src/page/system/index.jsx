@@ -10,7 +10,7 @@ export default function System() {
         <div className='system'>
             <div className="top">
                 <div className='mapContainer'>
-                    <CarTrack />
+                    <Map3D />
                 </div>
                 <div className='tableContainer'>
                     <UserTable /> 
@@ -18,7 +18,7 @@ export default function System() {
             </div>
             <div className="bottom">
                 <div className='trackContainer'>
-                    {/* <Map3D /> */}
+                    <CarTrack />
                 </div>
                 <div className='consumeContainer'>
                     <ConsumerGraph />

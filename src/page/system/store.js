@@ -7,17 +7,19 @@ class SystemStore {
     // single || mul
     @observable selectMode = 'mul'
 
+    @observable selectDay = '01/06/2014'
+
+    @action.bound changeSelectDay = time => {
+        this.selectDay = time
+    }
+
     @action.bound changeActiveCar = carId => {
         const newId = pushOrPop(this.activeCar, carId, this.selectMode)
         this.activeCar = newId
     }
 
     @action.bound resetCar = carId => {
-        if (this.selectMode === 'mul') {
-            this.changeActiveCar(carId)
-        } else {
-            this.activeCar = [carId]
-        }
+        this.activeCar = carId
     }
 }
 

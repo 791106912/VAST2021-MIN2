@@ -1,7 +1,7 @@
 import { HashRouter as Router, Link, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import ConsumerGraph from './components/consumerGraphOrigin';
-import Map3D from './components/map';
+import Map3D from './components/mapOrigin';
 import Cal from './dataCal';
 import System from './page/system';
 import SecondQ from './secondQ';
