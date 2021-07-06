@@ -1,8 +1,9 @@
 import { ascending } from "d3-array"
 import { scaleOrdinal } from "d3-scale"
-import { schemeCategory10 } from "d3-scale-chromatic"
+import { schemeCategory10, schemePaired } from "d3-scale-chromatic"
 import moment from "moment"
 import { building_coordinate } from "../data/buliding_coordinate"
+import { car_card_dict } from "../data/card_car_map"
 import { storeClassify, storeMapType } from "../data/consumer_data"
 
 export  function pushOrPop(arr, d, mode='single') {
@@ -84,3 +85,9 @@ export const findLocationCoord = name => {
     const lat = (a.range[1][0] + a.range[1][1]) / 2
     return [long, lat]
 } 
+
+const calColor = scaleOrdinal(Object.keys(car_card_dict), schemePaired)
+
+export const calCarColor = carid => {
+    return calColor(carid)
+}

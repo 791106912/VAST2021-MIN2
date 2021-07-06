@@ -1,0 +1,30 @@
+.system {
+    font-size: 12px;
+    &>div>div {
+        border: solid 1px red;
+    }
+    .top {
+        height: 600px;
+        display: flex;
+        .mapContainer {
+            flex: 1;
+            height: 100%;
+        }
+        .tableContainer {
+            white-space: nowrap;
+            height: 100%;
+        }
+    }
+    .bottom {
+        height: 700px;
+        display: flex;
+        .trackContainer {
+            width: 50%;
+            height: 100%;
+        }
+        .consumeContainer {
+            width: 50%;
+            height: 100%;
+        }
+    }
+}

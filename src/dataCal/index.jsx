@@ -5,7 +5,7 @@ import './index.scss'
 import moment from 'moment'
 import { forceCenter, forceLink, forceManyBody, forceSimulation } from 'd3-force'
 import { select } from 'd3-selection'
-import CarTrack from '../components/carTrack'
+import CarTrack from '../components/carTrackOrigin'
 import { findLocaiton, findLocationCoord } from '../utils'
 import { card_car_dict, car_card_dict } from '../data/card_car_map'
 
