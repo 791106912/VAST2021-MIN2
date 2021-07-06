@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import { building_coordinate } from '../../data/buliding_coordinate'
 import consumptionDots from '../../data/consumptionDots'
 import road from '../../data/abila_maps'
+import './index.scss'
 
 const colorScale4Trajectory = interpolateRgb('#8DFF33', '#F74646')
 const fatLineWidth = 4, OverlapLineWidth = 8 // in pixels
@@ -564,12 +565,5 @@ export default function Map3D() {
         }
     }, [])
 
-    return (
-        <div id='map' style={{
-            height: '800px',
-            width: '1000px',
-        }}>
-            
-        </div>
-    )
+    return <div id='map' />
 }
