@@ -12,6 +12,7 @@ import './index.scss'
 import systemStore from '../../page/system/store'
 import { card_car_dict, car_card_dict } from '../../data/card_car_map'
 import { toJS } from 'mobx'
+import { observer } from 'mobx-react'
 
 function calData(res) {
     const nodeData = Object.keys(ccLoyMap).map(d => {
@@ -67,7 +68,7 @@ function calData(res) {
     return [nodes, links]
 }
 
-export default function ConsumerGraph() {
+function ConsumerGraph() {
     const [top, right, bottom, left] = [0,0,0,0]
     const containerRef = useRef(null)
     const [size, setsize] = useState({
@@ -130,7 +131,7 @@ export default function ConsumerGraph() {
     const [activeCustom, setActiveCustom] = useState([])
 
     // ! store监听
-    const { activeCar, resetCar } = systemStore
+    const { activeCar, changeActiveCar } = systemStore
     useEffect(() => {
         const hisCard = chain(activeCar)
             .map(carId => {
@@ -142,7 +143,6 @@ export default function ConsumerGraph() {
             })
             .flatten()
             .value()
-        console.log(hisCard, toJS(activeCar))
         setActiveCustom(hisCard)
     }, [activeCar])
 
@@ -662,7 +662,7 @@ export default function ConsumerGraph() {
                                             onClick: () => {
                                                 const thisCarId = card_car_dict[d]
                                                 if (thisCarId) {
-                                                    resetCar(thisCarId)
+                                                    changeActiveCar(thisCarId)
                                                 } else {
                                                     const newActiveClassisy = pushOrPop(activeCustom, d, selectMode)
                                                     console.log('none car')
@@ -850,3 +850,5 @@ export default function ConsumerGraph() {
         </div>
     )
 }
+
+export default observer(ConsumerGraph)
