@@ -25,7 +25,7 @@ function App() {
         </div>
         <Content>
           <Switch>
-            <Router path='system'>
+            <Router path='/system'>
               <System />
             </Router>
             <Route path="/first">
@@ -42,7 +42,7 @@ function App() {
                 <Map3D />
               </div>
             </Route>
-            <Redirect from='/' to='/system' />
+            <Redirect from='/' to='/first' />
           </Switch>
         </Content>
       </Router>

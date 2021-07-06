@@ -6,7 +6,6 @@ import UserTable from '../../components/userTable'
 import './index.scss'
 
 export default function System() {
-    console.log(123)
     return (
         <div className='system'>
             <div className="top">
