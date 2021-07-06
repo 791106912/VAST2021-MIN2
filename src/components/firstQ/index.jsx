@@ -6,9 +6,9 @@ import { arc, curveCatmullRom, line } from 'd3-shape'
 import { chain, intersection, max } from 'lodash'
 import moment from 'moment'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { ccLoyMap, storeClassify, storeMapType, timeArr, timeClassifyData } from '../data/consumer_data'
+import { ccLoyMap, storeClassify, storeMapType, timeArr, timeClassifyData } from '../../data/consumer_data'
 import './index.scss'
-import { add, calHourTime, pushOrPop } from '../utils'
+import { add, calHourTime, pushOrPop } from '../../utils'
 
 
 function calData(res) {
