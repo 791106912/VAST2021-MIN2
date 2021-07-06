@@ -7,6 +7,8 @@ import { building_coordinate } from '../../data/buliding_coordinate'
 import { calCarColor, calcualteStoreColor, findLocaiton, pushOrPop } from '../../utils'
 import { carAssign, dayStr } from '../../data/consumer_data'
 import './index.scss'
+import { observer } from 'mobx-react'
+import systemStore from '../../page/system/store'
 
 
 function findHour(timestamp) {
@@ -66,7 +68,10 @@ const createLine = line()
     // .curve(curveBasis)
     .curve(curveStep)
 
-export default function CarTrack() {
+function CarTrack() {
+    //! =============================== store  ===============================
+    const { activeCar } = systemStore
+
     //!=============================== 图背景相关 ===============================
     // ============== 计算宽高 ==============
     const [size, setsize] = useState({
@@ -156,7 +161,11 @@ export default function CarTrack() {
     }, [carid, graphHeight])
     
     // ============== 汽车的选中 ==============
-    const [activeCarId, setactiveCarId] = useState(['105'])
+    const [activeCarId, setactiveCarId] = useState([])
+
+    useEffect(() => {
+        setactiveCarId(activeCar)
+    }, [activeCar])
 
     // ============== 定义日期的y轴比例尺 ==============
     const dayStrScale = useMemo(() => {
@@ -694,3 +703,5 @@ export default function CarTrack() {
         </div>
     )
 }
+
+export default observer(CarTrack)

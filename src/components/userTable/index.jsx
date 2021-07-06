@@ -1,27 +1,32 @@
-import React from 'react'
+import { observer } from 'mobx-react'
+import React, { useMemo } from 'react'
 import { car_card_dict } from '../../data/card_car_map'
 import { carAssign } from '../../data/consumer_data'
+import systemStore from '../../page/system/store'
 import { calCarColor } from '../../utils'
 import './index.scss'
 
-export default function UserTable() {
-    const carData = Object.keys(car_card_dict)
-        .map(d => {
-            console.log(d)
-            const info = carAssign.find(d1 => d1.CarID === d)
-            console.log(info)
-            if (info) {
-                return {
-                    id: d,
-                    name: `${info.FirstName} ${info.LastName}`,
-                    type: info.CurrentEmploymentType,
-                    title: info.CurrentEmploymentTitle,
-                }
-            }
-            return {
-                id: d,
-            }
-        })
+function UserTable() {
+    const { activeCar, changeActiveCar } = systemStore
+    const carData = useMemo(() => {
+        return Object.keys(car_card_dict)
+                .map(d => {
+                    console.log(d)
+                    const info = carAssign.find(d1 => d1.CarID === d)
+                    console.log(info)
+                    if (info) {
+                        return {
+                            id: d,
+                            name: `${info.FirstName} ${info.LastName}`,
+                            type: info.CurrentEmploymentType,
+                            title: info.CurrentEmploymentTitle,
+                        }
+                    }
+                    return {
+                        id: d,
+                    }
+                })
+    }, [])
     return (
         <div className="userTable">
             <table border='0'>
@@ -41,15 +46,14 @@ export default function UserTable() {
                             return (
                                 <tr
                                     key={d.id}
-                                    className={`userItem`}
+                                    className={`userItem ${activeCar.includes(d.id) ? 'active' : ''}`}
                                     // style={{
                                     //     background: true ? color : null,
                                     // }}
                                     // className={`${selectCar.includes(d.id) ? 'active' : 0}`}
-                                    // onClick={() => {
-                                    //     const newSelectCar = pushOrPop(selectCar, d.id)
-                                    //     setSelectCard(newSelectCar)
-                                    // }}
+                                    onClick={() => {
+                                        changeActiveCar(d.id)
+                                    }}
                                 >
                                     <td>
                                         <div
@@ -72,3 +76,5 @@ export default function UserTable() {
         </div>
     )
 }
+
+export default observer(UserTable)

@@ -10,7 +10,7 @@
     .userItem {
         cursor: pointer;
         &.active {
-            background: blue;
+            background: rgba(0, 0, 255, 0.3);
         }
     }
     .userLegend {

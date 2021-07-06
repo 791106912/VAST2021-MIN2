@@ -1,7 +1,7 @@
 import { ascending, extent } from 'd3-array'
 import { json } from 'd3-fetch'
 import { path } from 'd3-path'
-import { event, drag, forceCollide, forceLink, forceManyBody, forceSimulation, scaleLinear, scaleOrdinal, schemeCategory10, select, selectAll, color, csv } from 'd3'
+import { forceCollide, forceLink, forceManyBody, forceSimulation, scaleLinear, scaleOrdinal, schemeCategory10, select, selectAll, color } from 'd3'
 import { arc, curveCatmullRom, line, symbol, symbolSquare, symbolStar } from 'd3-shape'
 import { chain } from 'lodash'
 import moment from 'moment'
@@ -9,6 +9,9 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { ccLoyMap, storeButtonArr, storeClassify, storeMapType, timeArr, timeClassifyData } from '../../data/consumer_data'
 import { add, calcualteStoreColor, calHourTime, pushOrPop } from '../../utils'
 import './index.scss'
+import systemStore from '../../page/system/store'
+import { card_car_dict, car_card_dict } from '../../data/card_car_map'
+import { toJS } from 'mobx'
 
 function calData(res) {
     const nodeData = Object.keys(ccLoyMap).map(d => {
@@ -99,8 +102,6 @@ export default function ConsumerGraph() {
     const [showTrack, setshowTrack] = useState(true)
     // 选中模式
     const [selectMode, setselectMode] = useState('mulitiple')
-    // MergeMethod
-    const [mergefun, setMergeFun] = useState('intersection')
 
     const anagleScale = scaleLinear()
         .domain([0, 24])
@@ -127,6 +128,24 @@ export default function ConsumerGraph() {
     const [activeStore, setActiveStore] = useState([])
     const [activeClassify, setActiveClassify] = useState([])
     const [activeCustom, setActiveCustom] = useState([])
+
+    // ! store监听
+    const { activeCar, resetCar } = systemStore
+    useEffect(() => {
+        const hisCard = chain(activeCar)
+            .map(carId => {
+                const thisCard = car_card_dict[carId]
+                if (typeof thisCard === 'string') {
+                    return [thisCard]
+                }
+                return thisCard
+            })
+            .flatten()
+            .value()
+        console.log(hisCard, toJS(activeCar))
+        setActiveCustom(hisCard)
+    }, [activeCar])
+
     const [activeTime, setActiveTime] = useState([])
 
     // 展示的数据
@@ -199,23 +218,6 @@ export default function ConsumerGraph() {
                 const thisData = nodes.filter(d => d.id === id)
                 select(this).data(thisData)
             })
-            .call(
-                drag()
-                    .on('start', (d) => {
-                        const alpha = Math.max(force.alpha(), 0.1)
-                        force.alpha(alpha).restart()
-                        d.fx = null
-                        d.fy = null
-                    })
-                    .on('drag', d=> {
-                        d.x = event.x
-                        d.y = event.y
-                    })
-                    .on('end', d=>{
-                        d.fx = event.x
-                        d.fy = event.y
-                    })
-            )
 
             select('.links')
                 .selectAll('line').remove()
@@ -457,11 +459,15 @@ export default function ConsumerGraph() {
                                     fillOpacity: opactiy,
                                     transform: `translate(${x}, ${y})`,
                                     onMouseEnter: e => {
+                                        const { clientX, clientY } = e
+                                        const {x, y} = document.querySelector('.left').getBoundingClientRect()
+                                        const tx = clientX - x + 10
+                                        const ty = clientY - y + 10
                                         settooltips({
                                             style: {
                                                 display: 'block',
-                                                left: e.clientX + 10,
-                                                top: e.clientY,
+                                                left: tx,
+                                                top: ty,
                                             },
                                             content: {
                                                 loyaltynum: d.loyaltynum,
@@ -544,11 +550,15 @@ export default function ConsumerGraph() {
                                                             setActiveClassify(newType)
                                                         },
                                                         onMouseEnter: e => {
+                                                            const { clientX, clientY } = e
+                                                            const {x, y} = document.querySelector('.left').getBoundingClientRect()
+                                                            const tx = clientX - x + 10
+                                                            const ty = clientY - y + 10
                                                             settooltips({
                                                                 style: {
                                                                     display: 'block',
-                                                                    left: e.clientX + 10,
-                                                                    top: e.clientY,
+                                                                    left: tx,
+                                                                    top: ty,
                                                                 },
                                                                 content: {
                                                                     name: storeName,
@@ -650,15 +660,25 @@ export default function ConsumerGraph() {
                                             className: 'custom-item',
                                             transform: `translate(${i * 10}, ${0})`,
                                             onClick: () => {
+                                                const thisCarId = card_car_dict[d]
+                                                if (thisCarId) {
+                                                    resetCar(thisCarId)
+                                                } else {
                                                     const newActiveClassisy = pushOrPop(activeCustom, d, selectMode)
+                                                    console.log('none car')
                                                     setActiveCustom(newActiveClassisy)
+                                                }
                                             },
                                             onMouseEnter: e => {
+                                                const { clientX, clientY } = e
+                                                const {x, y} = document.querySelector('.left').getBoundingClientRect()
+                                                const tx = clientX - x + 10
+                                                const ty = clientY - y + 10
                                                 settooltips({
                                                     style: {
                                                         display: 'block',
-                                                        left: e.clientX + 10,
-                                                        top: e.clientY,
+                                                        left: tx,
+                                                        top: ty,
                                                     },
                                                     content: {
                                                         number: d,
