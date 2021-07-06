@@ -116,7 +116,6 @@ export default function CarTrack() {
                 })
                 d.stopArr = newStopArr
             })
-            console.log(gps)
             setoriginData(gps)
         })
     }, [])
@@ -239,7 +238,7 @@ export default function CarTrack() {
 
             const sum = sumBy(countData, 'value')
             const domain = []
-            const gap = 20
+            const gap = 10
             const totalSpace = heightScale(sum) + (countData.length - 1) * gap
             const topItem = (graphHeight - totalSpace) / 2
             const range = countData.map((d1, i) => {
@@ -754,7 +753,7 @@ export default function CarTrack() {
                             <div className="tooltip-line" key={name}>
                                 <div className="tooltip-label">{name}:</div>
                                 <div className="tooltip-value">{
-                                    value.toString().split('/n').map(d1 => <span key={d1}>{d1}</span>)
+                                    value ? value.toString().split('/n').map(d1 => <span key={d1}>{d1}</span>) : ''
                                 }</div>
                             </div>
                         )

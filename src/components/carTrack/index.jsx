@@ -1,10 +1,10 @@
 import { json } from 'd3-fetch'
-import { chain, countBy, forIn, sumBy, } from 'lodash'
+import { chain, countBy, sumBy, } from 'lodash'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import moment from 'moment'
-import { axisBottom, axisTop, curveStep, extent, line, schemeCategory10, scaleLinear, scaleOrdinal, scaleTime, scaleBand, select, schemePaired, easeLinear } from 'd3'
+import { axisBottom, axisTop, curveStep, extent, line, scaleLinear, scaleOrdinal, scaleTime, scaleBand, select, schemePaired, easeLinear } from 'd3'
 import { building_coordinate } from '../../data/buliding_coordinate'
-import { calcualteStoreColor, findLocaiton, pushOrPop } from '../../utils'
+import { calCarColor, calcualteStoreColor, findLocaiton, pushOrPop } from '../../utils'
 import { carAssign, dayStr } from '../../data/consumer_data'
 import './index.scss'
 
@@ -59,10 +59,8 @@ const timeRange = [
 function calcualteTimeRange(hour) {
     return timeRange.find(d => d.range[0] <= hour && d.range[1] > hour).key
 }
-const [width, height] = [1140,700]
-const [top, right, bottom, left] = [40, 20, 20, 300]
-const graphHeight = height - top - bottom
-const graphWidth = width - left - right
+
+const [top, right, bottom, left] = [20, 20, 20, 20]
 
 const createLine = line()
     // .curve(curveBasis)
@@ -70,12 +68,38 @@ const createLine = line()
 
 export default function CarTrack() {
     //!=============================== 图背景相关 ===============================
+    // ============== 计算宽高 ==============
+    const [size, setsize] = useState({
+        width: 300,
+        height: 300,
+    })
+
+    const width = useMemo(() => size.width, [size])
+    const height = useMemo(() => size.height, [size])
+
+    const containerRef = useRef(null)
+
+    useEffect(() => {
+        const { clientWidth, clientHeight } = containerRef.current
+        setsize({
+            width: clientWidth,
+            height: clientHeight,
+        })
+    }, [])
+
+    const graphHeight = useMemo(() => {
+        return height - top - bottom
+    }, [height])
+    const graphWidth = useMemo(() => {
+        return width - left - right
+    }, [width])
+
     // ============== 画坐标轴 ==============
     const timeScale = useMemo(() => {
         return scaleTime(
             [new Date('2020-01-01 00:00:00'), new Date('2020-01-01 23:59:59')]
         , [0, graphWidth])
-    }, [])
+    }, [graphWidth])
 
     useEffect(() => {
         const tickValues = timeRange.map(d => new Date(`2020-01-01 ${d.range[0]}:00:00`))
@@ -129,19 +153,15 @@ export default function CarTrack() {
     // ============== 汽车ID的Y比例尺 ==============
     const carIdScale = useMemo(() => {
         return scaleBand(carid, [0, graphHeight])
-    }, [carid])
-    // ============== 汽车颜色计算 ==============
-    const calCarColor = useMemo(() => {
-        return scaleOrdinal(carid, schemePaired)
-    }, [carid])
+    }, [carid, graphHeight])
     
     // ============== 汽车的选中 ==============
-    const [activeCarId, setactiveCarId] = useState(['1'])
+    const [activeCarId, setactiveCarId] = useState(['105'])
 
     // ============== 定义日期的y轴比例尺 ==============
     const dayStrScale = useMemo(() => {
         return scaleBand(dayStr, [0, graphHeight]).paddingInner(.1)
-    }, [])
+    }, [graphHeight])
 
     // ============== 日期的选中 ==============
     const [activetime, setactivetime] = useState(dayStr)
@@ -385,70 +405,8 @@ export default function CarTrack() {
     const obj = {}
 
     return (
-        <div className='carTrackGraph'>
+        <div className='carTrackGraph' ref={containerRef}>
             <svg height={height} width={width}>
-                <g className="bg-left" transform={`translate(${100}, ${top})`}>
-                    <g className='car'>
-                        {carid.map(d => {
-                            const gAttr = {
-                                key: d,
-                                transform: `translate(${0}, ${carIdScale(d) + carIdScale.bandwidth()/ 2})`,
-                                className: `carItem ${activeCarId.includes(d) ? 'active' : 'disabled'}`,
-                                onClick: () => {
-                                    const newCarId = pushOrPop(activeCarId, d, 'mulity')
-                                    setactiveCarId(newCarId)
-                                }
-                            }
-                            const color = calCarColor(d)
-                            const circleAttr = {
-                                cx: 0,
-                                cy: 0,
-                                stroke: color,
-                                fill: color,
-                            }
-                            const textAttr = {
-                                dx: 6,
-                                dy: 3,
-                            }
-                            return (
-                                <g {...gAttr}>
-                                    <circle {...circleAttr}/>
-                                    <text {...textAttr}>{d}</text>
-                                </g>
-                            )
-                        })}
-                    </g>
-                    <g className='day' transform={`translate(100, 0)`}>
-                        {dayStr.map(d => {
-                            const y = dayStrScale(d)
-                            const spaceItem = dayStrScale.bandwidth()
-                            const gAttr = {
-                                key: d,
-                                transform: `translate(${0}, ${y + spaceItem / 2})`,
-                                className: `dayItem ${activetime.includes(d) ? 'active' : 'disabled'}`,
-                                onClick: () => {
-                                    const newActiveTime = pushOrPop(activetime, d, 'mulity')
-                                    setactivetime(newActiveTime)
-                                }
-                            }
-                            const rectAttr = {
-                                x: 0,
-                                y: -spaceItem / 2,
-                                height: spaceItem,
-                            }
-                            const textAttr = {
-                                dx: 14,
-                            }
-                            const day = d.split('/')[1]
-                            return (
-                                <g {...gAttr}>
-                                    <rect {...rectAttr}/>
-                                    <text {...textAttr}>{`${day} ${['11', '12', '17', '18'].includes(day) ? 'weekend' : ''}`}</text>
-                                </g>
-                            )
-                        })}
-                    </g>
-                </g>
                 <g className="bg-right" transform={`translate(${left}, ${top})`}>
                 <g className='transform-g'>
                     {/* 选择图 */}
@@ -604,7 +562,7 @@ export default function CarTrack() {
                                 fill: color,
                             }
                             const opacity = disabledLocation.includes(location) ? 0.01 : 1
-                            const className= `stopLocationItem-${range}-${location.replace(/['\s]/g, '')}`
+                            const className= `stopLocationItem-${range}-${location.replace(/['.\s]/g, '')}`
                             const gAttr = {
                                 key,
                                 fontSize: 9,
@@ -719,37 +677,6 @@ export default function CarTrack() {
                 </g>
                 </g>
             </svg>
-            <div className='location'>
-                {stopLegend
-                    .map(d => {
-                        return (
-                            <div className='location-classify' key={d.classify}>
-                                <div className="classify-item">
-                                    <div className="classify-item-label" style={{
-                                        background: calcualteStoreColor(d.data[0])
-                                    }} />
-                                    <div className="classify-item-value">{d.classify}</div>
-                                </div>
-                                <div className="location-classify-cotent">
-                                    {
-                                        d.data.map(d1 => {
-                                            const itemAttr = {
-                                                className: `loaction-item ${disabledLocation.includes(d1) ? 'disabled' : ''}`,
-                                                key: d1,
-                                                onClick: () => {
-                                                    setDisabledLocation(pushOrPop(disabledLocation, d1, 'mul'))
-                                                }
-                                            }
-                                            return (
-                                                <div {...itemAttr}>{d1}</div>
-                                            )
-                                        })
-                                    } 
-                                </div>
-                            </div>
-                        )
-                    })}
-            </div>
             {/* tooltips */}
             <div className="tooltips tooltips-location" style={tooltips.style}>
                     {Object.entries(tooltips.content).map(d => {
@@ -758,7 +685,7 @@ export default function CarTrack() {
                             <div className="tooltip-line" key={name}>
                                 <div className="tooltip-label">{name}:</div>
                                 <div className="tooltip-value">{
-                                    value.toString().split('/n').map(d1 => <span key={d1}>{d1}</span>)
+                                    value ? value.toString().split('/n').map(d1 => <span key={d1}>{d1}</span>) : ''
                                 }</div>
                             </div>
                         )
