@@ -1,6 +1,6 @@
 import { csv } from 'd3-fetch'
 import { interpolateRgb } from 'd3-interpolate'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { building_coordinate } from '../../data/buliding_coordinate'
 import consumptionDots from '../../data/consumptionDots'
 import road from '../../data/abila_maps'
@@ -9,6 +9,8 @@ import { observer } from 'mobx-react'
 import systemStore from '../../page/system/store'
 import { chain } from 'lodash'
 import { dayStr } from '../../data/consumer_data'
+import { calcualteStoreColor } from '../../utils'
+import { scaleLinear } from 'd3-scale'
 
 const colorScale4Trajectory = interpolateRgb('#8DFF33', '#F74646')
 const fatLineWidth = 4, OverlapLineWidth = 8 // in pixels
@@ -30,7 +32,7 @@ const { maptalks, Stats, THREE,
     getLinePosition,
     _getLinePosition,
     MeshLine,
-    MeshLineMaterial,dat } = window
+    MeshLineMaterial,dat,THREE_Text2D } = window
 
 
 
@@ -116,6 +118,130 @@ class RingEffect extends maptalks.BaseObject {
 }
 
 
+var simplepath = {
+
+    positionsConvert: function (worldPoints, altitude = 0, layer) {
+        const vectors = [];
+        for (let i = 0, len = worldPoints.length; i < len; i += 3) {
+            let x = worldPoints[i], y = worldPoints[i + 1], z = worldPoints[i + 2];
+            if (altitude > 0) {
+                z += layer.distanceToVector3(altitude, altitude).x;
+            }
+            vectors.push(new THREE.Vector3(x, y, z));
+        }
+        return vectors;
+    },
+
+    vectors2Pixel: function (worldPoints, size, camera, altitude = 0, layer) {
+        if (!(worldPoints[0] instanceof THREE.Vector3)) {
+            worldPoints = simplepath.positionsConvert(worldPoints, altitude, layer);
+        }
+        const pixels = worldPoints.map(worldPoint => {
+            return simplepath.vector2Pixel(worldPoint, size, camera);
+        })
+        return pixels;
+
+    },
+
+    vector2Pixel: function (world_vector, size, camera) {
+        const vector = world_vector.project(camera);
+        const halfWidth = size.width / 2;
+        const halfHeight = size.height / 2;
+        const result = {
+            x: Math.round(vector.x * halfWidth + halfWidth),
+            y: Math.round(-vector.y * halfHeight + halfHeight)
+        };
+        return result;
+    },
+
+};
+
+var OPTIONS1 = {
+    fontSize: 20,
+    altitude: 0,
+    color: '#fff',
+    text: 'hello',
+    weight: 0,
+    zoomFilter: false
+};
+class TextSprite extends maptalks.BaseObject {
+    constructor(coordinate, options, layer) {
+        options = maptalks.Util.extend({}, OPTIONS1, options, { layer, coordinate });
+        super();
+        //Initialize internal configuration
+        // https://github.com/maptalks/maptalks.three/blob/1e45f5238f500225ada1deb09b8bab18c1b52cf2/src/BaseObject.js#L135
+        this._initOptions(options);
+        const { altitude, fontSize, color, text } = options;
+
+
+        //Initialize internal object3d
+        // https://github.com/maptalks/maptalks.three/blob/1e45f5238f500225ada1deb09b8bab18c1b52cf2/src/BaseObject.js#L140
+        this._createGroup();
+        const textsprite = new THREE_Text2D.SpriteText2D(text, { align: THREE_Text2D.textAlign.center, font: `${fontSize * 2}px Arial`, fillStyle: color, antialias: false });
+        textsprite.children[0].material.sizeAttenuation = false;
+        const scale = 0.01 / 10 / 3;
+        textsprite.scale.set(scale, scale, scale);
+        this.getObject3d().add(textsprite);
+
+        //set object3d position
+        const z = layer.distanceToVector3(altitude, altitude).x;
+        const position = layer.coordinateToVector3(coordinate, z);
+        this.getObject3d().position.copy(position);
+        this.textRect = {
+            width: this.calTextWidth(text, fontSize),
+            height: fontSize
+        }
+
+        this._vector = new THREE.Vector3();
+        this._pixel = {
+            x: 0,
+            y: 0
+        };
+    }
+
+    getTextRect() {
+        this.getPixel();
+        const { x, y } = this._pixel;
+        const { width, height } = this.textRect;
+        return {
+            minX: x - width / 2,
+            minY: y - height / 2,
+            maxX: x + width / 2,
+            maxY: y + height / 2
+        }
+    }
+
+    calTextWidth(text, fontSize) {
+        const chinese = text.match(/[\u4e00-\u9fa5]/g) || '';
+        const chineseLen = chinese.length;
+        const width = chineseLen * fontSize + (text.length - chineseLen) * 0.5 * fontSize;
+        return width;
+    }
+
+    getPixel() {
+        const size = this.getMap().getSize();
+        const camera = this.getLayer().getCamera();
+        const position = this.getObject3d().position;
+        this._vector.x = position.x;
+        this._vector.y = position.y;
+        this._vector.z = position.z;
+        this._pixel = simplepath.vector2Pixel(this._vector, size, camera);
+    }
+
+    identify(coordinate) {
+        const { minX, minY, maxX, maxY } = this.getTextRect();
+        const pixel = this.getMap().coordToContainerPoint(coordinate);
+        if (pixel.x >= minX && pixel.x <= maxX && pixel.y >= minY && pixel.y <= maxY) {
+            return true;
+        }
+        return false;
+    }
+}
+
+maptalks.ThreeLayer.prototype.toText = function (coordinate, options) {
+    return new TextSprite(coordinate, options, this);
+}
+
 //FatLines////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //https://threejs.org/examples/#webgl_lines_fat
 var fatLinesmaterial = new THREE.LineMaterial({
@@ -142,6 +268,9 @@ const threeLayer = new maptalks.ThreeLayer('t', {
 
 let exitTrack = []
 
+let exitBuild = []
+let already = false
+
 function Map3D() {
 
     const { activeCar, resetCar, selectDay, changeSelectDay } = systemStore
@@ -156,7 +285,7 @@ function Map3D() {
                     center: [24.870, 36.071],
                     zoom: 14,
                     pitch: 70,
-                    bearing: 180,
+                    bearing: 0,
                     centerCross: true,
                     doubleClickZoom: false,
                 }
@@ -183,6 +312,7 @@ function Map3D() {
         
                 //地图线
                 addLines()
+                already = true
                 //建筑物
                 drawBuildings()
                 // 动画
@@ -196,6 +326,7 @@ function Map3D() {
     useEffect(() => {
         addOverlapLines(activeCar)
         drawConsumptionDots(activeCar)
+        drawBuildings()
     }, [activeCar, selectDay])
 
     var selectMesh = []
@@ -261,12 +392,37 @@ function Map3D() {
     }
 
     //Buildings 0705/////////////////////////////////////////////////////////////////////////////////////////////////////////
-    let buildings = []
+    const buildConsumeCountObj = useMemo(() => {
+        return chain(consumptionDots)
+            .filter(d => d.dayStr === selectDay)
+            .filter(d => activeCar.length ? activeCar.includes(d.id) : true)
+            .countBy('location')
+            .value()
+    }, [selectDay, activeCar])
 
+    const buildingHeightScale = useMemo(() => {
+        const domain = Object.values(buildConsumeCountObj).sort((a,b) => a-b)
+        const scale = scaleLinear(domain, [10, 500])
+        return name => scale(buildConsumeCountObj[name])
+    }, [buildConsumeCountObj])
+
+    const activeBuildName = useRef('')
     function drawBuildings() {
+        if (!already) return
+        const text = []
+        if (exitBuild.length > 0) {
+            threeLayer.removeMesh(exitBuild)
+            exitBuild = []
+        }
         building_coordinate.forEach(function (building, num) {
             let centerLong = (building.range[0][0] + building.range[1][0]) / 2
             let centerLat = (building.range[0][1] + building.range[1][1]) / 2
+            const heightItem = buildingHeightScale(building.name) || 10
+            text.push({
+                name: building.name,
+                coordinates: [centerLong, centerLat],
+                z: heightItem,
+            })
             let polygon = new maptalks.Polygon([
                 [
                     [centerLong - buildingR, centerLat - buildingR],
@@ -276,7 +432,7 @@ function Map3D() {
                     [centerLong - buildingR, centerLat - buildingR]
                 ]
             ])
-            let color = buildingColor[building.type]
+            let color = calcualteStoreColor(building.name)
             let material = new THREE.MeshPhongMaterial({
                 color: color,
                 opacity: 0.5,
@@ -284,7 +440,7 @@ function Map3D() {
             })
             let extrudePolygon = threeLayer.toExtrudePolygon(polygon, {
                 interactive: true,
-                height: 500 * Math.random(),
+                height: heightItem,
                 topColor: color
             }, material)
             extrudePolygon.id = building.name
@@ -295,8 +451,14 @@ function Map3D() {
                     x: centerLong,
                     y: centerLat
                 }
-                addRingEffect(coordinate, color)
                 const location = select.id
+                if (activeBuildName.current === location) {
+                    resetCar([])
+                    removeRingEffect()
+                    return
+                }
+                addRingEffect(coordinate, color)
+                activeBuildName.current = location
                 const customData = consumptionDots.filter(d => {
                     return d.location === location && d.timestamp.split(' ')[0] === selectDay
                 })
@@ -304,10 +466,16 @@ function Map3D() {
                 console.log(carId)
                 resetCar(carId)
             })
+            exitBuild.push(extrudePolygon)
             threeLayer.addMesh(extrudePolygon)
-            buildings.push(extrudePolygon)
         })
-
+        const a = text.map(element => {
+            const b = threeLayer.toText(element.coordinates, { text: element.name, color: calcualteStoreColor(element.name), fontSize: 16, weight: 1, interactive: false })
+            b.setAltitude(10 + element.z)
+            exitBuild.push(b)
+            return b
+        });
+        threeLayer.addMesh(a);
     }
 
     //Trajectory Line///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -345,12 +513,19 @@ function Map3D() {
         })
     }
 
+    const ringEffect  = useRef([])
     function addRingEffect(coordinate, color) {
         let material = getMaterial(0, color)
         let ringObj = new RingEffect(coordinate, {
             radius: 200
         }, material, threeLayer)
+        ringEffect.current.push(ringObj)
         threeLayer.addMesh(ringObj)
+    }
+
+    function removeRingEffect(coordinate, color) {
+        threeLayer.removeMesh(ringEffect.current)
+        ringEffect.current = []
     }
 
     function getMaterial(type = 0, color) {

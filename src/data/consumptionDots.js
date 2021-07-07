@@ -21791,6 +21791,7 @@ const consumptionDots = [
 ].map(d => ({
     ...d,
     price: parseFloat(d.price),
+    dayStr: d.timestamp.split(' ')[0],
 }))
 
 export default consumptionDots
