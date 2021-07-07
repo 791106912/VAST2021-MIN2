@@ -565,6 +565,7 @@ function ConsumerGraph() {
                                                                     'consume st': `${d1.s}`,
                                                                     'consume et': `${d1.e}`,
                                                                     'consume price': locationPriceObj[storeName],
+                                                                    'card num': chain(consumeData).filter(d2 => d2.location === storeName).map('loyaltynum').uniq().value().length
                                                                 }
                                                             })
                                                         },
