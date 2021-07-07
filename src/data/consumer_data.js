@@ -268,8 +268,305 @@ export const carAssign = [
     {
         "LastName": "Azada",
         "FirstName": "Lars",
-        "CarID": "2", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Engineer"
-    }, { "LastName": "Balas", "FirstName": "Felix", "CarID": "3", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Engineer" }, { "LastName": "Barranco", "FirstName": "Ingrid", "CarID": "4", "CurrentEmploymentType": "Executive", "CurrentEmploymentTitle": "SVP/CFO" }, { "LastName": "Baza", "FirstName": "Isak", "CarID": "5", "CurrentEmploymentType": "Information Technology", "CurrentEmploymentTitle": "IT Technician" }, { "LastName": "Bergen", "FirstName": "Linnea", "CarID": "6", "CurrentEmploymentType": "Information Technology", "CurrentEmploymentTitle": "IT Group Manager" }, { "LastName": "Orilla", "FirstName": "Elsa", "CarID": "7", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Drill Technician" }, { "LastName": "Alcazar", "FirstName": "Lucas", "CarID": "8", "CurrentEmploymentType": "Information Technology", "CurrentEmploymentTitle": "IT Technician" }, { "LastName": "Cazar", "FirstName": "Gustav", "CarID": "9", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Drill Technician" }, { "LastName": "Campo-Corrente", "FirstName": "Ada", "CarID": "10", "CurrentEmploymentType": "Executive", "CurrentEmploymentTitle": "SVP/CIO" }, { "LastName": "Calzas", "FirstName": "Axel", "CarID": "11", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Hydraulic Technician" }, { "LastName": "Cocinaro", "FirstName": "Hideki", "CarID": "12", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Site Control" }, { "LastName": "Ferro", "FirstName": "Inga", "CarID": "13", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Site Control" }, { "LastName": "Dedos", "FirstName": "Lidelse", "CarID": "14", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Engineering Group Manager" }, { "LastName": "Bodrogi", "FirstName": "Loreto", "CarID": "15", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Site Control" }, { "LastName": "Vann", "FirstName": "Isia", "CarID": "16", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Perimeter Control" }, { "LastName": "Flecha", "FirstName": "Sven", "CarID": "17", "CurrentEmploymentType": "Information Technology", "CurrentEmploymentTitle": "IT Technician" }, { "LastName": "Frente", "FirstName": "Birgitta", "CarID": "18", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Geologist" }, { "LastName": "Frente", "FirstName": "Vira", "CarID": "19", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Hydraulic Technician" }, { "LastName": "Fusil", "FirstName": "Stenig", "CarID": "20", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Building Control" }, { "LastName": "Osvaldo", "FirstName": "Hennie", "CarID": "21", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Perimeter Control" }, { "LastName": "Nubarron", "FirstName": "Adra", "CarID": "22", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Badging Office" }, { "LastName": "Lagos", "FirstName": "Varja", "CarID": "23", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Badging Office" }, { "LastName": "Mies", "FirstName": "Minke", "CarID": "24", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Perimeter Control" }, { "LastName": "Herrero", "FirstName": "Kanon", "CarID": "25", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Geologist" }, { "LastName": "Onda", "FirstName": "Marin", "CarID": "26", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Drill Site Manager" }, { "LastName": "Orilla", "FirstName": "Kare", "CarID": "27", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Drill Technician" }, { "LastName": "Borrasca", "FirstName": "Isande", "CarID": "28", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Drill Technician" }, { "LastName": "Ovan", "FirstName": "Bertrand", "CarID": "29", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Facilities Group Manager" }, { "LastName": "Resumir", "FirstName": "Felix", "CarID": "30", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Security Group Manager" }, { "LastName": "Sanjorge Jr.", "FirstName": "Sten", "CarID": "31", "CurrentEmploymentType": "Executive", "CurrentEmploymentTitle": "President/CEO" }, { "LastName": "Strum", "FirstName": "Orhan", "CarID": "32", "CurrentEmploymentType": "Executive", "CurrentEmploymentTitle": "SVP/COO" }, { "LastName": "Tempestad", "FirstName": "Brand", "CarID": "33", "CurrentEmploymentType": "Engineering", "CurrentEmploymentTitle": "Drill Technician" }, { "LastName": "Vann", "FirstName": "Edvard", "CarID": "34", "CurrentEmploymentType": "Security", "CurrentEmploymentTitle": "Perimeter Control" }, { "LastName": "Vasco-Pais", "FirstName": "Willem", "CarID": "35", "CurrentEmploymentType": "Executive", "CurrentEmploymentTitle": "Environmental Safety Advisor" }, { "LastName": "Hafon", "FirstName": "Albina", "CarID": "", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Truck Driver" }, { "LastName": "Hawelon", "FirstName": "Benito", "CarID": "", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Truck Driver" }, { "LastName": "Hawelon", "FirstName": "Claudio", "CarID": "", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Truck Driver" }, { "LastName": "Mies", "FirstName": "Henk", "CarID": "", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Truck Driver" }, { "LastName": "Morlun", "FirstName": "Valeria", "CarID": "", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Truck Driver" }, { "LastName": "Morlun", "FirstName": "Adan", "CarID": "", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Truck Driver" }, { "LastName": "Morluniau", "FirstName": "Cecilia", "CarID": "", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Truck Driver" }, { "LastName": "Nant", "FirstName": "Irene", "CarID": "", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Truck Driver" }, { "LastName": "Scozzese", "FirstName": "Dylan", "CarID": "", "CurrentEmploymentType": "Facilities", "CurrentEmploymentTitle": "Truck Driver" }]
+        "CarID": "2",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Engineer"
+    },
+    {
+        "LastName": "Balas",
+        "FirstName": "Felix",
+        "CarID": "3",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Engineer"
+    },
+    {
+        "LastName": "Barranco",
+        "FirstName": "Ingrid",
+        "CarID": "4",
+        "CurrentEmploymentType": "Executive",
+        "CurrentEmploymentTitle": "SVP/CFO"
+    },
+    {
+        "LastName": "Baza",
+        "FirstName": "Isak",
+        "CarID": "5",
+        "CurrentEmploymentType": "Information Technology",
+        "CurrentEmploymentTitle": "IT Technician"
+    },
+    {
+        "LastName": "Bergen",
+        "FirstName": "Linnea",
+        "CarID": "6",
+        "CurrentEmploymentType": "Information Technology",
+        "CurrentEmploymentTitle": "IT Group Manager"
+    },
+    {
+        "LastName": "Orilla",
+        "FirstName": "Elsa",
+        "CarID": "7",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Drill Technician"
+    },
+    {
+        "LastName": "Alcazar",
+        "FirstName": "Lucas",
+        "CarID": "8",
+        "CurrentEmploymentType": "Information Technology",
+        "CurrentEmploymentTitle": "IT Technician"
+    },
+    {
+        "LastName": "Cazar",
+        "FirstName": "Gustav",
+        "CarID": "9",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Drill Technician"
+    },
+    {
+        "LastName": "Campo-Corrente",
+        "FirstName": "Ada",
+        "CarID": "10",
+        "CurrentEmploymentType": "Executive",
+        "CurrentEmploymentTitle": "SVP/CIO"
+    },
+    {
+        "LastName": "Calzas",
+        "FirstName": "Axel",
+        "CarID": "11",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Hydraulic Technician"
+    },
+    {
+        "LastName": "Cocinaro",
+        "FirstName": "Hideki",
+        "CarID": "12",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Site Control"
+    },
+    {
+        "LastName": "Ferro",
+        "FirstName": "Inga",
+        "CarID": "13",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Site Control"
+    },
+    {
+        "LastName": "Dedos",
+        "FirstName": "Lidelse",
+        "CarID": "14",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Engineering Group Manager"
+    },
+    {
+        "LastName": "Bodrogi",
+        "FirstName": "Loreto",
+        "CarID": "15",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Site Control"
+    },
+    {
+        "LastName": "Vann",
+        "FirstName": "Isia",
+        "CarID": "16",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Perimeter Control"
+    },
+    {
+        "LastName": "Flecha",
+        "FirstName": "Sven",
+        "CarID": "17",
+        "CurrentEmploymentType": "Information Technology",
+        "CurrentEmploymentTitle": "IT Technician"
+    },
+    {
+        "LastName": "Frente",
+        "FirstName": "Birgitta",
+        "CarID": "18",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Geologist"
+    },
+    {
+        "LastName": "Frente",
+        "FirstName": "Vira",
+        "CarID": "19",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Hydraulic Technician"
+    },
+    {
+        "LastName": "Fusil",
+        "FirstName": "Stenig",
+        "CarID": "20",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Building Control"
+    },
+    {
+        "LastName": "Osvaldo",
+        "FirstName": "Hennie",
+        "CarID": "21",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Perimeter Control"
+    },
+    {
+        "LastName": "Nubarron",
+        "FirstName": "Adra",
+        "CarID": "22",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Badging Office"
+    },
+    {
+        "LastName": "Lagos",
+        "FirstName": "Varja",
+        "CarID": "23",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Badging Office"
+    },
+    {
+        "LastName": "Mies",
+        "FirstName": "Minke",
+        "CarID": "24",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Perimeter Control"
+    },
+    {
+        "LastName": "Herrero",
+        "FirstName": "Kanon",
+        "CarID": "25",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Geologist"
+    },
+    {
+        "LastName": "Onda",
+        "FirstName": "Marin",
+        "CarID": "26",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Drill Site Manager"
+    },
+    {
+        "LastName": "Orilla",
+        "FirstName": "Kare",
+        "CarID": "27",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Drill Technician"
+    },
+    {
+        "LastName": "Borrasca",
+        "FirstName": "Isande",
+        "CarID": "28",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Drill Technician"
+    },
+    {
+        "LastName": "Ovan",
+        "FirstName": "Bertrand",
+        "CarID": "29",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Facilities Group Manager"
+    },
+    {
+        "LastName": "Resumir",
+        "FirstName": "Felix",
+        "CarID": "30",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Security Group Manager"
+    },
+    {
+        "LastName": "Sanjorge Jr.",
+        "FirstName": "Sten",
+        "CarID": "31",
+        "CurrentEmploymentType": "Executive",
+        "CurrentEmploymentTitle": "President/CEO"
+    },
+    {
+        "LastName": "Strum",
+        "FirstName": "Orhan",
+        "CarID": "32",
+        "CurrentEmploymentType": "Executive",
+        "CurrentEmploymentTitle": "SVP/COO"
+    },
+    {
+        "LastName": "Tempestad",
+        "FirstName": "Brand",
+        "CarID": "33",
+        "CurrentEmploymentType": "Engineering",
+        "CurrentEmploymentTitle": "Drill Technician"
+    },
+    {
+        "LastName": "Vann",
+        "FirstName": "Edvard",
+        "CarID": "34",
+        "CurrentEmploymentType": "Security",
+        "CurrentEmploymentTitle": "Perimeter Control"
+    },
+    {
+        "LastName": "Vasco-Pais",
+        "FirstName": "Willem",
+        "CarID": "35",
+        "CurrentEmploymentType": "Executive",
+        "CurrentEmploymentTitle": "Environmental Safety Advisor"
+    },
+    {
+        "LastName": "Hafon",
+        "FirstName": "Albina",
+        "CarID": "",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Truck Driver"
+    },
+    {
+        "LastName": "Hawelon",
+        "FirstName": "Benito",
+        "CarID": "",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Truck Driver"
+    },
+    {
+        "LastName": "Hawelon",
+        "FirstName": "Claudio",
+        "CarID": "",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Truck Driver"
+    },
+    {
+        "LastName": "Mies",
+        "FirstName": "Henk",
+        "CarID": "",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Truck Driver"
+    },
+    {
+        "LastName": "Morlun",
+        "FirstName": "Valeria",
+        "CarID": "",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Truck Driver"
+    },
+    {
+        "LastName": "Morlun",
+        "FirstName": "Adan",
+        "CarID": "",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Truck Driver"
+    },
+    {
+        "LastName": "Morluniau",
+        "FirstName": "Cecilia",
+        "CarID": "",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Truck Driver"
+    },
+    {
+        "LastName": "Nant",
+        "FirstName": "Irene",
+        "CarID": "",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Truck Driver"
+    },
+    {
+        "LastName": "Scozzese",
+        "FirstName": "Dylan",
+        "CarID": "",
+        "CurrentEmploymentType": "Facilities",
+        "CurrentEmploymentTitle": "Truck Driver"
+    }
+]
 
 export const storeButtonArr = {
     "Brew've Been Served": [{
