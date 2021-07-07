@@ -7,7 +7,7 @@ import road from '../../data/abila_maps'
 import './index.scss'
 import { observer } from 'mobx-react'
 import systemStore from '../../page/system/store'
-import { chain } from 'lodash'
+import { chain, maxBy } from 'lodash'
 import { dayStr } from '../../data/consumer_data'
 import { calcualteStoreColor } from '../../utils'
 import { scaleLinear } from 'd3-scale'
@@ -402,7 +402,7 @@ function Map3D() {
 
     const buildingHeightScale = useMemo(() => {
         const domain = Object.values(buildConsumeCountObj).sort((a,b) => a-b)
-        const scale = scaleLinear(domain, [10, 500])
+        const scale = scaleLinear([0, maxBy(domain)], [10, 300])
         return name => scale(buildConsumeCountObj[name])
     }, [buildConsumeCountObj])
 

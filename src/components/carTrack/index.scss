@@ -1,6 +1,5 @@
-.carTrackGraph {
+.carTrackGraphSys {
     position: relative;
-    display: flex;
     height: 100%;
     width: 100%;
     .location {
@@ -39,6 +38,9 @@
                 }
             }
         }
+    }
+    .tootbox {
+        text-align: right;
     }
     svg {
         .bg-left {
@@ -105,16 +107,10 @@
                             font-size: 6px;
                         }
                     }
-                    circle {
-                        r: 0;
-                    }
                     &.active {
                         rect {
                             stroke: #000;
                             fill-opacity: 1;
-                        }
-                        circle {
-                            r: 2;
                         }
                     }
                 }

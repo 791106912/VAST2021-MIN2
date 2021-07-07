@@ -413,8 +413,23 @@ function CarTrack() {
     //! =============================== 其他 ===============================
     const obj = {}
 
+    const [showtrack, setshowtrack] = useState(true)
+    const [showDetail, setshowDetail] = useState(false)
+
     return (
-        <div className='carTrackGraph' ref={containerRef}>
+        <div className='carTrackGraphSys' ref={containerRef}>
+            <div className="tootbox">
+                <div className="toolbox-item">
+                    <label htmlFor="showCarTrack">showTrack</label>
+                    <input type="checkbox" id='showCarTrack' checked={showtrack} onChange={e => {
+                        setshowtrack(!showtrack)
+                    }} />
+                    <label htmlFor="showCarStop">showDetail</label>
+                    <input type="checkbox" id='showCarStop'  checked={showDetail} onChange={e => {
+                        setshowDetail(!showDetail)
+                    }} />
+                </div>
+            </div>
             <svg height={height} width={width}>
                 <g className="bg-left" transform={`translate(${0}, ${top})`}>
                     <g className='day' transform={`translate(10, 0)`}>
@@ -488,7 +503,7 @@ function CarTrack() {
                     </g>
                     {/* 车的连线图 连线和箭头 */}
                     <g className="car">
-                        {carTrack.map((d, i) => {
+                        {showtrack && carTrack.map((d, i) => {
                                 const { id, track } = d
                                 const carColor = calCarColor(id)
                                 return (
@@ -602,7 +617,10 @@ function CarTrack() {
                                 height: rectheight,
                                 fill: color,
                             }
-                            const opacity = disabledLocation.includes(location) ? 0.01 : 1
+                            let opacity = disabledLocation.includes(location) ? 0.01 : 1
+                            if (detailLocation.length && !detailLocation.includes(key)) {
+                                opacity = 0.1
+                            }
                             const className= `stopLocationItem-${range}-${location.replace(/['.\s]/g, '')}`
                             const gAttr = {
                                 key,
@@ -614,7 +632,7 @@ function CarTrack() {
                                     e.stopPropagation()
                                     if (detailLocation.length && !detailLocation.includes(key)) return
                                     const { clientX, clientY } = e
-                                    const {x, y} = document.querySelector('.carTrackGraph').getBoundingClientRect()
+                                    const {x, y} = document.querySelector('.carTrackGraphSys').getBoundingClientRect()
                                     const tx = clientX - x + 10
                                     const ty = clientY - y + 10
                                     const relateCar = chain(data).map('id').countBy().entries().map(d1 => d1.join(':')).join('/n').value()
@@ -686,11 +704,11 @@ function CarTrack() {
                                                     stroke: carColor,
                                                     fill: carColor,
                                                     fillOpacity: .4,
-                                                    r: 2,
+                                                    r: showDetail || detailLocation.includes(key) ? 2 : 0,
                                                     onMouseMove: e => {
                                                         e.stopPropagation()
                                                         const { clientX, clientY } = e
-                                                        const {x, y} = document.querySelector('.carTrackGraph').getBoundingClientRect()
+                                                        const {x, y} = document.querySelector('.carTrackGraphSys').getBoundingClientRect()
                                                         const tx = clientX - x + 10
                                                         const ty = clientY - y + 10
                                                         const info = carAssign.find(d2 => d2.CarID === id)
