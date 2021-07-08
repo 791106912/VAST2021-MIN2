@@ -27,7 +27,70 @@ function UserTable() {
     }, [])
     return (
         <div className="userTable">
-            <table border='0'>
+            <div className="left">
+            {
+                carData.slice(0, (carData.length) / 2).map(d => {
+                    const color = calCarColor(d.id)
+                    const style = activeCar.includes(d.id) ? {
+                        background: color,
+                        color: '#fff',
+                        borderColor: color,
+                    } : {
+                        background: '#fff',
+                        color,
+                        borderColor: color,
+                    }
+                    return (
+                        <div
+                            className="user-item"
+                            title={
+                                `Dep: ${d.type} \nTitle: ${d.title}`
+                            }
+                            key={d.id}
+                            onClick={() => {
+                                changeActiveCar(d.id)
+                            }}
+                        >
+                            <div className="user-count" style={style}>{d.id}</div>
+                            <div className="user-name">{d.name}</div>
+                        </div>
+                    )
+                })
+            }
+            </div>
+            <div className="left">
+            {
+                carData.slice((carData.length) / 2, carData.length).map(d => {
+                    const color = calCarColor(d.id)
+                    const style = activeCar.includes(d.id) ? {
+                        background: color,
+                        color: '#fff',
+                        borderColor: color,
+                    } : {
+                        background: '#fff',
+                        color,
+                        borderColor: color,
+                    }
+                    return (
+                        <div
+                            className="user-item"
+                            title={
+                                `Dep: ${d.type} \nTitle: ${d.title}`
+                            }
+                            key={d.id}
+                            onClick={() => {
+                                changeActiveCar(d.id)
+                            }}
+                        >
+                            <div className="user-count" style={style}>{d.id}</div>
+                            <div className="user-name">{d.name}</div>
+                        </div>
+                    )
+                })
+            }
+            </div>
+             
+            {/* <table border='0'>
                 <thead>
                     <tr>
                         <th></th>
@@ -70,7 +133,7 @@ function UserTable() {
                         })
                     }
                 </tbody>
-            </table>
+            </table> */}
         </div>
     )
 }
