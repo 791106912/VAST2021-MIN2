@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    background: #eff3f6;
     #map {
         width: 100%;
         height: 100%;
@@ -12,5 +13,16 @@
         position: absolute;
         top: 0;
         right: 0;
+    }
+    .play {
+        position: absolute;
+        top: 0;
+        right: 100px;
+    }
+    text {
+        position: absolute;
+        top: 30px;
+        right: 0;
+        font-size: 30px;
     }
 }

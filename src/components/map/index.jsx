@@ -8,9 +8,10 @@ import './index.scss'
 import { observer } from 'mobx-react'
 import systemStore from '../../page/system/store'
 import { chain, maxBy } from 'lodash'
-import { dayStr } from '../../data/consumer_data'
-import { calcualteStoreColor } from '../../utils'
+import { carAssign, dayStr } from '../../data/consumer_data'
+import { calCarColor, calcualteStoreColor } from '../../utils'
 import { scaleLinear } from 'd3-scale'
+import moment from 'moment'
 
 const colorScale4Trajectory = interpolateRgb('#8DFF33', '#F74646')
 const fatLineWidth = 4, OverlapLineWidth = 8 // in pixels
@@ -40,6 +41,8 @@ var OPTIONS = {
     altitude: 0,
     speed: 0.001
 }
+
+let run = null
 
 class SpriteLine extends maptalks.BaseObject {
     constructor(lineString, options, material, layer) {
@@ -242,6 +245,20 @@ maptalks.ThreeLayer.prototype.toText = function (coordinate, options) {
     return new TextSprite(coordinate, options, this);
 }
 
+
+function createMaterial(color, variety) {
+    return new THREE.PointsMaterial({
+        // size: 10,
+        sizeAttenuation: false,
+        color: color,
+        size: 40,
+        transparent: false,
+        blending: THREE.AdditiveBlending,
+        depthTest: false, //深度测试关闭，不消去场景的不可见面
+        depthWrite: false,
+        map: new THREE.TextureLoader().load('./data/icon/' + variety + '.svg')
+    });
+}
 //FatLines////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //https://threejs.org/examples/#webgl_lines_fat
 var fatLinesmaterial = new THREE.LineMaterial({
@@ -266,9 +283,21 @@ const threeLayer = new maptalks.ThreeLayer('t', {
     forceRenderOnRotating: true
 })
 
+const carInfo = carAssign.map(d => d.CarID).map(id => {
+        const color = calCarColor(id)
+        return {
+            "id": id,
+            "color": color,
+            "carIconMaterial": createMaterial(color, "car")
+        }
+    })
+
 let exitTrack = []
 
 let exitBuild = []
+
+let exitCar2DTrack = []
+
 let already = false
 
 function Map3D() {
@@ -325,8 +354,9 @@ function Map3D() {
     // !=============================== 开始监听 ===============================
     useEffect(() => {
         addOverlapLines(activeCar)
-        drawConsumptionDots(activeCar)
+        // drawConsumptionDots(activeCar)
         drawBuildings()
+        addTrajectoryLines()
     }, [activeCar, selectDay])
 
     var selectMesh = []
@@ -402,7 +432,7 @@ function Map3D() {
 
     const buildingHeightScale = useMemo(() => {
         const domain = Object.values(buildConsumeCountObj).sort((a,b) => a-b)
-        const scale = scaleLinear([0, maxBy(domain)], [10, 300])
+        const scale = scaleLinear([0, maxBy(domain)], [100, 400])
         return name => scale(buildConsumeCountObj[name])
     }, [buildConsumeCountObj])
 
@@ -435,7 +465,7 @@ function Map3D() {
             let color = calcualteStoreColor(building.name)
             let material = new THREE.MeshPhongMaterial({
                 color: color,
-                opacity: 0.5,
+                opacity: .5,
                 transparent: true
             })
             let extrudePolygon = threeLayer.toExtrudePolygon(polygon, {
@@ -463,15 +493,14 @@ function Map3D() {
                     return d.location === location && d.timestamp.split(' ')[0] === selectDay
                 })
                 const carId = chain(customData).map('id').uniq().compact().value()
-                console.log(carId)
                 resetCar(carId)
             })
             exitBuild.push(extrudePolygon)
             threeLayer.addMesh(extrudePolygon)
         })
         const a = text.map(element => {
-            const b = threeLayer.toText(element.coordinates, { text: element.name, color: calcualteStoreColor(element.name), fontSize: 16, weight: 1, interactive: false })
-            b.setAltitude(10 + element.z)
+            const b = threeLayer.toText(element.coordinates, { text: element.name, color:' #000', fontSize: 16, weight: 1, interactive: false })
+            b.setAltitude(20 + element.z)
             exitBuild.push(b)
             return b
         });
@@ -480,37 +509,28 @@ function Map3D() {
 
     //Trajectory Line///////////////////////////////////////////////////////////////////////////////////////////////////
 
-    let trajectoryMeshes = []
 
-    function addTrajectoryLines(geojsonURL, textureURL) {
-        fetch(geojsonURL).then(function (res) {
-            return res.text()
-        }).then(function (text) {
-            return JSON.parse(text)
-        }).then(function (geojson) {
-            let texture = new THREE.TextureLoader().load(textureURL)
-            texture.anisotropy = 16
-            texture.wrapS = THREE.RepeatWrapping
-            texture.wrapT = THREE.RepeatWrapping
-            let camera = threeLayer.getCamera()
-            let material = new MeshLineMaterial({
-                map: texture,
-                useMap: true,
-                lineWidth: 13,
-                sizeAttenuation: false,
-                transparent: true,
-                near: camera.near,
-                far: camera.far
+    let trajectoryMeshList = []
+
+    function addTrajectoryLines() {
+        trajectoryMeshList = []
+        threeLayer.removeMesh(exitCar2DTrack)
+        exitCar2DTrack = []
+        carInfo
+            .forEach(carItem => {
+                if (!activeCar.includes(carItem.id)) return
+                let TrajectoryList = { "id": carItem.id, "car": carItem }
+                let selectedTrajectory = trajectoryInfo
+                    .filter(d => d.dayStr === selectDay && d.id == carItem.id)
+                    .sort((a, b) => a.time - b.time)
+
+                if (selectedTrajectory.length > 0) {
+                    let currentcar = carIconInit(carItem.id, selectedTrajectory[0].location)
+                    currentcar.trajectoryList = selectedTrajectory
+                    trajectoryMeshList.push(TrajectoryList)
+                }
             })
-            let multiLineStrings = maptalks.GeoJSON.toGeometry(geojson)
-            for (let multiLineString of multiLineStrings) {
-                let lines = multiLineString._geometries.map(lineString => {
-                    return new SpriteLine(lineString, { altitude: 0 }, material, threeLayer)
-                })
-                threeLayer.addMesh(lines)
-                trajectoryMeshes = trajectoryMeshes.concat(lines)
-            }
-        })
+    
     }
 
     const ringEffect  = useRef([])
@@ -625,61 +645,6 @@ function Map3D() {
         requestAnimationFrame(animation)
     }
 
-    //GUI
-    function initGui() {
-        var params = {
-            add: true,
-            color: 0xa7b4d4,
-            show: true,
-            opacity: 0.4,
-            altitude: 0,
-            interactive: false,
-            speed: OPTIONS.speed
-        }
-        var gui = new dat.GUI()
-        gui.width = 400
-
-        gui.add(params, 'show').name('Show all Road').onChange(function () {
-            lines.forEach(function (mesh) {
-                if (params.show) {
-                    mesh.show()
-                } else {
-                    mesh.hide()
-                }
-            })
-        })
-        gui.addColor(params, 'color').name('Road Color').onChange(function () {
-            fatLinesmaterial.color.set(params.color)
-            lines.forEach(function (mesh) {
-                mesh.setSymbol(fatLinesmaterial)
-            })
-        })
-        gui.add(params, 'opacity', 0, 1).name('Road Opacity').onChange(function () {
-            fatLinesmaterial.uniforms.opacity.value = (params.opacity)
-            lines.forEach(function (mesh) {
-                mesh.setSymbol(fatLinesmaterial)
-            })
-        })
-
-
-        gui.add(params, 'interactive').name('Road Interactivity').onChange(function () {
-            lines.forEach(function (mesh) {
-                mesh.options.interactive = params.interactive
-            })
-        })
-
-        gui.add(params, 'altitude', 0, 700).name('Trajectory Altitude').onChange(function () {
-            trajectoryMeshes.forEach(function (mesh) {
-                mesh.setAltitude(params.altitude)
-            })
-        })
-        gui.add(params, 'speed', 0.001, 0.1, 0.001).name('Trajectory Speed').onChange(function () {
-            trajectoryMeshes.forEach(function (mesh) {
-                mesh.options.speed = params.speed
-            })
-        })
-    }
-
     // 画车的轨迹
     function addOverlapLines(selectedIDList) {
         const Overlaplines = []
@@ -759,6 +724,30 @@ function Map3D() {
 
     }
 
+
+    function carIconInit(id, location) {
+        let [car] = carInfo.filter(function (car) { return car.id == id })
+        const point = threeLayer.toPoint(location, { height: 50 }, car.carIconMaterial)
+        point.setToolTip(id, {
+            showTimeout: 0,
+            eventsPropagation: true,
+            dx: 10
+        });
+        point.setAltitude(200 + activeCar.findIndex(d => d == id) * 80)
+
+        threeLayer.addMesh(point)
+        exitCar2DTrack.push(point)
+        car.point = point
+        animation()
+        return car
+    }
+
+    const [timeStamp, settimeStamp] = useState('')
+    const [isplay, setisplay] = useState(false)
+
+    const [starthour, setstarthour] = useState(6)
+    const [endhour, setendhour] = useState(23)
+    const [speed, setspeed] = useState(100)
     return (
         <div className='map-content'>
             <div id='map' />
@@ -775,6 +764,55 @@ function Map3D() {
                     )
                 })}
             </select>
+            <div className='play'>
+                <label>starthour</label>
+                <input type="number" placeholder='starthour' min='0' max='23' value={starthour} onChange={e => {
+                    setstarthour(e.target.value)
+                }} />
+                <label htmlFor="">endhour</label>
+                <input type="number" placeholder='endhour' min='0' max='23' value={endhour} onChange={e => {
+                    setendhour(e.target.value)
+                }} />
+                <label htmlFor="">speed</label>
+                <input type="number" placeholder='endhour' min='0' value={speed} onChange={e => {
+                    setspeed(e.target.value)
+                }} />
+                <button onClick={() => {
+                    const newplay = !isplay
+                    setisplay(!isplay)
+                    if (run) clearInterval(run)
+                    if (!newplay) return
+                    let startTimeStamp = moment(`${selectDay} ${starthour}:00:00`).unix()
+                    let endTimeStamp = moment(`${selectDay} ${endhour}:59:59`).unix()
+                    const useGpsData = trajectoryInfo.filter(d => d.dayStr === selectDay)
+                    let oldlocation = []
+                    console.log(speed)
+                    run = setInterval(function () {
+                        startTimeStamp = startTimeStamp + 60
+                        settimeStamp(moment(startTimeStamp * 1000).format('HH:mm:ss'))
+                        if (startTimeStamp > endTimeStamp) clearInterval(run)
+                        activeCar.forEach(carId => {
+                            const gpsData = useGpsData.filter(d => d.id == carId)
+                            if (gpsData.length < 0) {
+                                clearInterval(run)
+                                return
+                            }
+                            const nextData = gpsData.find(d => d.time - new Date(startTimeStamp * 1000) >= 0)
+                            if (!nextData) return
+                            const { location } = nextData
+                            if (location.join('-')=== oldlocation) return
+                            oldlocation = location.join('-')
+                            let [car] = carInfo.filter(function (car) { return car.id == carId })
+                                car.point.remove()
+                                carIconInit(car.id, location)
+
+                        }) 
+                    }, 1000 / speed)
+                }}>
+                    {isplay ? 'pause' : 'play'}
+                </button>
+            </div>
+            <text>{timeStamp}</text>
         </div>
     )
 }
