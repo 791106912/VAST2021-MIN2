@@ -12,6 +12,7 @@ import { carAssign, dayStr } from '../../data/consumer_data'
 import { calCarColor, calcualteStoreColor } from '../../utils'
 import { scaleLinear } from 'd3-scale'
 import moment from 'moment'
+import { car_card_dict } from '../../data/card_car_map'
 
 const colorScale4Trajectory = interpolateRgb('#8DFF33', '#F74646')
 const fatLineWidth = 4, OverlapLineWidth = 8 // in pixels
@@ -283,7 +284,7 @@ const threeLayer = new maptalks.ThreeLayer('t', {
     forceRenderOnRotating: true
 })
 
-const carInfo = carAssign.map(d => d.CarID).map(id => {
+const carInfo = Object.keys(car_card_dict).map(id => {
         const color = calCarColor(id)
         return {
             "id": id,
