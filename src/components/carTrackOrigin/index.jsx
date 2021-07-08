@@ -59,7 +59,7 @@ const timeRange = [
 function calcualteTimeRange(hour) {
     return timeRange.find(d => d.range[0] <= hour && d.range[1] > hour).key
 }
-const [width, height] = [1140,700]
+const [width, height] = [1140,1000]
 const [top, right, bottom, left] = [40, 20, 20, 300]
 const graphHeight = height - top - bottom
 const graphWidth = width - left - right
@@ -120,18 +120,21 @@ export default function CarTrack() {
         })
     }, [])
 
+    
+    // ============== 汽车的选中 ==============
+    const [activeCarId, setactiveCarId] = useState(['1'])
+
     // ============== 根据原始数据获取所有的汽车的ID ==============
     const carid = useMemo(() => {
-        return originData.map(d => d.id)
+        const ids = originData.map(d => d.id)
+        setactiveCarId(ids)
+        return ids
     }, [originData])
 
     // ============== 汽车ID的Y比例尺 ==============
     const carIdScale = useMemo(() => {
         return scaleBand(carid, [0, graphHeight])
     }, [carid])
-    
-    // ============== 汽车的选中 ==============
-    const [activeCarId, setactiveCarId] = useState(['1'])
 
     // ============== 定义日期的y轴比例尺 ==============
     const dayStrScale = useMemo(() => {
@@ -378,9 +381,39 @@ export default function CarTrack() {
 
     //! =============================== 其他 ===============================
     const obj = {}
+    const [showtrack, setshowtrack] = useState(true)
+    const [showDetail, setshowDetail] = useState(false)
 
+    const department = chain(carAssign).map('CurrentEmploymentType').uniq().value()
     return (
         <div className='carTrackGraph'>
+            <div className="tootbox">
+                <div className="toolbox-item">
+                    <label htmlFor="showCarTrack">showTrack</label>
+                    <input type="checkbox" id='showCarTrack' checked={showtrack} onChange={e => {
+                        setshowtrack(!showtrack)
+                    }} />
+                    <label htmlFor="showCarStop">showDetail</label>
+                    <input type="checkbox" id='showCarStop'  checked={showDetail} onChange={e => {
+                        setshowDetail(!showDetail)
+                    }} />
+                     <label htmlFor="checkall">checkall</label>
+                    <input type="checkbox" id='checkall' onChange={e => {
+                        setactiveCarId(e.target.checked ? carid : [])
+                    }} />
+                     <label htmlFor="dep">Dep</label>
+                    <select type="checkbox" id='dep' onChange={e => {
+                        const dep = e.target.value
+                        const selectcarid = chain(carAssign).filter(d => d.CurrentEmploymentType === dep)
+                            .map('CarID').uniq().value()
+                            setactiveCarId(selectcarid)
+                    }}>
+                        {department.map(d => {
+                            return <option value={d} key={d}>{d}</option>
+                        })}
+                    </select>
+                </div>
+            </div>
             <svg height={height} width={width}>
                 <g className="bg-left" transform={`translate(${100}, ${top})`}>
                     <g className='car'>
@@ -484,7 +517,7 @@ export default function CarTrack() {
                     </g>
                     {/* 车的连线图 连线和箭头 */}
                     <g className="car">
-                        {carTrack.map((d, i) => {
+                        {showtrack && carTrack.map((d, i) => {
                                 const { id, track } = d
                                 const carColor = calCarColor(id)
                                 return (
@@ -598,7 +631,10 @@ export default function CarTrack() {
                                 height: rectheight,
                                 fill: color,
                             }
-                            const opacity = disabledLocation.includes(location) ? 0.01 : 1
+                            let opacity = disabledLocation.includes(location) ? 0.01 : 1
+                            if (detailLocation.length && !detailLocation.includes(key)) {
+                                opacity = 0.1
+                            }
                             const className= `stopLocationItem-${range}-${location.replace(/['.\s]/g, '')}`
                             const gAttr = {
                                 key,
@@ -682,7 +718,7 @@ export default function CarTrack() {
                                                     stroke: carColor,
                                                     fill: carColor,
                                                     fillOpacity: .4,
-                                                    r: 2,
+                                                    r: showDetail || detailLocation.includes(key) ? 2 : 0,
                                                     onMouseMove: e => {
                                                         e.stopPropagation()
                                                         const { clientX, clientY } = e

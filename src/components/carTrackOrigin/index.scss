@@ -1,7 +1,16 @@
 .carTrackGraph {
     position: relative;
     display: flex;
+    padding-top: 30px;
+    .tootbox {
+        position: absolute;
+        top: 0;
+        label {
+            margin-right: 20px;
+        }
+    }
     .location {
+        // opacity: 0;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -37,6 +46,9 @@
                 }
             }
         }
+    }
+    .tootbox {
+        text-align: right;
     }
     svg {
         .bg-left {
@@ -103,9 +115,9 @@
                             font-size: 6px;
                         }
                     }
-                    circle {
-                        r: 0;
-                    }
+                    // circle {
+                    //     r: 0;
+                    // }
                     &.active {
                         rect {
                             stroke: #000;
