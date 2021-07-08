@@ -1,6 +1,6 @@
 import { ascending } from "d3-array"
 import { scaleOrdinal } from "d3-scale"
-import { schemeCategory10, schemePaired } from "d3-scale-chromatic"
+import { schemeCategory10, schemePaired, schemeSet2 } from "d3-scale-chromatic"
 import moment from "moment"
 import { building_coordinate } from "../data/buliding_coordinate"
 import { car_card_dict } from "../data/card_car_map"
@@ -86,7 +86,7 @@ export const findLocationCoord = name => {
     return [long, lat]
 } 
 
-const calColor = scaleOrdinal(Object.keys(car_card_dict), schemePaired)
+const calColor = scaleOrdinal(Object.keys(car_card_dict), schemeSet2)
 
 export const calCarColor = carid => {
     return calColor(carid)
