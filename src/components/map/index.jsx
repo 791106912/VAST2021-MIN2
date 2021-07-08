@@ -743,7 +743,7 @@ function Map3D() {
         return car
     }
 
-    const [timeStamp, settimeStamp] = useState('')
+    const [timeStamp, settimeStamp] = useState('00:00:00')
     const [isplay, setisplay] = useState(false)
 
     const [starthour, setstarthour] = useState(6)
@@ -782,12 +782,14 @@ function Map3D() {
                     const newplay = !isplay
                     setisplay(!isplay)
                     if (run) clearInterval(run)
-                    if (!newplay) return
+                    if (!newplay) {
+                        settimeStamp('00:00:00')
+                        return
+                    }
                     let startTimeStamp = moment(`${selectDay} ${starthour}:00:00`).unix()
                     let endTimeStamp = moment(`${selectDay} ${endhour}:59:59`).unix()
                     const useGpsData = trajectoryInfo.filter(d => d.dayStr === selectDay)
                     let oldlocation = []
-                    console.log(speed)
                     run = setInterval(function () {
                         startTimeStamp = startTimeStamp + 60
                         settimeStamp(moment(startTimeStamp * 1000).format('HH:mm:ss'))
