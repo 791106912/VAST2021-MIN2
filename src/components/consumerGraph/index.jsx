@@ -460,7 +460,7 @@ function ConsumerGraph() {
                                     transform: `translate(${x}, ${y})`,
                                     onMouseEnter: e => {
                                         const { clientX, clientY } = e
-                                        const {x, y} = document.querySelector('.left').getBoundingClientRect()
+                                        const {x, y} = document.querySelector('.consumerGraph .left').getBoundingClientRect()
                                         const tx = clientX - x + 10
                                         const ty = clientY - y + 10
                                         settooltips({
@@ -551,7 +551,7 @@ function ConsumerGraph() {
                                                         },
                                                         onMouseEnter: e => {
                                                             const { clientX, clientY } = e
-                                                            const {x, y} = document.querySelector('.left').getBoundingClientRect()
+                                                            const {x, y} = document.querySelector('.consumerGraph .left').getBoundingClientRect()
                                                             const tx = clientX - x + 10
                                                             const ty = clientY - y + 10
                                                             settooltips({
@@ -672,7 +672,7 @@ function ConsumerGraph() {
                                             },
                                             onMouseEnter: e => {
                                                 const { clientX, clientY } = e
-                                                const {x, y} = document.querySelector('.left').getBoundingClientRect()
+                                                const {x, y} = document.querySelector('.consumerGraph .left').getBoundingClientRect()
                                                 const tx = clientX - x + 10
                                                 const ty = clientY - y + 10
                                                 settooltips({
