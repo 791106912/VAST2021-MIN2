@@ -98,10 +98,10 @@ export default function CarTrack() {
                     let location = findLocaiton([long, lat])
                     if (!location) {
                         const item = {
-                            name: `unknow_${unknowCount}`,
+                            name: `unknown_${unknowCount}`,
                             desc: '',
                             range: [[Number(long) - 0.001, Number(lat) + 0.001], [Number(long) + 0.001, Number(lat) - 0.001]],
-                            type: 'unknow',
+                            type: 'unknown',
                         }
                         building_coordinate.push(item)
                         location = findLocaiton([long, lat])
