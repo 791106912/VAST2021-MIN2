@@ -59,7 +59,7 @@ const timeRange = [
 function calcualteTimeRange(hour) {
     return timeRange.find(d => d.range[0] <= hour && d.range[1] > hour).key
 }
-const [width, height] = [1140,1000]
+const [width, height] = [1440,1000]
 const [top, right, bottom, left] = [40, 20, 20, 300]
 const graphHeight = height - top - bottom
 const graphWidth = width - left - right

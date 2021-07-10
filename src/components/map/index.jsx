@@ -1,5 +1,4 @@
 import { csv } from 'd3-fetch'
-import { interpolateRgb } from 'd3-interpolate'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { building_coordinate } from '../../data/buliding_coordinate'
 import consumptionDots from '../../data/consumptionDots'
@@ -8,25 +7,17 @@ import './index.scss'
 import { observer } from 'mobx-react'
 import systemStore from '../../page/system/store'
 import { chain, maxBy } from 'lodash'
-import { carAssign, dayStr } from '../../data/consumer_data'
-import { calCarColor, calcualteStoreColor } from '../../utils'
+import { dayStr } from '../../data/consumer_data'
+import { calCarColor, calcualteStoreColor, findLocationCoord } from '../../utils'
 import { scaleLinear } from 'd3-scale'
 import moment from 'moment'
 import { car_card_dict } from '../../data/card_car_map'
+import { deviation, mean } from 'd3-array'
 
-const colorScale4Trajectory = interpolateRgb('#8DFF33', '#F74646')
 const fatLineWidth = 4, OverlapLineWidth = 8 // in pixels
 let trajectoryInfo
 let timeToplimit = 1800000
 let timeButtomlimit = 30000
-const buildingColor = {
-    "Restaurant": "#e67e7d",
-    "Parter": "#80c680",
-    "Shop": "#c0a4d7",
-    "Entertainment": "#78acd3",
-    "Other": "#ffb26e",
-    "home": "#ffffff"
-}
 const buildingR = 0.00025
 let stats = null
 
@@ -45,43 +36,19 @@ var OPTIONS = {
 
 let run = null
 
-class SpriteLine extends maptalks.BaseObject {
-    constructor(lineString, options, material, layer) {
-        super()
-        options.offset = material.uniforms.offset.value
-        options.clock = new THREE.Clock()
-        //geoutil.js getLinePosition
-        const { positions } = getLinePosition(lineString, layer)
-        const positions1 = _getLinePosition(lineString, layer).positions
-
-        options = maptalks.Util.extend({}, OPTIONS, options, { layer, lineString, positions: positions1 })
-        this._initOptions(options)
-
-        const geometry = new THREE.Geometry()
-        for (let i = 0; i < positions.length; i += 3) {
-            geometry.vertices.push(new THREE.Vector3(positions[i], positions[i + 1], positions[i + 2]))
-        }
-        const meshLine = new MeshLine()
-        meshLine.setGeometry(geometry)
-
-        const map = layer.getMap()
-        const size = map.getSize()
-        const width = size.width
-        const height = size.height
-        material.uniforms.resolution.value.set(width, height)
-
-        const line = new THREE.Mesh(meshLine.geometry, material)
-        this._createGroup()
-        this.getObject3d().add(line)
-        const { altitude } = options
-        const z = layer.distanceToVector3(altitude, altitude).x
-        const center = lineString.getCenter()
-        const v = layer.coordinateToVector3(center, z)
-        this.getObject3d().position.copy(v)
-    }
-    _animation() {
-        this.options.offset.x -= this.options.speed * this.options.clock.getDelta()
-    }
+function getConsumptionDotMaterial(num, color) {
+    let name = num > 1.5 ? "cricle_outlier" : "circle"
+    let material = new THREE.PointsMaterial({
+        size: 20,
+        sizeAttenuation: false,
+        color: color,
+        transparent: false,
+        blending: THREE.AdditiveBlending,
+        depthTest: false, //深度测试关闭，不消去场景的不可见面
+        depthWrite: false,
+        map: new THREE.TextureLoader().load('./data/icon/' + name + '.png')
+    })
+    return material
 }
 
 
@@ -301,6 +268,8 @@ let exitCar2DTrack = []
 
 let already = false
 
+let exitConsumeDot = []
+
 function Map3D() {
 
     const { activeCar, resetCar, selectDay, changeSelectDay } = systemStore
@@ -313,10 +282,13 @@ function Map3D() {
         const newmap = new maptalks.Map(
                 "map", {
                     center: [24.870, 36.071],
-                    zoom: 14,
+                    zoom: 15,
                     pitch: 70,
                     bearing: 0,
-                    centerCross: true,
+                    view: {
+                        projection: "baidu",
+                    },
+                    attribution: false,
                     doubleClickZoom: false,
                 }
             )
@@ -336,8 +308,7 @@ function Map3D() {
                 stats.domElement.style.zIndex = 100
                 document.getElementById('map').appendChild(stats.domElement)
         
-                let light = new THREE.DirectionalLight(0xffffff)
-                light.position.set(0, -10, 10).normalize()
+                let light = new THREE.AmbientLight(0xffffff, 1)
                 scene.add(light)
         
                 //地图线
@@ -354,10 +325,12 @@ function Map3D() {
 
     // !=============================== 开始监听 ===============================
     useEffect(() => {
+        if(!already) return
         addOverlapLines(activeCar)
-        // drawConsumptionDots(activeCar)
+        drawConsumptionDots()
         drawBuildings()
         addTrajectoryLines()
+        addRingEffect()
     }, [activeCar, selectDay])
 
     var selectMesh = []
@@ -478,17 +451,12 @@ function Map3D() {
             extrudePolygon.on('click', function (e) {
                 const select = e.target
                 // select.object3d.material.opacity = 1
-                let coordinate = {
-                    x: centerLong,
-                    y: centerLat
-                }
                 const location = select.id
                 if (activeBuildName.current === location) {
                     resetCar([])
                     removeRingEffect()
                     return
                 }
-                addRingEffect(coordinate, color)
                 activeBuildName.current = location
                 const customData = consumptionDots.filter(d => {
                     return d.location === location && d.timestamp.split(' ')[0] === selectDay
@@ -536,12 +504,20 @@ function Map3D() {
 
     const ringEffect  = useRef([])
     function addRingEffect(coordinate, color) {
-        let material = getMaterial(0, color)
-        let ringObj = new RingEffect(coordinate, {
-            radius: 200
-        }, material, threeLayer)
-        ringEffect.current.push(ringObj)
-        threeLayer.addMesh(ringObj)
+        let selectConsumption = consumptionDots.filter(d => d.dayStr === selectDay && d.id && activeCar.includes(d.id))
+        exitConsumeDot = []
+        chain(selectConsumption)
+            .map('location')
+            .uniq()
+            .value()
+            .forEach(key => {
+                let material = getMaterial(0, color)
+                let ringObj = new RingEffect(findLocationCoord(key), {
+                    radius: 200
+                }, material, threeLayer)
+                ringEffect.current.push(ringObj)
+                threeLayer.addMesh(ringObj)
+            })
     }
 
     function removeRingEffect(coordinate, color) {
@@ -618,22 +594,45 @@ function Map3D() {
         return material
     }
     //Consumption dot///////////////////////////////////////////////////////////////////////////////////////////////////
-    function drawConsumptionDots(carId) {
-        let circleMaterial = new THREE.MeshPhongMaterial({
-            color: 'red',
-            opacity: 1,
-            transparent: true
-        })
-        let selectConsumption = consumptionDots.filter(function (d) {
-            return carId.includes(d.id) && d.dayStr === selectDay
-        })
-        selectConsumption.forEach(function (data) {
-            var center = map.getCenter()
-            var circle = new maptalks.Circle(center.add(data.coor[0], data.coor[1]), {
-                radius: 2000
-            }, circleMaterial, threeLayer)
-            threeLayer.addMesh(circle)
-        })
+    function drawConsumptionDots() {
+        if (!already) return
+        threeLayer.removeMesh(exitConsumeDot)
+        let selectConsumption = consumptionDots.filter(d => d.dayStr === selectDay && d.id && activeCar.includes(d.id))
+        exitConsumeDot = []
+        chain(selectConsumption)
+            .map('location')
+            .uniq()
+            .value()
+            .forEach(key => {
+                const thisData = selectConsumption.filter(d => d.location === key)
+                const ConsumptionDotsScale = 0.0008
+                let outlierScale = 1
+                let meandata = mean(thisData, d => d.price)
+                let devia = deviation(thisData, d => d.price)
+                const coor = findLocationCoord(key)
+                thisData.forEach(function (data) {
+                    const color = calcualteStoreColor(data.location)
+                    let num = Math.abs((data.price - meandata) / devia) < outlierScale
+                    let consumptionDotMaterial = getConsumptionDotMaterial(num, color)
+                    let thisCoor = []
+                    let random = Math.random()
+                    if (random > 0.5) { thisCoor.push(coor[0] + buildingR + random * ConsumptionDotsScale) }
+                    else { thisCoor.push(coor[0] - buildingR - random * ConsumptionDotsScale) }
+                    random = Math.random()
+                    if (random > 0.5) { thisCoor.push(coor[1] + buildingR + random * ConsumptionDotsScale) }
+                    else { thisCoor.push(coor[1] - buildingR - random * ConsumptionDotsScale) }
+                    const point = threeLayer.toPoint(
+                        thisCoor,
+                        { height: 5 }, consumptionDotMaterial)
+                    point.setToolTip("id:" + data.id + " price:" + data.price + " type:  " + data.type, {
+                        showTimeout: 0,
+                        eventsPropagation: true,
+                        dx: 10
+                    });
+                    exitConsumeDot.push(point)
+                    threeLayer.addMesh(point)
+                })
+            })
     }
 
     //animation & GUI///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -697,29 +696,24 @@ function Map3D() {
                 } else moveLines.push(line)
             }
 
-            if (stopLongLines.length > 0) {
-                let stopLongTrajectory = threeLayer.toFatLines(stopLongLines, { interactive: false }, stopLongLinesmaterial)
-                stopLongTrajectory.setAltitude(200 + Overlaplines.length * 50)
-                TrajectoryList.lines.push(stopLongTrajectory)
-                threeLayer.addMesh(stopLongTrajectory)
-                exitTrack.push(stopLongTrajectory)
-            }
-            
-            if (stopShortLines.length > 0) {
-                let stopShortTrajectory = threeLayer.toFatLines(stopShortLines, { interactive: false }, stopShortLinesmaterial)
-                stopShortTrajectory.setAltitude(200 + Overlaplines.length * 50)
-                TrajectoryList.lines.push(stopShortTrajectory)
-                threeLayer.addMesh(stopShortTrajectory)
-                exitTrack.push(stopShortTrajectory)
+            function TrajectoryLinesMeshes(LinesList, material) {
+                if (LinesList.length > 0) {
+                    let Trajectory = threeLayer.toFatLines(LinesList, { interactive: true }, material)
+                    threeLayer.addMesh(Trajectory)
+                    exitTrack.push(Trajectory)
+                    Trajectory.setAltitude(200 + Overlaplines.length * 80)
+                    Trajectory.setToolTip(id, {
+                        showTimeout: 0,
+                        eventsPropagation: true,
+                        dx: 10
+                    })
+                    TrajectoryList.lines.push(Trajectory)
+                }
             }
 
-            if (moveLines.length > 0) {
-                let moveTrajectory = threeLayer.toFatLines(moveLines, { interactive: false }, moveLinesmaterial)
-                exitTrack.push(moveTrajectory)
-                moveTrajectory.setAltitude(200 + Overlaplines.length * 50)
-                TrajectoryList.lines.push(moveTrajectory)
-                threeLayer.addMesh(moveTrajectory)
-            }
+            TrajectoryLinesMeshes(stopLongLines, stopLongLinesmaterial)
+            TrajectoryLinesMeshes(stopShortLines, stopShortLinesmaterial)
+            TrajectoryLinesMeshes(moveLines, moveLinesmaterial)
             Overlaplines.push(TrajectoryList)
         })
 
@@ -734,7 +728,7 @@ function Map3D() {
             eventsPropagation: true,
             dx: 10
         });
-        point.setAltitude(200 + activeCar.findIndex(d => d == id) * 80)
+        point.setAltitude(200 + activeCar.findIndex(d => d == id) * 80 + 80)
 
         threeLayer.addMesh(point)
         exitCar2DTrack.push(point)
