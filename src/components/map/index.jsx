@@ -270,6 +270,8 @@ let already = false
 
 let exitConsumeDot = []
 
+let ringEffect = []
+
 function Map3D() {
 
     const { activeCar, resetCar, selectDay, changeSelectDay } = systemStore
@@ -454,7 +456,7 @@ function Map3D() {
                 const location = select.id
                 if (activeBuildName.current === location) {
                     resetCar([])
-                    removeRingEffect()
+                    activeBuildName.current = ''
                     return
                 }
                 activeBuildName.current = location
@@ -462,6 +464,7 @@ function Map3D() {
                     return d.location === location && d.timestamp.split(' ')[0] === selectDay
                 })
                 const carId = chain(customData).map('id').uniq().compact().value()
+                console.log(carId)
                 resetCar(carId)
             })
             exitBuild.push(extrudePolygon)
@@ -502,27 +505,22 @@ function Map3D() {
     
     }
 
-    const ringEffect  = useRef([])
-    function addRingEffect(coordinate, color) {
+    function addRingEffect() {
+        threeLayer.removeMesh(ringEffect)
+        ringEffect = []
         let selectConsumption = consumptionDots.filter(d => d.dayStr === selectDay && d.id && activeCar.includes(d.id))
-        exitConsumeDot = []
         chain(selectConsumption)
             .map('location')
             .uniq()
             .value()
             .forEach(key => {
-                let material = getMaterial(0, color)
+                let material = getMaterial(0, calcualteStoreColor(key))
                 let ringObj = new RingEffect(findLocationCoord(key), {
                     radius: 200
                 }, material, threeLayer)
-                ringEffect.current.push(ringObj)
+                ringEffect.push(ringObj)
                 threeLayer.addMesh(ringObj)
             })
-    }
-
-    function removeRingEffect(coordinate, color) {
-        threeLayer.removeMesh(ringEffect.current)
-        ringEffect.current = []
     }
 
     function getMaterial(type = 0, color) {
@@ -597,8 +595,8 @@ function Map3D() {
     function drawConsumptionDots() {
         if (!already) return
         threeLayer.removeMesh(exitConsumeDot)
-        let selectConsumption = consumptionDots.filter(d => d.dayStr === selectDay && d.id && activeCar.includes(d.id))
         exitConsumeDot = []
+        let selectConsumption = consumptionDots.filter(d => d.dayStr === selectDay && d.id && activeCar.includes(d.id))
         chain(selectConsumption)
             .map('location')
             .uniq()
@@ -733,7 +731,6 @@ function Map3D() {
         threeLayer.addMesh(point)
         exitCar2DTrack.push(point)
         car.point = point
-        animation()
         return car
     }
 
