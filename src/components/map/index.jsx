@@ -515,7 +515,9 @@ function Map3D() {
             .value()
             .forEach(key => {
                 let material = getMaterial(0, calcualteStoreColor(key))
-                let ringObj = new RingEffect(findLocationCoord(key), {
+                const coor = findLocationCoord(key)
+                if(!coor) return
+                let ringObj = new RingEffect(coor, {
                     radius: 200
                 }, material, threeLayer)
                 ringEffect.push(ringObj)
@@ -608,6 +610,7 @@ function Map3D() {
                 let meandata = mean(thisData, d => d.price)
                 let devia = deviation(thisData, d => d.price)
                 const coor = findLocationCoord(key)
+                if (!coor) return
                 thisData.forEach(function (data) {
                     const color = calcualteStoreColor(data.location)
                     let num = Math.abs((data.price - meandata) / devia) < outlierScale
