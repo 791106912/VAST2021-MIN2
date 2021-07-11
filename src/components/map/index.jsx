@@ -13,6 +13,7 @@ import { scaleLinear } from 'd3-scale'
 import moment from 'moment'
 import { car_card_dict } from '../../data/card_car_map'
 import { deviation, mean } from 'd3-array'
+import { json } from 'd3'
 
 const fatLineWidth = 4, OverlapLineWidth = 8 // in pixels
 let trajectoryInfo
@@ -296,15 +297,14 @@ function Map3D() {
             )
         setmap(newmap)
 
-        csv("./data/gps.csv", function (data) {
-            return {
-                "id": parseInt(data.id),
-                "location": [parseFloat(data.long), parseFloat(data.lat)],
-                "time": new Date(data.Timestamp),
-                dayStr: data.Timestamp.split(' ')[0],
-            }
-        }).then(function (d) {
-            trajectoryInfo = d
+        json("./data/gpswithstop.json").then(function (data) {
+            const newGps = chain(data).map('data').flatten().map(d => ({
+                "id": parseInt(d.id),
+                "location": [parseFloat(d.long), parseFloat(d.lat)],
+                "time": new Date(d.Timestamp),
+                dayStr: d.Timestamp.split(' ')[0],
+            })).value()
+            trajectoryInfo = newGps
             threeLayer.prepareToDraw = function (gl, scene, camera) {
                 stats = new Stats()
                 stats.domElement.style.zIndex = 100

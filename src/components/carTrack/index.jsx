@@ -457,7 +457,7 @@ function CarTrack() {
                             return (
                                 <g {...gAttr}>
                                     <rect {...rectAttr}/>
-                                    <text {...textAttr}>{`${day} ${['11', '12', '17', '18'].includes(day) ? 'weekend' : ''}`}</text>
+                                    <text {...textAttr}>{`${day} ${['11', '12', '18', '19'].includes(day) ? 'weekend' : ''}`}</text>
                                 </g>
                             )
                         })}
