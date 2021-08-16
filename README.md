@@ -1,4 +1,8 @@
-# The Kronos Incident (IEEE VAST MIN2)
+# IEEE VAST Min2 - The Kronos Incident (Award)
+
+## 获得奖项
+
+**Award for Outstanding Comprehensive MC2 Submission**
 
 ## 预览地址
 
