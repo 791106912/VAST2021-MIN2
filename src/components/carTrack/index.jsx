@@ -683,7 +683,7 @@ function CarTrack() {
                                 <g {...gAttr}>
                                     <g className='stopBg' transform={`translate(${sx}, ${y})`}>
                                         <rect {...rectAttr} />
-                                        <text dx={rectAttr.width / 2}>{d.location}</text>
+                                        <text dx={rectAttr.width / 2} dy='-8'>{d.location}</text>
                                     </g>
                                     <g className="stopDetail">
                                         {
