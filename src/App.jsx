@@ -30,8 +30,12 @@ function App() {
               <System />
             </Router>
             <Route path="/first">
-              <ConsumerGraph />
               <FirstQ />
+              <div style={{
+                height: '800px',
+              }}>
+                <ConsumerGraph />
+              </div>
             </Route>
             <Route path="/map">
               <SecondQ />
