@@ -1,6 +1,7 @@
 import { HashRouter as Router, Link, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import ConsumerGraph from './components/consumerGraphOrigin';
+import FirstQ from './components/firstQ';
 import Map3D from './components/mapOrigin';
 import Cal from './dataCal';
 import System from './page/system';
@@ -30,6 +31,7 @@ function App() {
             </Router>
             <Route path="/first">
               <ConsumerGraph />
+              <FirstQ />
             </Route>
             <Route path="/map">
               <SecondQ />

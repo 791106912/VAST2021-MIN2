@@ -342,6 +342,7 @@ export default function FirstQ() {
         return ccNumData.reduce((obj, d) => {
             const thisData = chain(consumeData)
                 .filter(d1 => d1.id === d)
+                .filter(d1 => d1.type !== 'cash')
                 .reduce((obj, d1) => {
                     const key = d1.dayStr
                     if (!obj[key]) obj[key] = []
